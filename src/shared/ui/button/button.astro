@@ -1,0 +1,75 @@
+---
+interface Props {
+  /** href превращает кнопку в ссылку */
+  href?: string;
+  variant?: 'primary' | 'outline' | 'ghost';
+  size?: 'md' | 'lg';
+  type?: 'button' | 'submit';
+  class?: string;
+}
+
+const { href, variant = 'primary', size = 'md', type = 'button', class: className } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class:list={['button', `button--${variant}`, `button--${size}`, className]}
+  href={href}
+  type={href ? undefined : type}
+>
+  <slot />
+</Tag>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding: var(--space-2) var(--space-5);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background var(--transition-fast),
+      border-color var(--transition-fast),
+      color var(--transition-fast);
+  }
+
+  .button--primary {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  .button--primary:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .button--outline {
+    border-color: var(--color-border);
+    background: transparent;
+  }
+
+  .button--outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .button--ghost {
+    background: transparent;
+  }
+
+  .button--ghost:hover {
+    background: var(--color-surface);
+  }
+
+  .button--lg {
+    min-height: 52px;
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-base);
+  }
+</style>

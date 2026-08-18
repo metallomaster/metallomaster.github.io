@@ -1,0 +1,110 @@
+---
+import '../styles/global.css';
+import { Footer } from '@widgets/footer';
+import { Header } from '@widgets/header';
+import { siteConfig } from '@shared/config';
+import { buildTitle, canonicalUrl, clampDescription, organizationJsonLd } from '@shared/seo';
+import type { PageSeo } from '@shared/seo';
+
+interface Props extends PageSeo {
+  /** Дополнительные JSON-LD объекты страницы (Product, BreadcrumbList и т.д.) */
+  jsonLd?: object[];
+}
+
+const { title, description, path, ogImage, ogType = 'website', jsonLd = [] } = Astro.props;
+
+const fullTitle = buildTitle(title);
+const metaDescription = clampDescription(description);
+const canonical = canonicalUrl(siteConfig.siteUrl, path);
+const ogImageUrl = ogImage ? new URL(ogImage, siteConfig.siteUrl).toString() : undefined;
+
+const organization = organizationJsonLd({
+  name: siteConfig.name,
+  legalName: siteConfig.legalName,
+  url: siteConfig.siteUrl,
+  logoUrl: `${siteConfig.siteUrl}/favicon.svg`,
+  phone: siteConfig.phone,
+  email: siteConfig.email,
+  address: siteConfig.address,
+  instagram: siteConfig.instagram,
+});
+
+const jsonLdBlocks = [organization, ...jsonLd];
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+
+    <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/manrope-cyrillic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    {/* Анти-FOUC: тема до первой отрисовки. Синхронизирован с features/theme-toggle/model.ts */}
+    <script is:inline>
+      (() => {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') {
+          document.documentElement.dataset.theme = theme;
+        }
+      })();
+    </script>
+
+    {
+      jsonLdBlocks.map((block) => (
+        <script type="application/ld+json" set:html={JSON.stringify(block)} />
+      ))
+    }
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--space-4);
+    z-index: 200;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+  }
+
+  .skip-link:focus-visible {
+    top: var(--space-2);
+  }
+</style>

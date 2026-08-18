@@ -5,10 +5,9 @@ node_modules/
 dist/
 .astro/
 
-# environment (секреты и локальные контакты; шаблон — .env.example)
+# environment: .env.development и .env.production коммитятся (секретов нет,
+# ключ Web3Forms публичный по природе); локальные переопределения — в .env.local
 .env
-.env.development
-.env.production
 .env.local
 
 # tooling

@@ -1,0 +1,76 @@
+/*
+ * Дизайн-токены — единственный источник стиля.
+ * Темы: светлая индустриальная (основная) + тёмная.
+ * Механика: color-scheme + light-dark(); без data-theme берётся тема устройства,
+ * переключатель (features/theme-toggle) ставит data-theme на <html>.
+ *
+ * Брейкпоинты (в media-запросах компонентов): 360 / 768 / 1024 / 1440.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* Цвет */
+  --color-bg: light-dark(#ffffff, #12141a);
+  --color-surface: light-dark(#f4f6f8, #1a1d25);
+  --color-surface-2: light-dark(#e9edf2, #232836);
+  --color-text: light-dark(#171a20, #e9ecf2);
+  --color-text-muted: light-dark(#5a6373, #9aa3b5);
+  --color-border: light-dark(#dde2e9, #2c3140);
+  --color-accent: light-dark(#d40011, #ff4653);
+  --color-accent-hover: light-dark(#a8000d, #ff6570);
+  --color-on-accent: #ffffff;
+  --color-steel: light-dark(#39445c, #b8c2d8);
+  --color-focus: light-dark(#1f5eff, #6f9bff);
+
+  /* Типографика */
+  --font-sans:
+    'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --text-xl: clamp(1.375rem, 1.15rem + 1vw, 1.875rem);
+  --text-2xl: clamp(1.75rem, 1.4rem + 1.75vw, 2.75rem);
+  --text-3xl: clamp(2.125rem, 1.6rem + 2.6vw, 3.5rem);
+  --leading-tight: 1.15;
+  --leading-normal: 1.6;
+
+  /* Отступы (шаг 4px) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* Геометрия */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+  --container-max: 1200px;
+  --container-pad: clamp(1rem, 4vw, 2rem);
+  --header-height: 4.5rem;
+
+  /* Тени */
+  --shadow-sm: 0 1px 2px light-dark(rgb(23 26 32 / 8%), rgb(0 0 0 / 40%));
+  --shadow-md: 0 4px 16px light-dark(rgb(23 26 32 / 10%), rgb(0 0 0 / 45%));
+  --shadow-lg: 0 12px 40px light-dark(rgb(23 26 32 / 14%), rgb(0 0 0 / 55%));
+
+  /* Анимация */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+/* Явный выбор темы переключателем побеждает системную */
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}

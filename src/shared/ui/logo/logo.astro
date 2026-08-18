@@ -1,0 +1,74 @@
+---
+/*
+ * Логотип: перерисовка исторического знака (красная «M» из горизонтальных полос,
+ * референс: .documentation/deprecated/site/images/metallomaster..png) в чистый SVG.
+ */
+interface Props {
+  /** Уникальный префикс id маски — на странице может быть несколько логотипов */
+  idPrefix?: string;
+  /** Показывать ли текст METALLOMASTER рядом со знаком */
+  withWordmark?: boolean;
+}
+
+const { idPrefix = 'logo', withWordmark = true } = Astro.props;
+const maskId = `${idPrefix}-stripes`;
+---
+
+<span class="logo">
+  <svg
+    class="logo__mark"
+    viewBox="0 0 40 40"
+    role="img"
+    aria-label="Логотип METALLOMASTER"
+    fill="none"
+  >
+    <defs>
+      <mask id={maskId}>
+        <rect width="40" height="40" fill="white"></rect>
+        {
+          [8.4, 14.4, 20.4, 26.4, 32.4].map((y) => (
+            <rect y={y} width="40" height="1.8" fill="black" />
+          ))
+        }
+      </mask>
+    </defs>
+    <path
+      d="M2 38 V2 h8.5 L20 15.5 29.5 2 H38 v36 h-8.5 V16.5 L20 30 10.5 16.5 V38 Z"
+      fill="var(--color-accent)"
+      mask={`url(#${maskId})`}></path>
+  </svg>
+  {
+    withWordmark && (
+      <span class="logo__wordmark">
+        METALLO<b>MASTER</b>
+      </span>
+    )
+  }
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .logo__mark {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+  }
+
+  .logo__wordmark {
+    font-weight: 500;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    color: var(--color-steel);
+    white-space: nowrap;
+  }
+
+  .logo__wordmark b {
+    font-weight: 800;
+    color: var(--color-text);
+  }
+</style>

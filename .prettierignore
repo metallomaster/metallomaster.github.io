@@ -1,0 +1,4 @@
+# Архив старого сайта — только референс, не форматируем
+.documentation/deprecated/
+dist/
+.astro/

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <mask id="s">
+      <rect width="40" height="40" fill="white"/>
+      <rect y="8.4" width="40" height="1.8" fill="black"/>
+      <rect y="14.4" width="40" height="1.8" fill="black"/>
+      <rect y="20.4" width="40" height="1.8" fill="black"/>
+      <rect y="26.4" width="40" height="1.8" fill="black"/>
+      <rect y="32.4" width="40" height="1.8" fill="black"/>
+    </mask>
+  </defs>
+  <path d="M2 38 V2 h8.5 L20 15.5 29.5 2 H38 v36 h-8.5 V16.5 L20 30 10.5 16.5 V38 Z" fill="#d40011" mask="url(#s)"/>
+</svg>
