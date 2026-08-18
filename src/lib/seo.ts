@@ -103,7 +103,7 @@ export interface ImageParams {
  * ImageObject — паспорт фотографии для поиска по картинкам.
  * Автор и лицензия свои: фото собственного производства.
  */
-export function imageObjectJsonLd(image: ImageParams, siteUrl: string, author: string): object {
+function imageObjectJsonLd(image: ImageParams, siteUrl: string, author: string): object {
   return {
     '@context': 'https://schema.org',
     '@type': 'ImageObject',
