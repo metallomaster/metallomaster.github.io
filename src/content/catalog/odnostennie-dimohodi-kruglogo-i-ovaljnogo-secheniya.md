@@ -8,8 +8,8 @@ lead: Одноконтурные трубы из нержавейки — гил
 category: dimohodi-iz-nerzhaveyuschej-stali
 order: 20
 featured: false
-cover: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-01.jpg
-coverAlt: Дымоход из нержавеющей стали с оголовком на фоне вечернего неба
+cover: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-06.jpg
+coverAlt: Полированная одностенная труба дымохода из нержавеющей стали на кронштейнах
 images:
   - src: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-01.jpg
     alt: Дымоход из нержавеющей стали с оголовком на фоне вечернего неба

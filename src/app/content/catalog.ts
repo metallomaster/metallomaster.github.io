@@ -32,7 +32,11 @@ export async function getProductsOf(categorySlug: string): Promise<CatalogItem[]
 }
 
 export async function getFeatured(): Promise<CatalogItem[]> {
-  return (await getCatalogItems()).filter((item) => item.featured);
+  const featured = (await getCatalogItems()).filter((item) => item.featured);
+  // Сначала категории, затем отдельные featured-товары (например, парапет)
+  return featured.sort(
+    (a, b) => Number(b.type === 'category') - Number(a.type === 'category') || a.order - b.order,
+  );
 }
 
 /** Элемент каталога вместе с отрендеренным markdown-телом */

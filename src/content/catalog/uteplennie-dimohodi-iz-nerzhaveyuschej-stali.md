@@ -8,8 +8,8 @@ lead: Двустенные дымоходы с базальтовой изоля
 category: dimohodi-iz-nerzhaveyuschej-stali
 order: 10
 featured: false
-cover: ./uteplennie-dimohodi-iz-nerzhaveyuschej-stali/uteplennie-dimohodi-iz-nerzhaveyuschej-stali-01.jpg
-coverAlt: Утеплённый дымоход с зонтом-дефлектором на фасаде частного дома
+cover: ./uteplennie-dimohodi-iz-nerzhaveyuschej-stali/uteplennie-dimohodi-iz-nerzhaveyuschej-stali-04.jpg
+coverAlt: Утеплённый сэндвич-дымоход из нержавейки на фасаде частного дома
 images:
   - src: ./uteplennie-dimohodi-iz-nerzhaveyuschej-stali/uteplennie-dimohodi-iz-nerzhaveyuschej-stali-01.jpg
     alt: Утеплённый дымоход с зонтом-дефлектором на фасаде частного дома
