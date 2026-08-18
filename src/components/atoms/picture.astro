@@ -1,16 +1,19 @@
 ---
 /*
- * Адаптер оптимизации изображений — единственный компонент, знающий про astro:assets.
- * При миграции на другой фреймворк меняется только этот файл (напр., на next/image).
+ * Адаптер оптимизации изображений — один из двух компонентов, знающих про astro:assets
+ * (второй — photo-link.astro). При миграции на другой фреймворк меняются только они.
+ *
+ * Отдаём AVIF и WebP: браузер берёт первый поддерживаемый, AVIF примерно на треть легче.
  */
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
+import { PHOTO_THUMB_WIDTHS, fitWidths } from '@/lib/images';
 import type { PictureSrc } from '@/lib/types';
 
 interface Props {
   src: PictureSrc;
   alt: string;
   /** Ширины для srcset; по умолчанию под сетку карточек и галерей */
-  widths?: number[];
+  widths?: readonly number[];
   sizes?: string;
   loading?: 'lazy' | 'eager';
   class?: string;
@@ -19,19 +22,21 @@ interface Props {
 const {
   src,
   alt,
-  widths = [360, 640, 960, 1280],
+  widths = PHOTO_THUMB_WIDTHS,
   sizes = '(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw',
   loading = 'lazy',
   class: className,
 } = Astro.props;
 ---
 
-<Image
+<Picture
   src={src}
   alt={alt}
-  widths={widths.filter((w) => w <= src.width)}
+  widths={fitWidths(widths, src.width)}
   sizes={sizes}
   loading={loading}
-  format="webp"
+  decoding={loading === 'eager' ? 'sync' : 'async'}
+  formats={['avif', 'webp']}
+  fallbackFormat="webp"
   class={className}
 />

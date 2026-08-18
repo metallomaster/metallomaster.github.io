@@ -27,11 +27,16 @@ body {
 }
 
 img,
-picture,
 svg,
 video {
   display: block;
   max-width: 100%;
+}
+
+/* <picture> — лишь контейнер для <source>: убираем его из потока,
+   чтобы сетки и flex видели саму <img>, а не обёртку */
+picture {
+  display: contents;
 }
 
 input,

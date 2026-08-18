@@ -21,6 +21,8 @@ export type CatalogItemType = 'category' | 'product' | 'service';
 export interface CatalogImage {
   src: PictureSrc;
   alt: string;
+  /** URL полноразмерной версии: её открывает лайтбокс и на неё ссылается разметка */
+  full: string;
 }
 
 export interface CatalogItem {

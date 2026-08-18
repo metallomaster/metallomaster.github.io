@@ -18,12 +18,11 @@ const { images, heading = 'Наши работы' } = Astro.props;
       {
         images.map((image) => (
           <li>
-            {/* href на оптимизированный оригинал — его откроет лайтбокс */}
-            <a class="works-gallery__link" href={image.src.src} data-lightbox-group="works">
+            {/* href на пережатый полноразмер — его откроет лайтбокс */}
+            <a class="works-gallery__link" href={image.full} data-lightbox-group="works">
               <Picture
                 src={image.src}
                 alt={image.alt}
-                widths={[240, 360, 480, 720]}
                 sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (max-width: 1439px) 25vw, 200px"
               />
             </a>
