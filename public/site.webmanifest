@@ -1,0 +1,20 @@
+{
+  "name": "METALLOMASTER — изделия из металла в Минске",
+  "short_name": "METALLOMASTER",
+  "lang": "ru",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#d40011",
+  "theme_color": "#d40011",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

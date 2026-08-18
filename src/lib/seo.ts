@@ -4,6 +4,8 @@
  */
 
 /** Хвост убран из H1 навсегда: бренд добавляется только в <title> */
+import type { PictureSrc } from '@/lib/types';
+
 const TITLE_SUFFIX = ' — METALLOMASTER';
 const TITLE_MAX = 60;
 const DESCRIPTION_MAX = 160;
@@ -14,8 +16,8 @@ export interface PageSeo {
   description: string;
   /** Путь страницы от корня, например "/catalog/chimney-caps/post-cap/" */
   path: string;
-  /** Абсолютный или корневой URL картинки для Open Graph */
-  ogImage?: string;
+  /** Исходник картинки для Open Graph; шаблон сам пережмёт его под 1200×630 */
+  ogImage?: PictureSrc;
   /** Тип OG-объекта; по умолчанию website */
   ogType?: 'website' | 'article';
 }
@@ -87,12 +89,42 @@ export function breadcrumbsJsonLd(siteUrl: string, items: BreadcrumbItem[]): obj
   };
 }
 
+export interface ImageParams {
+  url: string;
+  /** Подпись = осмысленный alt: по нему фото ранжируется в поиске по картинкам */
+  caption: string;
+  width?: number;
+  height?: number;
+}
+
+/**
+ * ImageObject — паспорт фотографии для поиска по картинкам.
+ * Автор и лицензия свои: фото собственного производства.
+ */
+export function imageObjectJsonLd(image: ImageParams, siteUrl: string, author: string): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    contentUrl: image.url,
+    url: image.url,
+    caption: image.caption,
+    ...(image.width ? { width: image.width } : {}),
+    ...(image.height ? { height: image.height } : {}),
+    creditText: author,
+    creator: { '@type': 'Organization', name: author, '@id': `${siteUrl}/#organization` },
+    copyrightNotice: author,
+    license: siteUrl,
+    acquireLicensePage: siteUrl,
+  };
+}
+
 export interface ProductParams {
   name: string;
   description: string;
   url: string;
-  images: string[];
+  images: ImageParams[];
   brand: string;
+  siteUrl: string;
 }
 
 /** Product без цены — изделия индивидуальные (решение владельца) */
@@ -103,7 +135,7 @@ export function productJsonLd(p: ProductParams): object {
     name: p.name,
     description: p.description,
     url: p.url,
-    image: p.images,
+    image: p.images.map((image) => imageObjectJsonLd(image, p.siteUrl, p.brand)),
     brand: { '@type': 'Brand', name: p.brand },
   };
 }

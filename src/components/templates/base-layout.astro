@@ -1,8 +1,11 @@
 ---
 import '@/config/global.css';
+import { getImage } from 'astro:assets';
 import Footer from '@/components/organisms/footer.astro';
 import Header from '@/components/organisms/header.astro';
 import { siteConfig } from '@/config/site';
+import { getDefaultShareImage } from '@/lib/content';
+import { OG_IMAGE } from '@/lib/images';
 import { buildTitle, canonicalUrl, clampDescription, organizationJsonLd } from '@/lib/seo';
 import type { PageSeo } from '@/lib/seo';
 
@@ -16,7 +19,11 @@ const { title, description, path, ogImage, ogType = 'website', jsonLd = [] } = A
 const fullTitle = buildTitle(title);
 const metaDescription = clampDescription(description);
 const canonical = canonicalUrl(siteConfig.siteUrl, path);
-const ogImageUrl = ogImage ? new URL(ogImage, siteConfig.siteUrl).toString() : undefined;
+
+/* Превью для соцсетей: своё фото страницы, иначе общее по сайту */
+const shareSource = ogImage ?? (await getDefaultShareImage());
+const shareImage = shareSource ? await getImage({ src: shareSource, ...OG_IMAGE }) : undefined;
+const ogImageUrl = shareImage ? new URL(shareImage.src, siteConfig.siteUrl).toString() : undefined;
 
 const organization = organizationJsonLd({
   name: siteConfig.name,
@@ -40,8 +47,16 @@ const jsonLdBlocks = [organization, ...jsonLd];
     <title>{fullTitle}</title>
     <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap.xml" />
+
+    {/* .ico ради Яндекса и старых браузеров, .svg — везде, где понимают вектор */}
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    {/* Цвет строки браузера на Android — совпадает с --color-bg обеих тем */}
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#12141a" media="(prefers-color-scheme: dark)" />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteConfig.name} />
@@ -49,7 +64,17 @@ const jsonLdBlocks = [organization, ...jsonLd];
     <meta property="og:title" content={title} />
     <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
-    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    {
+      shareImage && (
+        <>
+          <meta property="og:image" content={ogImageUrl} />
+          <meta property="og:image:width" content={String(shareImage.attributes.width)} />
+          <meta property="og:image:height" content={String(shareImage.attributes.height)} />
+          <meta property="og:image:alt" content={title} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </>
+      )
+    }
 
     <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link

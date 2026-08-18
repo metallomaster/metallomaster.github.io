@@ -47,8 +47,12 @@ const jsonLd: object[] = [
     name: item.title,
     description: item.description,
     url: new URL(path, siteConfig.siteUrl).toString(),
-    images: item.images.map((img) => new URL(img.src.src, siteConfig.siteUrl).toString()),
+    images: item.images.map((img) => ({
+      url: new URL(img.full, siteConfig.siteUrl).toString(),
+      caption: img.alt,
+    })),
     brand: siteConfig.name,
+    siteUrl: siteConfig.siteUrl,
   }),
 ];
 ---
@@ -57,7 +61,7 @@ const jsonLd: object[] = [
   title={item.seoTitle}
   description={item.description}
   path={path}
-  ogImage={item.cover?.src.src}
+  ogImage={item.cover?.src}
   jsonLd={jsonLd}
 >
   <Container>

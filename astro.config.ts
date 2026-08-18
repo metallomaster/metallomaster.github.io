@@ -1,11 +1,10 @@
 import { defineConfig, envField } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://metallomaster.by',
   trailingSlash: 'always',
   build: { format: 'directory' },
-  integrations: [sitemap()],
+  // Карта сайта — src/pages/sitemap.xml.ts (страницы и фотографии одним файлом)
   env: {
     schema: {
       CONTACT_PHONE: envField.string({ context: 'client', access: 'public' }),
