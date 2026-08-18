@@ -5,14 +5,17 @@ import { Container, Logo } from '@shared/ui';
 
 const navItems = [
   { label: 'Главная', href: '/' },
-  { label: 'Каталог', href: '/katalog-produkcii.html' },
-  { label: 'Монтаж', href: '/montazh-dimohoda.html' },
-  { label: 'Контакты', href: '/kontakty.html' },
+  { label: 'Каталог', href: '/catalog/' },
+  { label: 'Монтаж', href: '/services/chimney-installation/' },
+  { label: 'Контакты', href: '/contacts/' },
 ];
 
-const currentPath = Astro.url.pathname;
+// Нормализуем путь к виду с завершающим слешем (trailingSlash: 'always')
+const currentPath = Astro.url.pathname.endsWith('/')
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
 const isCurrent = (href: string) =>
-  href === '/' ? currentPath === '/' : currentPath.startsWith(href.replace('.html', ''));
+  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
 ---
 
 <header class="header" data-menu-open="false">

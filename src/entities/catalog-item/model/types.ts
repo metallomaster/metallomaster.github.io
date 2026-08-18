@@ -8,7 +8,7 @@ export interface CatalogImage {
 }
 
 export interface CatalogItem {
-  /** slug = имя старой страницы без .html; URL — /<slug>.html */
+  /** slug = последний сегмент URL страницы (id записи в content/catalog) */
   slug: string;
   type: CatalogItemType;
   title: string;
@@ -23,6 +23,14 @@ export interface CatalogItem {
   images: CatalogImage[];
 }
 
-export function catalogItemUrl(item: Pick<CatalogItem, 'slug'>): string {
-  return `/${item.slug}.html`;
+/** Вложенный URL элемента каталога, всегда с завершающим слешем */
+export function catalogItemUrl(item: Pick<CatalogItem, 'slug' | 'type' | 'category'>): string {
+  switch (item.type) {
+    case 'service':
+      return `/services/${item.slug}/`;
+    case 'product':
+      return `/catalog/${item.category}/${item.slug}/`;
+    default:
+      return `/catalog/${item.slug}/`;
+  }
 }

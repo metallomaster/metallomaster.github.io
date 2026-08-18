@@ -7,7 +7,7 @@ export interface PageSeo {
   /** Заголовок страницы без брендового хвоста */
   title: string;
   description: string;
-  /** Путь страницы от корня, например "/kolpak-na-stolb.html" */
+  /** Путь страницы от корня, например "/catalog/chimney-caps/post-cap/" */
   path: string;
   /** Абсолютный или корневой URL картинки для Open Graph */
   ogImage?: string;

@@ -1,6 +1,6 @@
 /*
  * Astro Content Collections. Контент лежит в src/content:
- *   catalog/<slug>.md — категории, товары и услуги; slug = имя старой страницы без .html
+ *   catalog/<slug>.md — категории, товары и услуги; slug = последний сегмент URL страницы
  *   catalog/<slug>/*.{png,jpg,webp} — фото рядом с контентом
  *   works/index.md + works/*.{png,jpg} — галерея «Наши работы» для главной
  */

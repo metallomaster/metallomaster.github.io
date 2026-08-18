@@ -15,10 +15,12 @@ export default defineConfig([
     },
   },
   {
-    // index.astro в pages — это роут главной страницы Astro, а не public API слоя
+    // pages в Astro — файловый роутинг: index.astro — роут главной, а не public API слоя,
+    // вложенные папки (catalog/, services/) — сегменты URL, а не FSD-слайсы
     files: ['./src/pages/**'],
     rules: {
       'fsd/no-layer-public-api': 'off',
+      'fsd/no-segmentless-slices': 'off',
     },
   },
 ]);

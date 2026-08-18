@@ -1,0 +1,66 @@
+---
+import { getCatalogItems } from '@app/content/catalog';
+import BaseLayout from '@app/layouts/base-layout.astro';
+import { CategoryGrid } from '@widgets/category-grid';
+import { CtaBand } from '@widgets/cta-band';
+import { siteConfig } from '@shared/config';
+import { breadcrumbsJsonLd } from '@shared/seo';
+import { Breadcrumbs, Container } from '@shared/ui';
+
+const items = await getCatalogItems();
+const categories = items.filter((item) => item.type === 'category');
+const services = items.filter((item) => item.type === 'service');
+
+const crumbs = [{ label: 'Главная', href: '/' }, { label: 'Каталог продукции' }];
+const jsonLd = [
+  breadcrumbsJsonLd(siteConfig.siteUrl, [
+    { name: 'Главная', path: '/' },
+    { name: 'Каталог продукции', path: '/catalog/' },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Каталог металлоизделий: дымоходы, колпаки, воздуховоды"
+  description="Каталог продукции METALLOMASTER: дымоходы из нержавеющей стали, колпаки на трубы и столбы, оцинкованные воздуховоды, доборные элементы кровли. Производство в Минске."
+  path="/catalog/"
+  jsonLd={jsonLd}
+>
+  <Container>
+    <div class="page-head">
+      <Breadcrumbs items={crumbs} />
+      <h1>Каталог продукции</h1>
+      <p class="page-head__lead">
+        Изготавливаем изделия из оцинкованной и нержавеющей стали, металла с полимерным покрытием —
+        по стандартным и вашим размерам.
+      </p>
+    </div>
+  </Container>
+
+  <CategoryGrid items={categories} heading="Разделы каталога" />
+
+  {services.length > 0 && <CategoryGrid items={services} heading="Услуги" />}
+
+  <CtaBand
+    title="Не нашли нужное изделие?"
+    subtitle="Изготовим по вашему эскизу или фотографии — позвоните, поможем с размерами."
+  />
+</BaseLayout>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-6) var(--space-2);
+  }
+
+  .page-head h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .page-head__lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    max-width: 60ch;
+  }
+</style>

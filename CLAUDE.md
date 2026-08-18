@@ -39,7 +39,10 @@
 
 ## SEO (не нарушать)
 
-- URL старого сайта сохраняются один в один: `build.format: 'file'` → `/stranica.html`.
+- URL — английские вложенные, с завершающим слешем: `/catalog/<category>/<product>/`
+  (`build.format: 'directory'`, `trailingSlash: 'always'`). Старые транслит-адреса живут
+  только в карте 301-редиректов `.documentation/redirects.md`; при добавлении/переименовании
+  страниц каждый старый адрес обязан попадать в эту карту.
 - H1 ≠ title; title без хвоста (бренд добавляет `buildTitle` из `@shared/seo`).
 - Каждая страница: уникальные title/description, canonical, OG — всё через пропсы
   `BaseLayout` (`@app/layouts/base-layout.astro`).

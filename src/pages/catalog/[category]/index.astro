@@ -1,0 +1,115 @@
+---
+import { getCatalogEntryWithContent, getCategories, getProductsOf } from '@app/content/catalog';
+import BaseLayout from '@app/layouts/base-layout.astro';
+import { Lightbox } from '@features/lightbox';
+import { CategoryGrid } from '@widgets/category-grid';
+import { CtaBand } from '@widgets/cta-band';
+import { WorksGallery } from '@widgets/works-gallery';
+import { catalogItemUrl } from '@entities/catalog-item';
+import { siteConfig } from '@shared/config';
+import { breadcrumbsJsonLd } from '@shared/seo';
+import { Breadcrumbs, Container } from '@shared/ui';
+import type { Crumb } from '@shared/ui';
+
+export async function getStaticPaths() {
+  const categories = await getCategories();
+  return categories.map((item) => ({ params: { category: item.slug } }));
+}
+
+const { category } = Astro.params;
+const entry = await getCatalogEntryWithContent(category);
+if (!entry) throw new Error(`Нет контента для категории ${category}`);
+const { item, Content } = entry;
+
+const children = await getProductsOf(item.slug);
+
+const crumbs: Crumb[] = [
+  { label: 'Главная', href: '/' },
+  { label: 'Каталог', href: '/catalog/' },
+  { label: item.navTitle },
+];
+
+const path = catalogItemUrl(item);
+const jsonLd = [
+  breadcrumbsJsonLd(
+    siteConfig.siteUrl,
+    crumbs.map((crumb) => ({ name: crumb.label, path: crumb.href ?? path })),
+  ),
+];
+---
+
+<BaseLayout
+  title={item.seoTitle}
+  description={item.description}
+  path={path}
+  ogImage={item.cover?.src.src}
+  jsonLd={jsonLd}
+>
+  <Container>
+    <div class="page-head">
+      <Breadcrumbs items={crumbs} />
+      <h1>{item.title}</h1>
+      <p class="page-head__lead">{item.lead}</p>
+    </div>
+  </Container>
+
+  {children.length > 0 && <CategoryGrid items={children} heading="Изделия раздела" />}
+
+  {item.images.length > 0 && <WorksGallery images={item.images} heading="Фотографии изделий" />}
+
+  <Container>
+    <div class="prose">
+      <Content />
+    </div>
+  </Container>
+
+  <CtaBand
+    title={`Нужно изделие «${item.navTitle.toLowerCase()}»?`}
+    subtitle="Рассчитаем стоимость по вашим размерам и изготовим в короткий срок."
+  />
+
+  {item.images.length > 0 && <Lightbox />}
+</BaseLayout>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-6) var(--space-2);
+  }
+
+  .page-head h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .page-head__lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    max-width: 60ch;
+  }
+
+  .prose {
+    max-width: 72ch;
+    padding-block: var(--space-6);
+  }
+
+  .prose :global(h2) {
+    font-size: var(--text-xl);
+    margin-block: var(--space-6) var(--space-4);
+  }
+
+  .prose :global(p) {
+    margin-block-end: var(--space-4);
+  }
+
+  .prose :global(ul) {
+    margin-block-end: var(--space-4);
+    padding-inline-start: var(--space-5);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .prose :global(li)::marker {
+    color: var(--color-accent);
+  }
+</style>

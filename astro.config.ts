@@ -5,9 +5,10 @@ import sitemap from '@astrojs/sitemap';
 // типизированный доступ — через src/shared/config (единственный адаптер к astro:env).
 export default defineConfig({
   site: 'https://metallomaster.by',
-  trailingSlash: 'never',
-  // Сохраняем URL-структуру старого сайта: /stranica.html вместо /stranica/
-  build: { format: 'file' },
+  // Английские вложенные URL вида /catalog/chimney-caps/post-cap/;
+  // карта 301-редиректов со старых адресов — .documentation/redirects.md
+  trailingSlash: 'always',
+  build: { format: 'directory' },
   integrations: [sitemap()],
   env: {
     schema: {
