@@ -12,5 +12,3 @@ pre-push:
   commands:
     typecheck:
       run: npm run check
-    fsd-architecture:
-      run: npx steiger ./src

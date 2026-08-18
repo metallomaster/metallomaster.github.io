@@ -1,0 +1,186 @@
+---
+/* Шаги статичны — это собственный контент виджета, а не данные страницы */
+import Container from '@/components/atoms/container.astro';
+---
+
+<section class="how-we-work">
+  <Container>
+    <h2 class="how-we-work__heading">Как мы работаем</h2>
+    <ol class="how-we-work__steps">
+      <li class="how-we-work__step">
+        <span class="how-we-work__number" aria-hidden="true">01</span>
+        <span class="how-we-work__icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"
+            ></path>
+          </svg>
+        </span>
+        <h3 class="how-we-work__title">Заявка или звонок</h3>
+        <p class="how-we-work__text">Оставьте заявку на сайте или позвоните — обсудим задачу.</p>
+      </li>
+
+      <li class="how-we-work__step">
+        <span class="how-we-work__number" aria-hidden="true">02</span>
+        <span class="how-we-work__icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.3 0-2.6-.3-3.7-.8L3 21l1.8-5.8A8.5 8.5 0 1 1 21 11.5Z"
+            ></path>
+          </svg>
+        </span>
+        <h3 class="how-we-work__title">Консультация</h3>
+        <p class="how-we-work__text">Уточним размеры, материал и сроки, поможем с выбором.</p>
+      </li>
+
+      <li class="how-we-work__step">
+        <span class="how-we-work__number" aria-hidden="true">03</span>
+        <span class="how-we-work__icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M14.7 6.3a4.6 4.6 0 0 1 5.9-.6l-3.1 3.1 1.7 1.7 3.1-3.1a4.6 4.6 0 0 1-6.2 6.2L8.6 21.1a2.1 2.1 0 0 1-3-3l7.5-7.5a4.6 4.6 0 0 1 1.6-4.3Z"
+            ></path>
+          </svg>
+        </span>
+        <h3 class="how-we-work__title">Изготовление</h3>
+        <p class="how-we-work__text">Сделаем изделие на своём производстве точно по размерам.</p>
+      </li>
+
+      <li class="how-we-work__step">
+        <span class="how-we-work__number" aria-hidden="true">04</span>
+        <span class="how-we-work__icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M2 6h11v10H2z"></path>
+            <path d="M13 9h4l3 3v4h-7"></path>
+            <circle cx="6.5" cy="18" r="2"></circle>
+            <circle cx="16.5" cy="18" r="2"></circle>
+          </svg>
+        </span>
+        <h3 class="how-we-work__title">Доставка и оплата</h3>
+        <p class="how-we-work__text">Привезём готовый заказ, оплата — после проверки.</p>
+      </li>
+    </ol>
+  </Container>
+</section>
+
+<style>
+  .how-we-work {
+    padding-block: var(--space-8);
+  }
+
+  .how-we-work__heading {
+    margin-block-end: var(--space-6);
+    font-size: var(--text-2xl);
+  }
+
+  .how-we-work__steps {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+
+  .how-we-work__step {
+    position: relative;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+
+  /* Номер шага — крупно, приглушённым «фоновым» цветом */
+  .how-we-work__number {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-4);
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    line-height: var(--leading-tight);
+    color: var(--color-surface-2);
+  }
+
+  .how-we-work__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: var(--color-bg);
+    color: var(--color-accent);
+  }
+
+  .how-we-work__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .how-we-work__title {
+    margin-block-start: var(--space-4);
+    font-size: var(--text-base);
+  }
+
+  .how-we-work__text {
+    margin-block-start: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .how-we-work__steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .how-we-work__steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    /* Соединительная линия между шагами: от края карточки через зазор сетки */
+    .how-we-work__step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      /* на уровне центра иконки: padding + половина её высоты */
+      top: calc(var(--space-5) + 28px);
+      left: 100%;
+      width: var(--space-5);
+      border-top: 2px dashed var(--color-border);
+    }
+  }
+</style>

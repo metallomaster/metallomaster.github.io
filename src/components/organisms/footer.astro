@@ -1,0 +1,142 @@
+---
+import { siteConfig } from '@/config/site';
+import Container from '@/components/atoms/container.astro';
+import Logo from '@/components/atoms/logo.astro';
+
+const catalogLinks = [
+  { label: 'Дымоходы из нержавеющей стали', href: '/catalog/stainless-steel-chimneys/' },
+  { label: 'Колпаки для дымоходных труб', href: '/catalog/chimney-caps/' },
+  { label: 'Оцинкованные воздуховоды', href: '/catalog/galvanized-air-ducts/' },
+  { label: 'Доборные элементы для кровли', href: '/catalog/roof-accessories/' },
+  { label: 'Весь каталог', href: '/catalog/' },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <Container class="footer__inner">
+    <div class="footer__brand">
+      <Logo idPrefix="footer-logo" />
+      <p class="footer__tagline">
+        Производство изделий из листовой стали в Минске: дымоходы, колпаки, воздуховоды, доборные
+        элементы кровли.
+      </p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Каталог продукции">
+      <h2 class="footer__heading">Продукция</h2>
+      <ul class="footer__list">
+        {
+          catalogLinks.map((link) => (
+            <li>
+              <a class="footer__link" href={link.href}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <address class="footer__contacts">
+      <h2 class="footer__heading">Контакты</h2>
+      <ul class="footer__list">
+        <li>
+          <a class="footer__link" href={`tel:${siteConfig.phone}`}>{siteConfig.phoneDisplay}</a>
+        </li>
+        <li>
+          <a class="footer__link" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        </li>
+        <li>{siteConfig.address}</li>
+        <li>{siteConfig.openingHours}</li>
+        <li>
+          <a class="footer__link" href={siteConfig.instagram} rel="noopener" target="_blank">
+            Instagram
+          </a>
+        </li>
+      </ul>
+    </address>
+  </Container>
+
+  <div class="footer__legal">
+    <Container class="footer__legal-inner">
+      <span>© {year} {siteConfig.name}</span>
+      <span>{siteConfig.legalName} · УНП {siteConfig.unp}</span>
+    </Container>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: auto;
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footer :global(.footer__inner) {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: var(--space-6);
+    padding-block: var(--space-7);
+  }
+
+  .footer__tagline {
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    max-width: 34ch;
+  }
+
+  .footer__heading {
+    margin-bottom: var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+
+  .footer__list {
+    display: grid;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    font-size: var(--text-sm);
+  }
+
+  .footer__contacts {
+    font-style: normal;
+  }
+
+  .footer__link {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .footer__link:hover {
+    color: var(--color-accent);
+  }
+
+  .footer__legal {
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-4);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .footer :global(.footer__legal-inner) {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 767px) {
+    .footer :global(.footer__inner) {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      padding-block: var(--space-6);
+    }
+  }
+</style>

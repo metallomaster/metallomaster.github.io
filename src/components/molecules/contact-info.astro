@@ -1,0 +1,170 @@
+---
+/* Карточка контактов: все данные — из конфига окружения, никаких хардкодов */
+import { siteConfig } from '@/config/site';
+---
+
+<address class="contact-info">
+  <a class="contact-info__phone" href={`tel:${siteConfig.phone}`}>
+    <svg
+      class="contact-info__icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path
+        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"
+      ></path>
+    </svg>
+    {siteConfig.phoneDisplay}
+  </a>
+
+  <ul class="contact-info__list">
+    <li class="contact-info__item">
+      <svg
+        class="contact-info__icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+        <path d="m22 7-10 5L2 7"></path>
+      </svg>
+      <a class="contact-info__link" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+    </li>
+
+    <li class="contact-info__item">
+      <svg
+        class="contact-info__icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+      <span>{siteConfig.address}</span>
+    </li>
+
+    <li class="contact-info__item">
+      <svg
+        class="contact-info__icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M12 6v6l4 2"></path>
+      </svg>
+      <span>{siteConfig.openingHours}</span>
+    </li>
+
+    <li class="contact-info__item">
+      <svg
+        class="contact-info__icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+        <path d="M16 11.37a4 4 0 1 1-7.91 1.17 4 4 0 0 1 7.91-1.17Z"></path>
+        <path d="M17.5 6.5h.01"></path>
+      </svg>
+      <a class="contact-info__link" href={siteConfig.instagram} target="_blank" rel="noopener">
+        Instagram
+      </a>
+    </li>
+  </ul>
+</address>
+
+<style>
+  .contact-info {
+    display: grid;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-style: normal;
+  }
+
+  .contact-info__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-xl);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .contact-info__phone:hover {
+    color: var(--color-accent);
+  }
+
+  .contact-info__phone .contact-info__icon {
+    color: var(--color-accent);
+  }
+
+  .contact-info__list {
+    display: grid;
+    gap: var(--space-3);
+    list-style: none;
+    padding: 0;
+    font-size: var(--text-sm);
+  }
+
+  .contact-info__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .contact-info__item .contact-info__icon {
+    color: var(--color-steel);
+  }
+
+  .contact-info__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .contact-info__phone .contact-info__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .contact-info__link {
+    text-decoration: none;
+  }
+
+  .contact-info__link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Узкие экраны: номер компактнее, чтобы не переносился внутри цифр */
+  @media (max-width: 480px) {
+    .contact-info__phone {
+      font-size: var(--text-lg);
+    }
+  }
+</style>

@@ -1,11 +1,12 @@
 ---
-import { getCatalogItems } from '@app/content/catalog';
-import BaseLayout from '@app/layouts/base-layout.astro';
-import { CategoryGrid } from '@widgets/category-grid';
-import { CtaBand } from '@widgets/cta-band';
-import { siteConfig } from '@shared/config';
-import { breadcrumbsJsonLd } from '@shared/seo';
-import { Breadcrumbs, Container } from '@shared/ui';
+import { getCatalogItems } from '@/lib/content';
+import BaseLayout from '@/layouts/base-layout.astro';
+import CategoryGrid from '@/components/organisms/category-grid.astro';
+import CtaBand from '@/components/organisms/cta-band.astro';
+import { siteConfig } from '@/config/site';
+import { breadcrumbsJsonLd } from '@/lib/seo';
+import Breadcrumbs from '@/components/molecules/breadcrumbs.astro';
+import Container from '@/components/atoms/container.astro';
 
 const items = await getCatalogItems();
 const categories = items.filter((item) => item.type === 'category');

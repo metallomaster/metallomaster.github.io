@@ -1,0 +1,37 @@
+---
+/*
+ * Адаптер оптимизации изображений — единственный компонент, знающий про astro:assets.
+ * При миграции на другой фреймворк меняется только этот файл (напр., на next/image).
+ */
+import { Image } from 'astro:assets';
+import type { PictureSrc } from '@/lib/types';
+
+interface Props {
+  src: PictureSrc;
+  alt: string;
+  /** Ширины для srcset; по умолчанию под сетку карточек и галерей */
+  widths?: number[];
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  widths = [360, 640, 960, 1280],
+  sizes = '(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw',
+  loading = 'lazy',
+  class: className,
+} = Astro.props;
+---
+
+<Image
+  src={src}
+  alt={alt}
+  widths={widths.filter((w) => w <= src.width)}
+  sizes={sizes}
+  loading={loading}
+  format="webp"
+  class={className}
+/>

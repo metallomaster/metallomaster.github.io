@@ -1,15 +1,16 @@
 ---
-import { getCatalogEntryWithContent, getCategories, getProductsOf } from '@app/content/catalog';
-import BaseLayout from '@app/layouts/base-layout.astro';
-import { Lightbox } from '@features/lightbox';
-import { CategoryGrid } from '@widgets/category-grid';
-import { CtaBand } from '@widgets/cta-band';
-import { WorksGallery } from '@widgets/works-gallery';
-import { catalogItemUrl } from '@entities/catalog-item';
-import { siteConfig } from '@shared/config';
-import { breadcrumbsJsonLd } from '@shared/seo';
-import { Breadcrumbs, Container } from '@shared/ui';
-import type { Crumb } from '@shared/ui';
+import { getCatalogEntryWithContent, getCategories, getProductsOf } from '@/lib/content';
+import BaseLayout from '@/layouts/base-layout.astro';
+import Lightbox from '@/components/organisms/lightbox.astro';
+import CategoryGrid from '@/components/organisms/category-grid.astro';
+import CtaBand from '@/components/organisms/cta-band.astro';
+import WorksGallery from '@/components/organisms/works-gallery.astro';
+import { catalogItemUrl } from '@/lib/types';
+import { siteConfig } from '@/config/site';
+import { breadcrumbsJsonLd } from '@/lib/seo';
+import Breadcrumbs from '@/components/molecules/breadcrumbs.astro';
+import Container from '@/components/atoms/container.astro';
+import type { Crumb } from '@/lib/types';
 
 export async function getStaticPaths() {
   const categories = await getCategories();

@@ -7,29 +7,44 @@
 ## Стек и команды
 
 - Astro 7, TypeScript strict, npm, Node 22.12+ (`nvm use 22`).
-- `npm run dev` / `build` / `check` (типы) / `lint` (ESLint + Steiger FSD) / `format`.
+- `npm run dev` / `build` / `check` (типы) / `lint` (ESLint) / `format`.
 - Перед завершением любой задачи: `npm run build && npm run check && npm run lint` — всё должно быть зелёным.
 - Фоновый dev-демон может «протухнуть»: content layer в памяти пустеет (в `.astro/dev.log` —
   «The collection "catalog" does not exist or is empty»), симптомы — пустой каталог и 404 на
   страницах из коллекции. Лечится перезапуском: `npx astro dev stop && npm run dev`.
   Смотреть сайт «как в проде» надёжнее через `npm run build && npm run preview`.
 
-## Архитектура — FSD (см. .documentation/04-architecture.md)
+## Архитектура — Atomic Design
 
-Слои: `app → pages → widgets → features → entities → shared`. Импорты только сверху вниз
-(ESLint boundaries валит сборку при нарушении). Доступ к слайсу — только через его `index.ts`.
-Внутри слайса — сегменты: `ui/` (astro-компоненты), `model/` (чистый TS).
+Карта папок (`src/`):
+
+- `components/atoms/` — неделимые элементы UI (button, container, logo, picture);
+- `components/molecules/` — простые связки атомов (breadcrumbs, catalog-card, theme-toggle, contact-info);
+- `components/organisms/` — самостоятельные блоки страницы (header, footer, hero, order-form, lightbox…);
+- `layouts/` — atomic templates (base-layout.astro);
+- `pages/` — файловый роутинг Astro;
+- `lib/` — вся логика и типы чистым TS (types, content, seo, theme, menu, lightbox, order-form);
+- `config/` — site.ts (адаптер astro:env), tokens.css, fonts.css;
+- `styles/` — global.css.
+
+Компоненты — плоские файлы без папок-обёрток и index.ts; импорты напрямую через единый
+алиас: `import Button from '@/components/atoms/button.astro'`.
+
+Направление импортов — только вниз по иерархии: atoms ← molecules ← organisms ← layouts ← pages
+(ESLint boundaries валит сборку при нарушении). Атомы не знают о молекулах, молекулы — об
+организмах; любой уровень может брать `lib/` и `config/`.
 
 **Переносимость (критично):**
 
-- Логика, типы, данные — в `.ts` без единого импорта из `astro:*`/`astro` (ESLint запрещает).
-- `.astro`-файлы — только разметка: классы, data-атрибуты, вызовы функций из model.
-- Интерактив — функции `init*(root: HTMLElement)` в `model/`, подключаются через `<script>`.
-- Исключения-адаптеры (только там разрешён astro:*): `app/`, `pages/`, `shared/config`, `shared/ui/picture`.
+- Логика, типы, данные — в `lib/*.ts` без единого импорта из `astro:*`/`astro` (ESLint запрещает).
+- `.astro`-файлы — тонкие шаблоны: классы, data-атрибуты, вызовы функций из `lib/`.
+- Интерактив — функции `init*(root: HTMLElement)` в `lib/`, подключаются через `<script>`.
+- Исключения-адаптеры (только там разрешён astro:*): `pages/`, `layouts/`, `lib/content.ts`,
+  `config/site.ts`, `components/atoms/picture.astro`, `lib/types.ts` (type-only ImageMetadata).
 
 ## Стиль кода
 
-- Все цвета/размеры/отступы — только через токены `src/shared/config/tokens.css`. Сырые
+- Все цвета/размеры/отступы — только через токены `src/config/tokens.css`. Сырые
   значения (`#fff`, `16px` отступа) в компонентах запрещены.
 - Темы: светлая — основная, тёмная — через `light-dark()`. Никаких отдельных
   `[data-theme]`-блоков в компонентах: если нужен разный цвет — новый токен.
@@ -43,10 +58,10 @@
   (`build.format: 'directory'`, `trailingSlash: 'always'`). Старые транслит-адреса живут
   только в карте 301-редиректов `.documentation/redirects.md`; при добавлении/переименовании
   страниц каждый старый адрес обязан попадать в эту карту.
-- H1 ≠ title; title без хвоста (бренд добавляет `buildTitle` из `@shared/seo`).
+- H1 ≠ title; title без хвоста (бренд добавляет `buildTitle` из `@/lib/seo`).
 - Каждая страница: уникальные title/description, canonical, OG — всё через пропсы
-  `BaseLayout` (`@app/layouts/base-layout.astro`).
-- JSON-LD — только через генераторы `@shared/seo` (organizationJsonLd подключён в layout).
+  `BaseLayout` (`@/layouts/base-layout.astro`).
+- JSON-LD — только через генераторы `@/lib/seo` (organizationJsonLd подключён в layout).
 - У каждой картинки осмысленный `alt` по-русски.
 
 ## Контент
@@ -54,7 +69,7 @@
 - Тексты переписываем: живой язык, без канцелярита и SEO-воды, ключевые запросы
   сохраняем (см. `.documentation/seo-audit-raw.json` — старые title/description).
 - Цены НЕ указывать (решение владельца). CTA — «Рассчитать стоимость».
-- Контакты/реквизиты — только из `siteConfig` (`@shared/config`), никаких хардкодов
+- Контакты/реквизиты — только из `siteConfig` (`@/config/site`), никаких хардкодов
   телефона или email в разметке: они различаются между dev и prod.
 
 ## Запреты

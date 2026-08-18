@@ -1,14 +1,14 @@
 ---
-import { getFeatured, getWorks } from '@app/content/catalog';
-import BaseLayout from '@app/layouts/base-layout.astro';
-import { Lightbox } from '@features/lightbox';
-import { Advantages } from '@widgets/advantages';
-import { CategoryGrid } from '@widgets/category-grid';
-import { CtaBand } from '@widgets/cta-band';
-import { Hero } from '@widgets/hero';
-import { HowWeWork } from '@widgets/how-we-work';
-import { WorksGallery } from '@widgets/works-gallery';
-import { Button } from '@shared/ui';
+import { getFeatured, getWorks } from '@/lib/content';
+import BaseLayout from '@/layouts/base-layout.astro';
+import Lightbox from '@/components/organisms/lightbox.astro';
+import Advantages from '@/components/organisms/advantages.astro';
+import CategoryGrid from '@/components/organisms/category-grid.astro';
+import CtaBand from '@/components/organisms/cta-band.astro';
+import Hero from '@/components/organisms/hero.astro';
+import HowWeWork from '@/components/organisms/how-we-work.astro';
+import WorksGallery from '@/components/organisms/works-gallery.astro';
+import Button from '@/components/atoms/button.astro';
 
 const featured = await getFeatured();
 const works = await getWorks();

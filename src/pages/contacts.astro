@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '@app/layouts/base-layout.astro';
-import { ContactInfo } from '@widgets/contact-info';
-import { Container } from '@shared/ui';
-import { siteConfig } from '@shared/config';
+import BaseLayout from '@/layouts/base-layout.astro';
+import ContactInfo from '@/components/molecules/contact-info.astro';
+import Container from '@/components/atoms/container.astro';
+import { siteConfig } from '@/config/site';
 
 /* Ссылки на карты вместо iframe: не тянем чужие скрипты ради одной точки */
 const yandexMapsUrl = 'https://yandex.by/maps/?text=Колодищи%20Путейская';

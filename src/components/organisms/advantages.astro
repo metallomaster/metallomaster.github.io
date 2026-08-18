@@ -1,0 +1,200 @@
+---
+/*
+ * Преимущества компании — статичный контент виджета.
+ * Суть взята со старой главной (ассортимент, индивидуальные заказы,
+ * сроки, качество, доставка), переписана без канцелярита.
+ */
+import Container from '@/components/atoms/container.astro';
+---
+
+<section class="advantages">
+  <Container>
+    <h2 class="advantages__heading">Почему выбирают нас</h2>
+    <ul class="advantages__list">
+      <li class="advantages__item">
+        <span class="advantages__icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+          </svg>
+        </span>
+        <h3 class="advantages__title">Широкий ассортимент</h3>
+        <p class="advantages__text">Дымоходы, колпаки, воздуховоды и доборные элементы кровли.</p>
+      </li>
+
+      <li class="advantages__item">
+        <span class="advantages__icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 17 17 3l4 4L7 21H3v-4Z"></path>
+            <path d="m13 7 4 4"></path>
+          </svg>
+        </span>
+        <h3 class="advantages__title">Изделия по вашим размерам</h3>
+        <p class="advantages__text">Изготовим нестандартное изделие по чертежу или замерам.</p>
+      </li>
+
+      <li class="advantages__item">
+        <span class="advantages__icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 21V9l6 4V9l6 4V4h6v17H3Z"></path>
+          </svg>
+        </span>
+        <h3 class="advantages__title">Собственное производство</h3>
+        <p class="advantages__text">Современное оборудование и контроль на каждом этапе.</p>
+      </li>
+
+      <li class="advantages__item">
+        <span class="advantages__icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v5l3 3"></path>
+          </svg>
+        </span>
+        <h3 class="advantages__title">Сжатые сроки</h3>
+        <p class="advantages__text">Называем срок при заказе и укладываемся в него.</p>
+      </li>
+
+      <li class="advantages__item">
+        <span class="advantages__icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 3 5 6v5c0 4.5 2.8 8.2 7 10 4.2-1.8 7-5.5 7-10V6l-7-3Z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+        </span>
+        <h3 class="advantages__title">Качество и гарантия</h3>
+        <p class="advantages__text">Нержавеющая и оцинкованная сталь, гарантия на все изделия.</p>
+      </li>
+
+      <li class="advantages__item">
+        <span class="advantages__icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M2 6h11v10H2z"></path>
+            <path d="M13 9h4l3 3v4h-7"></path>
+            <circle cx="6.5" cy="18" r="2"></circle>
+            <circle cx="16.5" cy="18" r="2"></circle>
+          </svg>
+        </span>
+        <h3 class="advantages__title">Доставка</h3>
+        <p class="advantages__text">Привезём готовый заказ по Минску и области.</p>
+      </li>
+    </ul>
+  </Container>
+</section>
+
+<style>
+  .advantages {
+    padding-block: var(--space-8);
+  }
+
+  .advantages__heading {
+    margin-block-end: var(--space-6);
+    font-size: var(--text-2xl);
+  }
+
+  .advantages__list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  .advantages__item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: var(--space-4);
+    align-items: center;
+  }
+
+  .advantages__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 1 / -1;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-accent);
+  }
+
+  .advantages__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .advantages__title {
+    font-size: var(--text-base);
+  }
+
+  .advantages__text {
+    align-self: start;
+    margin-block-start: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .advantages__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-6) var(--space-5);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .advantages__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

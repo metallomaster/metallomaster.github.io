@@ -10,7 +10,8 @@ export default defineConfig([
   ...tseslint.configs.recommended,
   ...astro.configs.recommended,
   ...astro.configs['jsx-a11y-recommended'],
-  // FSD: импорты только сверху вниз (app → pages → widgets → features → entities → shared)
+  // Atomic Design: импорты только вниз по иерархии (pages → layouts → organisms → molecules → atoms),
+  // логика — в lib/, конфигурация — в config/
   {
     files: ['src/**/*.{ts,astro}'],
     plugins: { boundaries },
@@ -19,12 +20,14 @@ export default defineConfig([
         typescript: { alwaysTryTypes: true },
       },
       'boundaries/elements': [
-        { type: 'app', pattern: 'src/app/*' },
-        { type: 'pages', pattern: 'src/pages/*' },
-        { type: 'widgets', pattern: 'src/widgets/*' },
-        { type: 'features', pattern: 'src/features/*' },
-        { type: 'entities', pattern: 'src/entities/*' },
-        { type: 'shared', pattern: 'src/shared/*' },
+        { type: 'atoms', pattern: 'src/components/atoms' },
+        { type: 'molecules', pattern: 'src/components/molecules' },
+        { type: 'organisms', pattern: 'src/components/organisms' },
+        { type: 'layouts', pattern: 'src/layouts' },
+        { type: 'pages', pattern: 'src/pages' },
+        { type: 'lib', pattern: 'src/lib' },
+        { type: 'config', pattern: 'src/config' },
+        { type: 'styles', pattern: 'src/styles' },
       ],
     },
     rules: {
@@ -33,50 +36,69 @@ export default defineConfig([
         {
           default: 'disallow',
           message:
-            'FSD: слой «{{ from.type }}» не может импортировать из слоя «{{ to.type }}» — только сверху вниз',
+            'Атомарная иерархия: «{{ from.type }}» не может импортировать из «{{ to.type }}» — только вниз (atoms ← molecules ← organisms ← layouts ← pages), логика — в lib',
           policies: [
             {
-              from: [{ element: { type: 'app' } }],
-              allow: ['app', 'pages', 'widgets', 'features', 'entities', 'shared'].map((type) => ({
+              from: [{ element: { type: 'atoms' } }],
+              allow: ['lib', 'config'].map((type) => ({ to: { element: { type } } })),
+            },
+            {
+              from: [{ element: { type: 'molecules' } }],
+              allow: ['atoms', 'lib', 'config'].map((type) => ({ to: { element: { type } } })),
+            },
+            {
+              from: [{ element: { type: 'organisms' } }],
+              allow: ['molecules', 'atoms', 'lib', 'config'].map((type) => ({
                 to: { element: { type } },
               })),
             },
-            // pages → app: адаптация под Astro (страницы подключают app/layouts),
-            // см. .documentation/04-architecture.md
+            {
+              from: [{ element: { type: 'layouts' } }],
+              allow: ['organisms', 'molecules', 'atoms', 'lib', 'config', 'styles'].map((type) => ({
+                to: { element: { type } },
+              })),
+            },
             {
               from: [{ element: { type: 'pages' } }],
-              allow: ['app', 'widgets', 'features', 'entities', 'shared'].map((type) => ({
-                to: { element: { type } },
-              })),
+              allow: [
+                'layouts',
+                'organisms',
+                'molecules',
+                'atoms',
+                'lib',
+                'config',
+                'styles',
+                'pages',
+              ].map((type) => ({ to: { element: { type } } })),
             },
             {
-              from: [{ element: { type: 'widgets' } }],
-              allow: ['features', 'entities', 'shared'].map((type) => ({
-                to: { element: { type } },
-              })),
+              from: [{ element: { type: 'lib' } }],
+              allow: ['lib', 'config'].map((type) => ({ to: { element: { type } } })),
             },
             {
-              from: [{ element: { type: 'features' } }],
-              allow: ['entities', 'shared'].map((type) => ({ to: { element: { type } } })),
-            },
-            {
-              from: [{ element: { type: 'entities' } }],
-              allow: ['entities', 'shared'].map((type) => ({ to: { element: { type } } })),
-            },
-            {
-              from: [{ element: { type: 'shared' } }],
-              allow: [{ to: { element: { type: 'shared' } } }],
+              from: [{ element: { type: 'config' } }],
+              allow: [{ to: { element: { type: 'config' } } }],
             },
           ],
         },
       ],
     },
   },
-  // Переносимость: фреймворк-импорты (astro:*) разрешены только в app/, pages/
-  // и двух адаптерах: shared/config (env) и shared/ui/picture (оптимизация картинок)
+  // Переносимость: фреймворк-импорты (astro:*) разрешены только в pages/, layouts/
+  // и адаптерах: lib/content.ts (контент), config/site.ts (env),
+  // components/atoms/picture.astro (картинки), lib/types.ts (type-only ImageMetadata)
   {
-    files: ['src/{widgets,features,entities,shared}/**/*.{ts,astro}'],
-    ignores: ['src/shared/config/**', 'src/shared/ui/picture/**'],
+    files: ['src/**/*.{ts,astro}'],
+    ignores: [
+      'src/pages/**',
+      'src/layouts/**',
+      'src/lib/content.ts',
+      'src/lib/types.ts',
+      'src/config/site.ts',
+      'src/components/atoms/picture.astro',
+      // Служебный файл Astro Content Collections, вне атомарной иерархии
+      'src/content.config.ts',
+    ],
     rules: {
       'no-restricted-imports': [
         'error',
@@ -85,7 +107,7 @@ export default defineConfig([
             {
               group: ['astro:*', 'astro/*', 'astro'],
               message:
-                'Переносимость: фреймворк-импорты разрешены только в app/, pages/ и адаптерах shared/config, shared/ui/picture (см. .documentation/04-architecture.md)',
+                'Переносимость: фреймворк-импорты разрешены только в pages/, layouts/ и адаптерах lib/content.ts, config/site.ts, components/atoms/picture.astro, lib/types.ts (type-only)',
             },
           ],
         },

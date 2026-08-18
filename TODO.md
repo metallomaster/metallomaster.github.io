@@ -88,3 +88,9 @@
 [ ] - DOCUMENTATION
 
 [ ] - SCREENSHOTS DEPRECATED
+
+[ ] - drop fsd
+
+[ ] - drop useless configs
+
+[ ] - images / images background
