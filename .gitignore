@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# build
+dist/
+.astro/
+
+# environment (секреты и локальные контакты; шаблон — .env.example)
+.env
+.env.development
+.env.production
+.env.local
+
+# tooling
+.playwright-mcp/
+.DS_Store
+*.log

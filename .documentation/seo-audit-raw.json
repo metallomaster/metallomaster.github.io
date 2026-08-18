@@ -1,0 +1,576 @@
+[
+  {
+    "url": "index.html",
+    "error": "TypeError: Failed to fetch"
+  },
+  {
+    "url": "kontakty.html",
+    "status": 200,
+    "title": "Контакты компании METALLOMASTER - Производство изделий из металла",
+    "description": "Контактная информация производителя изделий из оцинкованной и нержавеющей стали, металла с полимерным покрытием в Минске.",
+    "keywords": "yes",
+    "h1": [
+      "Контакты компании METALLOMASTER - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Контакты компании METALLOMASTER",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 4,
+    "imgsNoAlt": 2,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 52
+  },
+  {
+    "url": "katalog-produkcii.html",
+    "status": 200,
+    "title": "Каталог продукции - Производство изделий из металла",
+    "description": "Каталог продукции производителя изделий из оцинкованной и нержавеющей стали, металла с полимерным покрытием в Минске.",
+    "keywords": "yes",
+    "h1": [
+      "Каталог продукции - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Каталог продукции",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 60,
+    "imgsNoAlt": 45,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 109
+  },
+  {
+    "url": "zakazatj.html",
+    "status": 200,
+    "title": "Заказать - Производство изделий из металла",
+    "description": "Заказать",
+    "keywords": "yes",
+    "h1": [
+      "Заказать - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Заказать",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 0,
+    "imgsNoAlt": 0,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 6
+  },
+  {
+    "url": "dimohodi-iz-nerzhaveyuschej-stali.html",
+    "status": 200,
+    "title": "Дымоходы из нержавеющей стали - Производство изделий из металла",
+    "description": "Сейчас ситуация полностью изменилась - в качестве альтернативы с отличными универсальными качествами используются дымоходы из нержавеющей стали.",
+    "keywords": "yes",
+    "h1": [
+      "Дымоходы из нержавеющей стали - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Дымоходы из нержавеющей стали",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 38,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 88
+  },
+  {
+    "url": "uteplennie-dimohodi-iz-nerzhaveyuschej-stali.html",
+    "status": 200,
+    "title": "Утепленные дымоходы из нержавеющей стали - Производство изделий из металла",
+    "description": "Утепленные (сэндвич) дымоходы – это дымоходы с двойными стенками, состоящие из двух труб круглого сечения разного диаметра между которыми теплоизоляционный слой",
+    "keywords": "yes",
+    "h1": [
+      "Утепленные дымоходы из нержавеющей стали - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Утепленные дымоходы из нержавеющей стали",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 35,
+    "imgsNoAlt": 10,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 85
+  },
+  {
+    "url": "odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya.html",
+    "status": 200,
+    "title": "Одностенные дымоходы круглого и овального сечения - Производство изделий из металла",
+    "description": "Дымоходы с круглым или овальным сечением являются одностенными, которые еще часто называют одноконтурными системами.",
+    "keywords": "yes",
+    "h1": [
+      "Одностенные дымоходы круглого и овального сечения - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Одностенные дымоходы круглого и овального сечения",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 40,
+    "imgsNoAlt": 10,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 89
+  },
+  {
+    "url": "montazhnie-kronshtejni-i-homuti.html",
+    "status": 200,
+    "title": "Монтажные кронштейны и хомуты - Производство изделий из металла",
+    "description": "С помощью кронштейна дымоход цепляется за стену. Хомут выполняет функцию крепления самого дымохода к монтажному кронштейну.",
+    "keywords": "yes",
+    "h1": [
+      "Монтажные кронштейны и хомуты - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Монтажные кронштейны и хомуты",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 39,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 87
+  },
+  {
+    "url": "prohodnie-uzli-i-stenovie-opori.html",
+    "status": 200,
+    "title": "Проходные узлы и стеновые опоры - Производство изделий из металла",
+    "description": "Безусловно, имеющиеся в сети схемы покажутся лишь совокупностью трубок и металлических слоев, которых сопровождают различные проходные узлы и стеновые опоры.",
+    "keywords": "yes",
+    "h1": [
+      "Проходные узлы и стеновые опоры - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Проходные узлы и стеновые опоры",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 40,
+    "imgsNoAlt": 4,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 87
+  },
+  {
+    "url": "kolpaki-dlya-dimohodnih-trub.html",
+    "status": 200,
+    "title": "Колпаки для дымоходных труб - Производство изделий из металла",
+    "description": "Колпак на трубу дымохода - служит для защиты дымоходных труб, предотвращает разрушения от погодных условий дымохода и препятствует попаданию осадков внутрь.",
+    "keywords": "yes",
+    "h1": [
+      "Колпаки для дымоходных труб - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Колпаки для дымоходных труб",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 47,
+    "imgsNoAlt": 32,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 88
+  },
+  {
+    "url": "zont-ventilyacionnij.html",
+    "status": 200,
+    "title": "Зонт вентиляционный - Производство изделий из металла",
+    "description": "Зонт вентиляционный - устанавливают на воздуховодах, выходящих из вентилируемого помещения наружу вертикально. ",
+    "keywords": "yes",
+    "h1": [
+      "Зонт вентиляционный - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Зонт вентиляционный",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 40,
+    "imgsNoAlt": 28,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 79
+  },
+  {
+    "url": "kolpak-na-stolb.html",
+    "status": 200,
+    "title": "Колпак на столб - Производство изделий из металла",
+    "description": "Колпак на столб -  своим внешним образом напоминает металлическую пирамиду и словно крышка крепится на верхней части забора.<br />",
+    "keywords": "yes",
+    "h1": [
+      "Колпак на столб - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Колпак на столб",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 42,
+    "imgsNoAlt": 29,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 79
+  },
+  {
+    "url": "deflektor-ventilyacionnij.html",
+    "status": 200,
+    "title": "Дефлектор вентиляционный - Производство изделий из металла",
+    "description": "Дефлектор вентиляционный - устройство, выполненное в виде насадки, которая предназначена для установки на верхнюю часть вытяжной трубы.",
+    "keywords": "yes",
+    "h1": [
+      "Дефлектор вентиляционный - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Дефлектор вентиляционный",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 44,
+    "imgsNoAlt": 30,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 96
+  },
+  {
+    "url": "dimnik.html",
+    "status": 200,
+    "title": "Дымник - Производство изделий из металла",
+    "description": "Дымник на кирпичную трубу можно заказать любого диаметра, формы и дизайна в компании «METALLOMASTER».",
+    "keywords": "yes",
+    "h1": [
+      "Дымник - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Дымник",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 40,
+    "imgsNoAlt": 28,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 79
+  },
+  {
+    "url": "ocinkovannie-vozduhovodi.html",
+    "status": 200,
+    "title": "Оцинкованные воздуховоды - Производство изделий из металла",
+    "description": "В системах вентиляции применяются воздуховоды из оцинкованной стали круглого и прямоугольного сечения.",
+    "keywords": "yes",
+    "h1": [
+      "Оцинкованные воздуховоды - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Оцинкованные воздуховоды",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 62,
+    "imgsNoAlt": 28,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 118
+  },
+  {
+    "url": "vozduhovodi-iz-nerzhaveyuschej-stali.html",
+    "status": 200,
+    "title": "Воздуховоды из нержавеющей стали - Производство изделий из металла",
+    "description": "Воздуховоды, которые изготовлены из нержавеющей стали, используются во многих сферах человеческой деятельности.",
+    "keywords": "yes",
+    "h1": [
+      "Воздуховоды из нержавеющей стали - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Воздуховоды из нержавеющей стали",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 59,
+    "imgsNoAlt": 25,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 122
+  },
+  {
+    "url": "vityazhnoj-zont.html",
+    "status": 200,
+    "title": "Вытяжной зонт - Производство изделий из металла",
+    "description": "Исходным материалом для производства кухонных вытяжных зонтов служит высококачественная нержавеющая и оцинкованная сталь.",
+    "keywords": "yes",
+    "h1": [
+      "Вытяжной зонт - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Вытяжной зонт",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 45,
+    "imgsNoAlt": 30,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 95
+  },
+  {
+    "url": "truba-ventilyacionnaya-kruglaya.html",
+    "status": 200,
+    "title": "Труба вентиляционная круглая - Производство изделий из металла",
+    "description": "Труба вентиляционная круглая - это основная деталь вентиляционной сети. Мы предоставляем услуги по производству прямошовных круглых воздуховодов в Минске.",
+    "keywords": "yes",
+    "h1": [
+      "Труба вентиляционная круглая - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Труба вентиляционная круглая",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 42,
+    "imgsNoAlt": 28,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 93
+  },
+  {
+    "url": "truba-ventilyacionnaya-pryamougoljnaya.html",
+    "status": 200,
+    "title": "Труба вентиляционная прямоугольная - Производство изделий из металла",
+    "description": "Труба вентиляционная прямоугольная - это основная деталь вентиляционной сети. Мы предоставляем услуги по производству прямошовных прямоугольных воздуховодов.<br />",
+    "keywords": "yes",
+    "h1": [
+      "Труба вентиляционная прямоугольная - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Труба вентиляционная прямоугольная",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 42,
+    "imgsNoAlt": 28,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 92
+  },
+  {
+    "url": "dobornie-elementi-dlya-krovli.html",
+    "status": 200,
+    "title": "Доборные элементы для кровли - Производство изделий из металла",
+    "description": "Архитектурный образ здания и качество его крыши имеет непосредственную зависимость от важных составляющих, которыми считаются доборные элементы для кровли.<br />",
+    "keywords": "yes",
+    "h1": [
+      "Доборные элементы для кровли - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Доборные элементы для кровли",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 21,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 77
+  },
+  {
+    "url": "konek-krovli.html",
+    "status": 200,
+    "title": "Конек кровли - Производство изделий из металла",
+    "description": "Конек кровли считается самым высоким элементом и изготавливается в виде горизонтально расположенного ребра, образуемого в результате смыкания двух скатов крыши.",
+    "keywords": "yes",
+    "h1": [
+      "Конек кровли - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Конек кровли",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 16,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 65
+  },
+  {
+    "url": "page-56.html",
+    "status": 200,
+    "title": "Парапет - Производство изделий из металла",
+    "description": "Парапет - ограждающая конструкция, выполненная из металла, которая обеспечивает защиту различным элементам сооружений: заборам, кровле, фундаменту.",
+    "keywords": "yes",
+    "h1": [
+      "Парапет - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Парапет",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 21,
+    "imgsNoAlt": 9,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 71
+  },
+  {
+    "url": "otliv-okonnij.html",
+    "status": 200,
+    "title": "Отлив оконный - Производство изделий из металла",
+    "description": "Отлив оконный - представляет собой лист металла, который изготовлен под правильным углом в виде наружного подоконника.",
+    "keywords": "yes",
+    "h1": [
+      "Отлив оконный - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Отлив оконный",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 16,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 66
+  },
+  {
+    "url": "karniznaya-planka.html",
+    "status": 200,
+    "title": "Карнизная планка - Производство изделий из металла",
+    "description": "Карнизная планка - считается важной конструктивной составляющей кровли, которая выполняется в виде ее продольного элемента и фиксируется на краю ската. ",
+    "keywords": "yes",
+    "h1": [
+      "Карнизная планка - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Карнизная планка",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 16,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 66
+  },
+  {
+    "url": "snegovoj-barjer.html",
+    "status": 200,
+    "title": "Снеговой барьер - Производство изделий из металла",
+    "description": "Снеговой барьер (снегозадержатель) - является важнейшим и обязательным элементом, который обеспечивает безопасность кровли, задерживая снег и наледь на крыше. ",
+    "keywords": "yes",
+    "h1": [
+      "Снеговой барьер - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Снеговой барьер",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 16,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 66
+  },
+  {
+    "url": "torcevaya-planka.html",
+    "status": 200,
+    "title": "Торцевая планка - Производство изделий из металла",
+    "description": "Торцевая (ветровая) планка - считается значимым элементом кровельной системы, который создает защиту во всей зоне под кровлей от проникновения влаги, снега и др",
+    "keywords": "yes",
+    "h1": [
+      "Торцевая планка - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Торцевая планка",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 16,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 66
+  },
+  {
+    "url": "endova-nizhnyaya.html",
+    "status": 200,
+    "title": "Ендова нижняя - Производство изделий из металла",
+    "description": "Ендова нижняя (разжелобок) - является одной из значимых конструктивных составляющих кровли, которая обеспечивает состыковку нескольких смежных скатов.",
+    "keywords": "yes",
+    "h1": [
+      "Ендова нижняя - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Ендова нижняя",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 16,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 67
+  },
+  {
+    "url": "endova-verhnyaya.html",
+    "status": 200,
+    "title": "Ендова верхняя - Производство изделий из металла",
+    "description": "Ендова верхняя предназначена для скрытия под собой стыков скатов и предания крыше эстетически законченного вида.",
+    "keywords": "yes",
+    "h1": [
+      "Ендова верхняя - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Ендова верхняя",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 16,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 66
+  },
+  {
+    "url": "montazh-dimohoda.html",
+    "status": 200,
+    "title": "Монтаж дымохода - Производство изделий из металла",
+    "description": "Монтаж дымоходов – завершающий этап проведения отопительной системы, поэтому следует его произвести максимально аккуратно и профессионально.",
+    "keywords": "yes",
+    "h1": [
+      "Монтаж дымохода - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Монтаж дымохода",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 38,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 86
+  },
+  {
+    "url": "ventilyacionnie-sistemi.html",
+    "status": 200,
+    "title": "Вентиляционные системы - Производство изделий из металла",
+    "description": "Вентиляционные системы - являются совокупностью специального оборудования, которое способствует созданию необходимой для жизнедеятельности человека обстановки.",
+    "keywords": "yes",
+    "h1": [
+      "Вентиляционные системы - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Вентиляционные системы",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 41,
+    "imgsNoAlt": 28,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 92
+  },
+  {
+    "url": "truba-dimohoda-ovaljnaya.html",
+    "status": 200,
+    "title": "Труба дымохода овальная - Производство изделий из металла",
+    "description": "За счет овального сечения, а также гладкой поверхности овальной трубы, достигается стабильная тяга и пониженное образование сажи.",
+    "keywords": "yes",
+    "h1": [
+      "Труба дымохода овальная - Производство изделий из металла"
+    ],
+    "h2count": 0,
+    "canonical": null,
+    "ogTitle": "Труба дымохода овальная",
+    "viewport": "width=1000",
+    "jsonLd": 0,
+    "imgs": 30,
+    "imgsNoAlt": 3,
+    "generator": "Incomedia WebSite X5 Pro 2021.3.3 - www.websitex5.com",
+    "htmlKb": 83
+  }
+]
