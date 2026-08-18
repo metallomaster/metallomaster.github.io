@@ -7,37 +7,50 @@ interface Props {
 }
 
 const { title, lead } = Astro.props;
-const hasMedia = Astro.slots.has('media');
 ---
 
-<section class:list={['hero', hasMedia && 'hero--with-media']}>
+<section class="hero">
   <Container class="hero__inner">
-    <div class="hero__content">
-      <h1 class="hero__title">{title}</h1>
-      <p class="hero__lead">{lead}</p>
-      <div class="hero__actions">
-        <slot />
-      </div>
+    <h1 class="hero__title">{title}</h1>
+    <p class="hero__lead">{lead}</p>
+    <div class="hero__actions">
+      <slot />
     </div>
-    {
-      hasMedia && (
-        <div class="hero__media">
-          <slot name="media" />
-        </div>
-      )
-    }
   </Container>
 </section>
 
 <style>
   .hero {
+    position: relative;
+    overflow: hidden;
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
   }
 
+  /* Полосатая текстура металла — заполняет правую часть экрана вместо фото.
+     Маске важна только альфа, поэтому currentColor вместо сырого цвета. */
+  .hero::after {
+    content: '';
+    position: absolute;
+    display: none;
+    inset-block: 0;
+    inset-inline-end: 0;
+    width: 40%;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--color-surface-2) 0 2px,
+      transparent 2px 10px
+    );
+    mask-image: linear-gradient(to right, transparent, currentColor 70%);
+    pointer-events: none;
+  }
+
   .hero :global(.hero__inner) {
+    /* Над текстурой: иначе полосы перечёркивают кнопки */
+    position: relative;
+    z-index: 1;
     display: grid;
-    gap: var(--space-6);
+    row-gap: var(--space-5);
     padding-block: var(--space-8);
   }
 
@@ -57,7 +70,6 @@ const hasMedia = Astro.slots.has('media');
 
   .hero__lead {
     max-width: 60ch;
-    margin-block-start: var(--space-4);
     font-size: var(--text-lg);
     color: var(--color-text-muted);
   }
@@ -66,45 +78,29 @@ const hasMedia = Astro.slots.has('media');
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
-    margin-block-start: var(--space-6);
   }
 
   .hero__actions:empty {
     display: none;
   }
 
-  /* Декоративная медиа-зона — только на десктопе */
-  .hero__media {
-    display: none;
-  }
-
+  /* Плакатная композиция: заголовок, лид и кнопки одной колонкой слева */
   @media (min-width: 1024px) {
-    .hero--with-media :global(.hero__inner) {
-      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-      align-items: center;
-      gap: var(--space-8);
-    }
-
-    .hero__media {
-      position: relative;
+    .hero::after {
       display: block;
     }
 
-    /* Тонкая полосатая текстура за медиа-зоной */
-    .hero__media::before {
-      content: '';
-      position: absolute;
-      inset: var(--space-5) calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-5);
-      border-radius: var(--radius-lg);
-      background: repeating-linear-gradient(
-        -45deg,
-        var(--color-surface-2) 0 2px,
-        transparent 2px 10px
-      );
+    .hero :global(.hero__inner) {
+      row-gap: var(--space-6);
+      padding-block: var(--space-9);
     }
 
-    .hero__media > :global(*) {
-      position: relative;
+    .hero__title {
+      max-width: 16ch;
+    }
+
+    .hero__lead {
+      max-width: 52ch;
     }
   }
 </style>
