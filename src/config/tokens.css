@@ -17,9 +17,15 @@
   --color-text: light-dark(#171a20, #e9ecf2);
   --color-text-muted: light-dark(#5a6373, #9aa3b5);
   --color-border: light-dark(#dde2e9, #2c3140);
+  /* Акцент для текста и штрихов: яркий, чтобы читаться на тёмном фоне */
   --color-accent: light-dark(#d40011, #ff4653);
   --color-accent-hover: light-dark(#a8000d, #ff6570);
+  /* Заливка под белым текстом — глубже акцента: на ярком контраст падал до 3.4 */
+  --color-accent-solid: light-dark(#d40011, #dd2f3c);
+  --color-accent-solid-hover: light-dark(#a8000d, #c9202c);
   --color-on-accent: #ffffff;
+  /* Крупные номера шагов: приглушённые, но различимые (контраст ≥ 3) */
+  --color-decor: light-dark(#7f8a9e, #646c80);
   --color-steel: light-dark(#39445c, #b8c2d8);
   --color-focus: light-dark(#1f5eff, #6f9bff);
   /* Оверлей лайтбокса — тёмный в обеих темах */
