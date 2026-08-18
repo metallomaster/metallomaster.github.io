@@ -3723,15 +3723,13 @@
               }),
             ),
             s === n && l.css('color', r.font.activeColor));
-        return f
-          .height(r.image.steps[n].height)
-          .css({
-            'background-image': "url('" + t.settings.currentPath + r.image.url + "')",
-            'background-position': '0 ' + i + 'px',
-            margin: '15px auto',
-            position: 'relative',
-            'max-width': r.image.width,
-          });
+        return f.height(r.image.steps[n].height).css({
+          'background-image': "url('" + t.settings.currentPath + r.image.url + "')",
+          'background-position': '0 ' + i + 'px',
+          margin: '15px auto',
+          position: 'relative',
+          'max-width': r.image.width,
+        });
       },
     });
     t.cart.loaded = !0;

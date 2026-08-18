@@ -1,6 +1,6 @@
 /*
  * SEO: мета-теги и генераторы JSON-LD — чистые функции.
- * Вставка в <head> — задача src/layouts/base-layout.astro.
+ * Вставка в <head> — задача src/components/templates/base-layout.astro.
  */
 
 /** Хвост убран из H1 навсегда: бренд добавляется только в <title> */

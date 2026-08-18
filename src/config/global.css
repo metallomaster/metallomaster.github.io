@@ -1,5 +1,5 @@
-@import '../config/fonts.css';
-@import '../config/tokens.css';
+@import './fonts.css';
+@import './tokens.css';
 
 *,
 *::before,

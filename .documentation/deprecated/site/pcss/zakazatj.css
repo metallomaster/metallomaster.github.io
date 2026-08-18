@@ -52,10 +52,9 @@
     5.417px 5.417px 5.417px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px
     5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px
     5.25px minmax(0, 1fr);
-  grid-template-columns: minmax(
-      0,
-      1fr
-    ) 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px minmax(
+  grid-template-columns:
+    minmax(0, 1fr)
+    5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.417px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px 5.25px minmax(
       0,
       1fr
     );

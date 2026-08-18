@@ -5,8 +5,6 @@ node_modules/
 dist/
 .astro/
 
-# environment: .env.development и .env.production коммитятся (секретов нет,
-# ключ Web3Forms публичный по природе); локальные переопределения — в .env.local
 .env
 .env.local
 

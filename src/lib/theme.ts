@@ -1,5 +1,5 @@
 /*
- * Логика темы. Синхронизирована с inline-скриптом анти-FOUC в src/layouts/base-layout.astro:
+ * Логика темы. Синхронизирована с inline-скриптом анти-FOUC в src/components/templates/base-layout.astro:
  * ключ localStorage и значения data-theme должны совпадать.
  */
 export type Theme = 'light' | 'dark';

@@ -1,12 +1,8 @@
 import { defineConfig, envField } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// Конфигуратор окружений: значения задаются в .env.development / .env.production,
-// типизированный доступ — через src/config/site.ts (единственный адаптер к astro:env).
 export default defineConfig({
   site: 'https://metallomaster.by',
-  // Английские вложенные URL вида /catalog/chimney-caps/post-cap/;
-  // карта 301-редиректов со старых адресов — .documentation/redirects.md
   trailingSlash: 'always',
   build: { format: 'directory' },
   integrations: [sitemap()],

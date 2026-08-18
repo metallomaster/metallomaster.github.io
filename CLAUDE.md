@@ -9,6 +9,7 @@
 - Astro 7, TypeScript strict, npm, Node 22.12+ (`nvm use 22`).
 - `npm run dev` / `build` / `check` (типы) / `lint` (ESLint) / `format`.
 - Перед завершением любой задачи: `npm run build && npm run check && npm run lint` — всё должно быть зелёным.
+  Git-хуков нет (lefthook удалён по решению владельца) — прогон проверок перед коммитом обязателен вручную.
 - Фоновый dev-демон может «протухнуть»: content layer в памяти пустеет (в `.astro/dev.log` —
   «The collection "catalog" does not exist or is empty»), симптомы — пустой каталог и 404 на
   страницах из коллекции. Лечится перезапуском: `npx astro dev stop && npm run dev`.
@@ -21,16 +22,15 @@
 - `components/atoms/` — неделимые элементы UI (button, container, logo, picture);
 - `components/molecules/` — простые связки атомов (breadcrumbs, catalog-card, theme-toggle, contact-info);
 - `components/organisms/` — самостоятельные блоки страницы (header, footer, hero, order-form, lightbox…);
-- `layouts/` — atomic templates (base-layout.astro);
+- `components/templates/` — atomic templates (base-layout.astro);
 - `pages/` — файловый роутинг Astro;
 - `lib/` — вся логика и типы чистым TS (types, content, seo, theme, menu, lightbox, order-form);
-- `config/` — site.ts (адаптер astro:env), tokens.css, fonts.css;
-- `styles/` — global.css.
+- `config/` — site.ts (адаптер astro:env), tokens.css, fonts.css, global.css.
 
 Компоненты — плоские файлы без папок-обёрток и index.ts; импорты напрямую через единый
 алиас: `import Button from '@/components/atoms/button.astro'`.
 
-Направление импортов — только вниз по иерархии: atoms ← molecules ← organisms ← layouts ← pages
+Направление импортов — только вниз по иерархии: atoms ← molecules ← organisms ← templates ← pages
 (ESLint boundaries валит сборку при нарушении). Атомы не знают о молекулах, молекулы — об
 организмах; любой уровень может брать `lib/` и `config/`.
 
@@ -39,8 +39,9 @@
 - Логика, типы, данные — в `lib/*.ts` без единого импорта из `astro:*`/`astro` (ESLint запрещает).
 - `.astro`-файлы — тонкие шаблоны: классы, data-атрибуты, вызовы функций из `lib/`.
 - Интерактив — функции `init*(root: HTMLElement)` в `lib/`, подключаются через `<script>`.
-- Исключения-адаптеры (только там разрешён astro:*): `pages/`, `layouts/`, `lib/content.ts`,
-  `config/site.ts`, `components/atoms/picture.astro`, `lib/types.ts` (type-only ImageMetadata).
+- Исключения-адаптеры (только там разрешён astro:*): `pages/`, `components/templates/`,
+  `lib/content.ts`, `config/site.ts`, `components/atoms/picture.astro`, `lib/types.ts`
+  (type-only ImageMetadata).
 
 ## Стиль кода
 
@@ -60,7 +61,7 @@
   страниц каждый старый адрес обязан попадать в эту карту.
 - H1 ≠ title; title без хвоста (бренд добавляет `buildTitle` из `@/lib/seo`).
 - Каждая страница: уникальные title/description, canonical, OG — всё через пропсы
-  `BaseLayout` (`@/layouts/base-layout.astro`).
+  `BaseLayout` (`@/components/templates/base-layout.astro`).
 - JSON-LD — только через генераторы `@/lib/seo` (organizationJsonLd подключён в layout).
 - У каждой картинки осмысленный `alt` по-русски.
 

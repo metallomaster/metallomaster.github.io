@@ -25,12 +25,6 @@
       "skillPath": "skills/core-web-vitals/SKILL.md",
       "computedHash": "8e55888cc177e994e2cbfa0ee0a277e1273c6d43c8cf7649165f9e2f39489a48"
     },
-    "feature-sliced-design": {
-      "source": "feature-sliced/skills",
-      "sourceType": "github",
-      "skillPath": "feature-sliced-design/SKILL.md",
-      "computedHash": "775a8ee42f32b12d33478eaf2416c0c1c394fac61b98805c6cf0f228cc2c9b34"
-    },
     "performance": {
       "source": "addyosmani/web-quality-skills",
       "sourceType": "github",

@@ -3009,14 +3009,12 @@
             t._$dialog.append(i).append(o),
             (u = this.options.height == 'auto' ? 300 : this.options.height),
             (a = this.options.width == 'auto' ? 450 : this.options.width),
-            t._$dialog
-              .hide()
-              .css({
-                width: a,
-                height: u,
-                left: (e(window).width() - a) / 2,
-                top: (e(window).height() - u) / 3,
-              }),
+            t._$dialog.hide().css({
+              width: a,
+              height: u,
+              left: (e(window).width() - a) / 2,
+              top: (e(window).height() - u) / 3,
+            }),
             e('body').append(t._$dialog),
             t._$dialog
           );
@@ -10691,15 +10689,13 @@
               r.attr('data-computed-width') ||
                 ((h = r.clone()),
                 a.append(h),
-                h
-                  .show(0)
-                  .css({
-                    position: 'absolute',
-                    top: -1e3,
-                    width: '',
-                    height: '',
-                    display: 'block',
-                  }),
+                h.show(0).css({
+                  position: 'absolute',
+                  top: -1e3,
+                  width: '',
+                  height: '',
+                  display: 'block',
+                }),
                 r.attr('data-computed-width', h.find('li').outerWidth()),
                 h.remove());
               p = r.attr('data-computed-width') * 1;
@@ -12503,19 +12499,16 @@
             var i = e('<div><div>' + r + '<\/div><\/div>')
                 .css({ position: 'absolute', top: -1e3 })
                 .width(5e7),
-              s = i
-                .children()
-                .css({
-                  width: 'auto',
-                  'white-space':
-                    t.direction == 'UP' || t.direction == 'BOTTOM' ? 'normal' : 'nowrap',
-                  display: 'inline-block',
-                  'padding-top': a.top,
-                  'padding-bottom': a.bottom,
-                  'padding-right': a.right,
-                  'padding-left': a.left,
-                  'max-width': '100%',
-                }),
+              s = i.children().css({
+                width: 'auto',
+                'white-space': t.direction == 'UP' || t.direction == 'BOTTOM' ? 'normal' : 'nowrap',
+                display: 'inline-block',
+                'padding-top': a.top,
+                'padding-bottom': a.bottom,
+                'padding-right': a.right,
+                'padding-left': a.left,
+                'max-width': '100%',
+              }),
               o = 0;
             return (n.append(i), (o = s.outerWidth(!0) + 30), i.remove(), o);
           },

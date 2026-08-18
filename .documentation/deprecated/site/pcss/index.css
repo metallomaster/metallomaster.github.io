@@ -62,10 +62,9 @@
     6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px
     6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 7px 7px 7px 7px
     7px 7px 7px 7px 7px 7px 7px 7px minmax(0, 1fr);
-  grid-template-columns: minmax(
-      0,
-      1fr
-    ) 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px minmax(
+  grid-template-columns:
+    minmax(0, 1fr)
+    6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 6.917px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px 7px minmax(
       0,
       1fr
     );
