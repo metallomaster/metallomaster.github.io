@@ -95,9 +95,10 @@ const jsonLdBlocks = [organization, ...jsonLd];
       })();
     </script>
 
+    {/* is:inline — разметка для поисковиков идёт в страницу как есть, без сборки */}
     {
       jsonLdBlocks.map((block) => (
-        <script type="application/ld+json" set:html={JSON.stringify(block)} />
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(block)} />
       ))
     }
   </head>

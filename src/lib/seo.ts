@@ -3,10 +3,11 @@
  * Вставка в <head> — задача src/components/templates/base-layout.astro.
  */
 
-/** Хвост убран из H1 навсегда: бренд добавляется только в <title> */
 import type { PictureSrc } from '@/lib/types';
 
+/** Хвост убран из H1 навсегда: бренд добавляется только в <title> */
 const TITLE_SUFFIX = ' — METALLOMASTER';
+/** Дальше поисковики обрезают заголовок многоточием */
 const TITLE_MAX = 60;
 const DESCRIPTION_MAX = 160;
 
@@ -22,9 +23,10 @@ export interface PageSeo {
   ogType?: 'website' | 'article';
 }
 
+/** Бренд добавляем, только если он поместится целиком: обрезанный хвост в выдаче бесполезен */
 export function buildTitle(title: string): string {
   const full = `${title}${TITLE_SUFFIX}`;
-  return full.length <= TITLE_MAX + TITLE_SUFFIX.length ? full : title;
+  return full.length <= TITLE_MAX ? full : title;
 }
 
 export function clampDescription(text: string): string {
