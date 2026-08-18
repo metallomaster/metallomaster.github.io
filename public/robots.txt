@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://metallomaster.by/sitemap-index.xml

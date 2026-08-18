@@ -1,0 +1,40 @@
+---
+type: product
+title: Одностенные дымоходы
+navTitle: Одностенные дымоходы
+seoTitle: Одностенные дымоходы круглого и овального сечения
+description: Одностенные дымоходы круглого и овального сечения из нержавеющей стали 0,5–1,0 мм — гильзовка кирпичных каналов, подключение котлов и печей. Минск.
+lead: Одноконтурные трубы из нержавейки — гильзы для кирпичных дымовых каналов и подключение отопительных приборов. Просто, надёжно и без лишних затрат.
+category: dimohodi-iz-nerzhaveyuschej-stali
+order: 20
+featured: false
+cover: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-01.jpg
+coverAlt: Дымоход из нержавеющей стали с оголовком на фоне вечернего неба
+images:
+  - src: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-01.jpg
+    alt: Дымоход из нержавеющей стали с оголовком на фоне вечернего неба
+  - src: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-02.jpg
+    alt: Дымовая труба, подключённая к отопительной печи в срубе
+  - src: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-03.jpg
+    alt: Стальная труба дымохода над печью в помещении с деревянной отделкой
+  - src: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-04.jpg
+    alt: Нержавеющий дымоход на кронштейнах вдоль оштукатуренного фасада
+  - src: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-05.jpg
+    alt: Дымоходная труба из нержавейки у деревянного дома с мансардой
+  - src: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-06.jpg
+    alt: Зеркальная труба дымохода на стене производственного помещения
+  - src: ./odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya/odnostennie-dimohodi-kruglogo-i-ovaljnogo-secheniya-07.jpg
+    alt: Дымоход из нержавеющей стали по стене кирпичного жилого дома
+---
+
+## Зачем гильзовать кирпичный дымоход
+
+Главное применение одностенных труб — вставки (гильзы) в существующие кирпичные и бетонные каналы. В квадратной шахте сажа скапливается по углам, а кирпич впитывает конденсат: со временем стенки пропитываются смолой, трескаются и начинают пахнуть. Гладкая нержавеющая гильза круглого или овального сечения решает обе проблемы: сажа и конденсат не задерживаются на стенках, тяга растёт, теплопотери падают — котёл работает эффективнее.
+
+## Круглое или овальное сечение
+
+Круглые трубы — стандарт для большинства каналов и прямого подключения котлов, печей и каминов. Овальные выручают там, где сечение шахты узкое или прямоугольное: овал плотнее вписывается в канал и сохраняет полезную площадь дымохода. Из отдельных элементов — труб, колен, тройников, переходов — собирается конфигурация любой сложности.
+
+## Материал и точность
+
+Одностенные дымоходы производим из качественной нержавеющей стали толщиной 0,5, 0,8 или 1,0 мм на современном оборудовании. Секции получаются герметичными и точными по размерам, поэтому элементы стыкуются плотно и служат долго. Для отапливаемых зданий одноконтурной трубы достаточно; при уличном размещении рекомендуем утеплённый сэндвич-дымоход или дополнительную изоляцию.

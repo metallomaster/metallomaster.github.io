@@ -1,0 +1,141 @@
+---
+import BaseLayout from '@app/layouts/base-layout.astro';
+import { ContactInfo } from '@widgets/contact-info';
+import { Container } from '@shared/ui';
+import { siteConfig } from '@shared/config';
+
+/* Ссылка на карты вместо iframe: не тянем чужие скрипты ради одной точки */
+const mapsUrl = 'https://yandex.by/maps/?text=Колодищи%20Путейская';
+---
+
+<BaseLayout
+  title="Контакты производства металлоизделий в Минске"
+  description="Телефон, email и адрес производства METALLOMASTER: аг. Колодищи, ул. Путейская. Звоните — проконсультируем по дымоходам, колпакам и воздуховодам, посчитаем стоимость."
+  path="/kontakty.html"
+>
+  <Container>
+    <section class="contacts">
+      <div class="contacts__intro">
+        <h1>Контакты</h1>
+        <p>Звоните или пишите — подскажем по материалам и размерам, посчитаем стоимость изделия.</p>
+      </div>
+
+      <div class="contacts__grid">
+        <ContactInfo />
+
+        <div class="contacts__details">
+          <section class="contacts__card">
+            <h2 class="contacts__heading">Как доехать</h2>
+            <p>
+              Производство находится в агрогородке Колодищи на улице Путейской — десять минут от
+              МКАД по Московскому шоссе.
+            </p>
+            <a class="contacts__map-link" href={mapsUrl} target="_blank" rel="noopener">
+              Открыть в Яндекс.Картах
+              <svg
+                class="contacts__map-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M7 17 17 7"></path>
+                <path d="M8 7h9v9"></path>
+              </svg>
+            </a>
+          </section>
+
+          <section class="contacts__card">
+            <h2 class="contacts__heading">Реквизиты</h2>
+            <p>{siteConfig.legalName}</p>
+            <p>УНП {siteConfig.unp}</p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </Container>
+</BaseLayout>
+
+<style>
+  .contacts {
+    padding-block: var(--space-7) var(--space-9);
+  }
+
+  .contacts__intro {
+    display: grid;
+    gap: var(--space-4);
+    margin-bottom: var(--space-7);
+  }
+
+  .contacts__intro h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .contacts__intro p {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    max-width: 52ch;
+  }
+
+  .contacts__grid {
+    display: grid;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .contacts__details {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .contacts__card {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .contacts__heading {
+    font-size: var(--text-sm);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+
+  .contacts__card p {
+    font-size: var(--text-sm);
+  }
+
+  .contacts__map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    justify-self: start;
+    min-height: 44px;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .contacts__map-link:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .contacts__map-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .contacts__grid {
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-7);
+    }
+  }
+</style>

@@ -1,0 +1,228 @@
+---
+/* Форма заявки. Поведение — в model/form.ts, ключ Web3Forms — из конфига окружения. */
+import { siteConfig } from '@shared/config';
+import { Button } from '@shared/ui';
+---
+
+<form class="order-form" data-order-form data-access-key={siteConfig.web3formsKey} novalidate>
+  <div class="order-form__field">
+    <label class="order-form__label" for="order-name">
+      Имя <span class="order-form__required" aria-hidden="true">*</span>
+    </label>
+    <input
+      class="order-form__input"
+      id="order-name"
+      name="name"
+      type="text"
+      autocomplete="name"
+      required
+      aria-describedby="order-name-error"
+    />
+    <p class="order-form__error" id="order-name-error" data-error-for="name" hidden></p>
+  </div>
+
+  <div class="order-form__field">
+    <label class="order-form__label" for="order-phone">
+      Телефон <span class="order-form__required" aria-hidden="true">*</span>
+    </label>
+    <input
+      class="order-form__input"
+      id="order-phone"
+      name="phone"
+      type="tel"
+      inputmode="tel"
+      autocomplete="tel"
+      placeholder="+375 (29) 123-45-67"
+      required
+      aria-describedby="order-phone-error"
+    />
+    <p class="order-form__error" id="order-phone-error" data-error-for="phone" hidden></p>
+  </div>
+
+  <div class="order-form__field">
+    <label class="order-form__label" for="order-email">Email</label>
+    <input
+      class="order-form__input"
+      id="order-email"
+      name="email"
+      type="email"
+      autocomplete="email"
+    />
+  </div>
+
+  <div class="order-form__field">
+    <label class="order-form__label" for="order-product">Что нужно изготовить</label>
+    <input
+      class="order-form__input"
+      id="order-product"
+      name="product"
+      type="text"
+      placeholder="Например, колпак на дымоход 500×500"
+    />
+  </div>
+
+  <div class="order-form__field">
+    <label class="order-form__label" for="order-comment">Комментарий</label>
+    <textarea
+      class="order-form__input order-form__textarea"
+      id="order-comment"
+      name="comment"
+      rows="4"></textarea>
+  </div>
+
+  {/* Honeypot: люди поле не видят и не заполняют */}
+  <input
+    class="order-form__botcheck"
+    type="text"
+    name="botcheck"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+  />
+
+  <div class="order-form__field">
+    <label class="order-form__consent">
+      <input class="order-form__checkbox" type="checkbox" name="consent" required />
+      <span>
+        Согласен(на) на <a href="/politika-personalnyh-dannyh.html">обработку персональных данных</a
+        >
+        <span class="order-form__required" aria-hidden="true">*</span>
+      </span>
+    </label>
+    <p class="order-form__error" data-error-for="consent" hidden></p>
+  </div>
+
+  <p class="order-form__alert" data-submit-error role="alert" hidden>
+    Не получилось отправить заявку — попробуйте ещё раз или позвоните нам:{' '}
+    <a href={`tel:${siteConfig.phone}`}>{siteConfig.phoneDisplay}</a>
+  </p>
+
+  <Button class="order-form__submit" type="submit" size="lg">Отправить заявку</Button>
+
+  <template data-success-template>
+    <div class="order-form__success" role="status" tabindex="-1">
+      <p class="order-form__success-title">Спасибо!</p>
+      <p>Перезвоним в ближайшее время.</p>
+      <p class="order-form__success-note" data-demo-note hidden>
+        (тестовый режим — письмо не отправлено)
+      </p>
+    </div>
+  </template>
+</form>
+
+<style>
+  .order-form {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .order-form__field {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .order-form__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+
+  .order-form__required {
+    color: var(--color-accent);
+  }
+
+  .order-form__input {
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    transition: border-color var(--transition-fast);
+  }
+
+  .order-form__input:hover {
+    border-color: var(--color-steel);
+  }
+
+  .order-form__input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .order-form__input[aria-invalid='true'] {
+    border-color: var(--color-accent);
+  }
+
+  .order-form__textarea {
+    min-height: auto;
+    resize: vertical;
+  }
+
+  .order-form__botcheck {
+    display: none;
+  }
+
+  .order-form__error {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .order-form__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    cursor: pointer;
+  }
+
+  .order-form__checkbox {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: var(--space-1);
+    accent-color: var(--color-accent);
+    cursor: pointer;
+  }
+
+  .order-form__alert {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .order-form :global(.order-form__submit) {
+    width: 100%;
+  }
+
+  .order-form__success {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .order-form__success-title {
+    font-size: var(--text-xl);
+    font-weight: 800;
+  }
+
+  .order-form__success-note {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+</style>
+
+<script>
+  import { initOrderForm } from '../model/form';
+
+  document.querySelectorAll<HTMLFormElement>('[data-order-form]').forEach(initOrderForm);
+</script>

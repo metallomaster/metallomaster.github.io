@@ -1,7 +1,17 @@
 ---
-/* Временная главная для проверки каркаса — будет заменена на этапе 2 */
+import { getFeatured, getWorks } from '@app/content/catalog';
 import BaseLayout from '@app/layouts/base-layout.astro';
-import { Button, Container } from '@shared/ui';
+import { Lightbox } from '@features/lightbox';
+import { Advantages } from '@widgets/advantages';
+import { CategoryGrid } from '@widgets/category-grid';
+import { CtaBand } from '@widgets/cta-band';
+import { Hero } from '@widgets/hero';
+import { HowWeWork } from '@widgets/how-we-work';
+import { WorksGallery } from '@widgets/works-gallery';
+import { Button } from '@shared/ui';
+
+const featured = await getFeatured();
+const works = await getWorks();
 ---
 
 <BaseLayout
@@ -9,34 +19,23 @@ import { Button, Container } from '@shared/ui';
   description="Производство изделий из листовой стали в Минске: нержавеющие дымоходы, колпаки на трубы, оцинкованные воздуховоды, доборные элементы кровли. Изготовим по вашим размерам."
   path="/"
 >
-  <Container>
-    <section class="hero">
-      <h1>Изделия из металла по вашим размерам</h1>
-      <p>
-        Дымоходы, колпаки, воздуховоды и доборные элементы кровли — собственное производство в
-        Минске.
-      </p>
-      <Button href="/zakazatj.html" size="lg">Рассчитать стоимость</Button>
-    </section>
-  </Container>
+  <Hero
+    title="Изделия из металла по вашим размерам"
+    lead="Дымоходы, колпаки, воздуховоды и доборные элементы кровли — собственное производство в Минске. Стандартные изделия и сложные индивидуальные заказы."
+  >
+    <Button href="/zakazatj.html" size="lg">Рассчитать стоимость</Button>
+    <Button href="/katalog-produkcii.html" variant="outline" size="lg">Смотреть каталог</Button>
+  </Hero>
+
+  {featured.length > 0 && <CategoryGrid items={featured} heading="Что мы изготавливаем" />}
+
+  {works.length > 0 && <WorksGallery images={works} heading="Наши работы" />}
+
+  <HowWeWork />
+
+  <Advantages />
+
+  <CtaBand />
+
+  <Lightbox />
 </BaseLayout>
-
-<style>
-  .hero {
-    display: grid;
-    justify-items: start;
-    gap: var(--space-5);
-    padding-block: var(--space-9);
-  }
-
-  .hero h1 {
-    font-size: var(--text-3xl);
-    max-width: 18ch;
-  }
-
-  .hero p {
-    font-size: var(--text-lg);
-    color: var(--color-text-muted);
-    max-width: 44ch;
-  }
-</style>
