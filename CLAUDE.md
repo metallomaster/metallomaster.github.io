@@ -24,7 +24,7 @@
 - `components/organisms/` — самостоятельные блоки страницы (header, footer, hero, order-form, lightbox…);
 - `components/templates/` — atomic templates (base-layout.astro);
 - `pages/` — файловый роутинг Astro;
-- `lib/` — вся логика и типы чистым TS (types, content, seo, theme, menu, lightbox, order-form);
+- `lib/` — вся логика и типы чистым TS (types, content, seo, images, theme, menu, lightbox, order-form);
 - `config/` — site.ts (адаптер astro:env), tokens.css, fonts.css, global.css.
 
 Компоненты — плоские файлы без папок-обёрток и index.ts; импорты напрямую через единый
@@ -63,7 +63,23 @@
 - Каждая страница: уникальные title/description, canonical, OG — всё через пропсы
   `BaseLayout` (`@/components/templates/base-layout.astro`).
 - JSON-LD — только через генераторы `@/lib/seo` (organizationJsonLd подключён в layout).
-- У каждой картинки осмысленный `alt` по-русски.
+- У каждой картинки осмысленный `alt` по-русски: он же идёт в `caption` разметки
+  ImageObject и в `<image:title>` карты изображений — по нему фото находят в поиске.
+
+## Изображения
+
+- Размеры и качество — пресеты в `@/lib/images` (`PHOTO_FULL`, `OG_IMAGE`,
+  `PHOTO_THUMB_WIDTHS`). Одинаковые параметры в разных местах дают один файл в сборке,
+  разные — плодят копии, поэтому свои числа в вызовах `getImage` не пишем.
+- Превью — `@/components/atoms/picture.astro` (AVIF + WebP, srcset без апскейла).
+- Полноразмер для лайтбокса и разметки — поле `full` у `CatalogImage`; его считает
+  `lib/content.ts`, компоненты только подставляют.
+- Карта сайта — `pages/sitemap.xml.ts`: адреса страниц и фотографии одним файлом,
+  без внешней интеграции.
+- Astro копирует в `dist` оригиналы всех импортированных фото, даже те, на которые
+  нет ссылок (страницы рендерятся уже после обработки ассетов, отключить нельзя).
+  Отсюда требование: исходники в `src/content` держим лёгкими — лишний вес
+  переезжает в сборку один в один.
 
 ## Контент
 
