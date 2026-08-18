@@ -7,10 +7,10 @@ description: Изготавливаем верхние ендовы из ста�
 lead: 'Декоративная планка поверх внутреннего стыка скатов: закрывает срезы кровельных листов от снега и ветра и делает линию стыка аккуратной.'
 category: roof-accessories
 order: 80
-cover: ./valley-flashing-top/valley-flashing-top.png
+cover: ./valley-flashing-top/valley-flashing-top.webp
 coverAlt: Ендова верхняя из окрашенной стали
 images:
-  - src: ./valley-flashing-top/valley-flashing-top.png
+  - src: ./valley-flashing-top/valley-flashing-top.webp
     alt: Верхняя планка ендовы в цвет кровельного покрытия
 ---
 

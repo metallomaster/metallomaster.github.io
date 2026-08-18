@@ -7,40 +7,40 @@ description: Изготавливаем зонты вентиляционные 
 lead: Небольшая насадка на трубу, без которой вентиляция быстро засоряется — зонт закрывает канал от дождя, снега и мусора, не мешая тяге.
 category: chimney-caps
 order: 10
-cover: ./vent-cap/chimney-cap-ral-8017.png
+cover: ../_shared/chimney-cap-ral-8017.webp
 coverAlt: Вентиляционный зонт коричневого цвета RAL 8017 на трубе
 images:
-  - src: ./vent-cap/chimney-cap-ral-8017.png
+  - src: ../_shared/chimney-cap-ral-8017.webp
     alt: Зонт на дымоход в коричневом цвете RAL 8017
-  - src: ./vent-cap/weather-vane-cap.png
+  - src: ../_shared/weather-vane-cap.webp
     alt: Флюгарка на трубе дымохода частного дома
-  - src: ./vent-cap/chimney-cap-ral-3005.png
+  - src: ../_shared/chimney-cap-ral-3005.webp
     alt: Колпак цвета RAL 3005 на дымоходную трубу
-  - src: ./vent-cap/chimney-pipe-cap-2.png
+  - src: ../_shared/chimney-pipe-cap-2.webp
     alt: Колпак на трубу дымохода из окрашенной стали
-  - src: ./vent-cap/brick-chimney-cap-minsk.png
+  - src: ../_shared/brick-chimney-cap-minsk.webp
     alt: Дымник, изготовленный в нашем цехе в Минске
-  - src: ./vent-cap/hip-chimney-cap.png
+  - src: ../_shared/hip-chimney-cap.webp
     alt: Колпак на дымоход с четырёхскатной крышкой
-  - src: ./vent-cap/chimney-cap-minsk.png
+  - src: ../_shared/chimney-cap-minsk.webp
     alt: Металлический колпак на дымоход
-  - src: ./vent-cap/chimney-caps-minsk.png
+  - src: ../_shared/chimney-caps-minsk.webp
     alt: Вентиляционные зонты на дымоходы разных диаметров
-  - src: ./vent-cap/brick-chimney-cap-2.png
+  - src: ../_shared/brick-chimney-cap-2.webp
     alt: Стальной дымник на кирпичную трубу
-  - src: ./vent-cap/copper-post-cap.png
+  - src: ../_shared/copper-post-cap.webp
     alt: Медный колпак на столб забора
-  - src: ./vent-cap/post-cap.png
+  - src: ../_shared/post-cap.webp
     alt: Колпак на столб ограждения из окрашенного металла
-  - src: ./vent-cap/cap-with-bottom.png
+  - src: ../_shared/cap-with-bottom.webp
     alt: Колпак с дном для вентиляционной трубы
-  - src: ./vent-cap/cap-with-wind-deflector.png
+  - src: ../_shared/cap-with-wind-deflector.webp
     alt: Колпак с отбойником от ветра
-  - src: ./vent-cap/stainless-steel-deflector.png
+  - src: ../_shared/stainless-steel-deflector.webp
     alt: Вентиляционный дефлектор из нержавейки
-  - src: ./vent-cap/exhaust-canopy-minsk.png
+  - src: ../_shared/exhaust-canopy-minsk.webp
     alt: Зонт вытяжной из оцинкованной стали
-  - src: ./vent-cap/oval-vent-cap.png
+  - src: ../_shared/oval-vent-cap.webp
     alt: Овальный зонтик на трубу дымохода
 ---
 

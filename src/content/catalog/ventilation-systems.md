@@ -7,40 +7,40 @@ description: Изготавливаем элементы вентиляцион�
 lead: Изготавливаем элементы вентиляционных систем под ваш проект — от прямых участков воздуховодов до фасонных деталей и вытяжных зонтов.
 order: 20
 featured: false
-cover: ./ventilation-systems/stainless-steel-air-duct.png
+cover: ../_shared/stainless-steel-air-duct.webp
 coverAlt: Воздуховод из нержавеющей стали для вентиляционной системы
 images:
-  - src: ./ventilation-systems/stainless-steel-air-duct.png
+  - src: ../_shared/stainless-steel-air-duct.webp
     alt: Круглый воздуховод из нержавейки для вентиляционной сети
-  - src: ./ventilation-systems/stainless-steel-adapters.png
+  - src: ../_shared/stainless-steel-adapters.webp
     alt: Переходы из нержавейки для соединения участков разных сечений
-  - src: ./ventilation-systems/stainless-steel-deflector-4.png
+  - src: ../_shared/stainless-steel-deflector-4.webp
     alt: Дефлектор из нержавейки для усиления вытяжки
-  - src: ./ventilation-systems/brick-to-sandwich-adapter.png
+  - src: ../_shared/brick-to-sandwich-adapter.webp
     alt: Переход с кирпичного дымохода на сэндвич-трубу
-  - src: ./ventilation-systems/stainless-steel-tees.png
+  - src: ../_shared/stainless-steel-tees.webp
     alt: Тройники из нержавеющей стали для вентиляционных систем
-  - src: ./ventilation-systems/insulated-air-ducts.png
+  - src: ../_shared/insulated-air-ducts.webp
     alt: Утеплённые воздуховоды нашего производства в Минске
-  - src: ./ventilation-systems/stainless-steel-vent-caps.png
+  - src: ../_shared/stainless-steel-vent-caps.webp
     alt: Зонтики из нержавейки на вентиляционные трубы
-  - src: ./ventilation-systems/exhaust-canopy-minsk-2.png
+  - src: ../_shared/exhaust-canopy-minsk.webp
     alt: Вытяжной зонт для кухни, изготовленный в Минске
-  - src: ./ventilation-systems/stainless-steel-reducer.png
+  - src: ../_shared/stainless-steel-reducer.webp
     alt: Конусный переход из нержавеющей стали для воздуховода
-  - src: ./ventilation-systems/oval-vent-cap-2.png
+  - src: ../_shared/oval-vent-cap-2.webp
     alt: Овальный зонтик из нержавеющей стали
-  - src: ./ventilation-systems/chimney-pipe-cap.png
+  - src: ../_shared/chimney-pipe-cap.webp
     alt: Колпак на дымоходную трубу из нержавейки
-  - src: ./ventilation-systems/chimney-components-2.png
+  - src: ../_shared/chimney-components-2.webp
     alt: Комплект элементов дымохода из нержавеющей стали
-  - src: ./ventilation-systems/stainless-steel-vent-collector.png
+  - src: ../_shared/stainless-steel-vent-collector.webp
     alt: Вентиляционный коллектор из нержавеющей стали под заказ
-  - src: ./ventilation-systems/round-to-oval-adapter.png
+  - src: ../_shared/round-to-oval-adapter.webp
     alt: Переход с круга на овал из нержавейки
-  - src: ./ventilation-systems/sandwich-air-ducts.png
+  - src: ../_shared/sandwich-air-ducts.webp
     alt: Сэндвич-воздуховоды из оцинкованной стали в цехе
-  - src: ./ventilation-systems/galvanized-air-ducts.png
+  - src: ../_shared/galvanized-air-ducts.webp
     alt: Оцинкованные воздуховоды для монтажа вентиляции
 ---
 

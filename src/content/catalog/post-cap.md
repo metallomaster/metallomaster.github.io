@@ -7,40 +7,40 @@ description: Изготавливаем колпаки на столбы заб�
 lead: Металлическая крышка на кирпичный или бетонный столб — не пускает влагу в кладку, продлевает жизнь забору и придаёт ему завершённый вид.
 category: chimney-caps
 order: 20
-cover: ./post-cap/post-cap.png
+cover: ../_shared/post-cap.webp
 coverAlt: Металлический колпак на столб забора
 images:
-  - src: ./post-cap/post-cap.png
+  - src: ../_shared/post-cap.webp
     alt: Колпак на столб забора из окрашенной стали
-  - src: ./post-cap/copper-post-cap.png
+  - src: ../_shared/copper-post-cap.webp
     alt: Колпак на столб из меди
-  - src: ./post-cap/chimney-cap-ral-8017.png
+  - src: ../_shared/chimney-cap-ral-8017.webp
     alt: Колпак коричневого цвета RAL 8017
-  - src: ./post-cap/weather-vane-cap.png
+  - src: ../_shared/weather-vane-cap.webp
     alt: Флюгарка на дымоходной трубе
-  - src: ./post-cap/chimney-cap-ral-3005.png
+  - src: ../_shared/chimney-cap-ral-3005.webp
     alt: Колпак винно-красного цвета RAL 3005
-  - src: ./post-cap/cap-with-bird-mesh.png
+  - src: ../_shared/cap-with-bird-mesh.webp
     alt: Колпак с защитной сеткой от птиц
-  - src: ./post-cap/chimney-pipe-cap-2.png
+  - src: ../_shared/chimney-pipe-cap-2.webp
     alt: Колпак на трубу дымохода из окрашенного металла
-  - src: ./post-cap/brick-chimney-cap-minsk.png
+  - src: ../_shared/brick-chimney-cap-minsk.webp
     alt: Дымник на кирпичной трубе, изготовленный в Минске
-  - src: ./post-cap/hip-chimney-cap.png
+  - src: ../_shared/hip-chimney-cap.webp
     alt: Четырёхскатный колпак на дымоход
-  - src: ./post-cap/chimney-pipe-cap-3.png
+  - src: ../_shared/chimney-pipe-cap-3.webp
     alt: Готовый колпак на трубу дымохода
-  - src: ./post-cap/chimney-cap-minsk.png
+  - src: ../_shared/chimney-cap-minsk.webp
     alt: Металлический колпак на дымоход частного дома
-  - src: ./post-cap/chimney-caps-minsk.png
+  - src: ../_shared/chimney-caps-minsk.webp
     alt: Зонты на дымоходы разных размеров
-  - src: ./post-cap/brick-chimney-cap-2.png
+  - src: ../_shared/brick-chimney-cap-2.webp
     alt: Стальной дымник на трубу
-  - src: ./post-cap/cap-with-bottom.png
+  - src: ../_shared/cap-with-bottom.webp
     alt: Колпак с дном для трубы
-  - src: ./post-cap/cap-with-wind-deflector.png
+  - src: ../_shared/cap-with-wind-deflector.webp
     alt: Колпак с отбойником для защиты от ветра
-  - src: ./post-cap/stainless-steel-deflector.png
+  - src: ../_shared/stainless-steel-deflector.webp
     alt: Дефлектор из нержавеющей стали
 ---
 

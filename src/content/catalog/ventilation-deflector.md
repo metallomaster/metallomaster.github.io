@@ -7,40 +7,40 @@ description: Изготавливаем вентиляционные дефле�
 lead: Насадка на вытяжную трубу, которая закрывает канал от осадков и мусора и усиливает тягу — до 20 % к эффективности вентиляции.
 category: chimney-caps
 order: 30
-cover: ./ventilation-deflector/stainless-steel-deflector-2.png
+cover: ./ventilation-deflector/stainless-steel-deflector-2.webp
 coverAlt: Вентиляционный дефлектор из нержавеющей стали
 images:
-  - src: ./ventilation-deflector/stainless-steel-deflector-2.png
+  - src: ./ventilation-deflector/stainless-steel-deflector-2.webp
     alt: Дефлектор вентиляционный из нержавеющей стали
-  - src: ./ventilation-deflector/grigorovich-deflector.png
+  - src: ./ventilation-deflector/grigorovich-deflector.webp
     alt: Дефлектор Григоровича из нержавейки
-  - src: ./ventilation-deflector/stainless-steel-air-duct.png
+  - src: ../_shared/stainless-steel-air-duct.webp
     alt: Воздуховод из нержавеющей стали
-  - src: ./ventilation-deflector/stainless-steel-adapters.png
+  - src: ../_shared/stainless-steel-adapters.webp
     alt: Переходы из нержавейки разных диаметров
-  - src: ./ventilation-deflector/brick-to-sandwich-adapter.png
+  - src: ../_shared/brick-to-sandwich-adapter.webp
     alt: Переход с кирпичного дымохода на сэндвич-трубу
-  - src: ./ventilation-deflector/stainless-steel-tees.png
+  - src: ../_shared/stainless-steel-tees.webp
     alt: Тройники из нержавеющей стали
-  - src: ./ventilation-deflector/insulated-air-ducts.png
+  - src: ../_shared/insulated-air-ducts.webp
     alt: Утеплённые воздуховоды, изготовленные в Минске
-  - src: ./ventilation-deflector/stainless-steel-vent-caps.png
+  - src: ../_shared/stainless-steel-vent-caps.webp
     alt: Зонтики из нержавейки для вентиляционных труб
-  - src: ./ventilation-deflector/exhaust-canopy-minsk-2.png
+  - src: ../_shared/exhaust-canopy-minsk.webp
     alt: Вытяжной зонт из нержавеющей стали
-  - src: ./ventilation-deflector/stainless-steel-reducer.png
+  - src: ../_shared/stainless-steel-reducer.webp
     alt: Переход из нержавеющей стали
-  - src: ./ventilation-deflector/oval-vent-cap-2.png
+  - src: ../_shared/oval-vent-cap-2.webp
     alt: Овальный зонтик на трубу
-  - src: ./ventilation-deflector/chimney-pipe-cap.png
+  - src: ../_shared/chimney-pipe-cap.webp
     alt: Колпак на трубу дымохода
-  - src: ./ventilation-deflector/oval-to-round-elbow.png
+  - src: ./ventilation-deflector/oval-to-round-elbow.webp
     alt: Колено-переход с овального сечения на круглое
-  - src: ./ventilation-deflector/chimney-components-2.png
+  - src: ../_shared/chimney-components-2.webp
     alt: Элементы дымохода из нержавеющей стали
-  - src: ./ventilation-deflector/stainless-steel-vent-collector.png
+  - src: ../_shared/stainless-steel-vent-collector.webp
     alt: Вентиляционный коллектор из нержавеющей стали
-  - src: ./ventilation-deflector/round-to-oval-adapter.png
+  - src: ../_shared/round-to-oval-adapter.webp
     alt: Переход с круглого сечения на овальное из нержавейки
 ---
 

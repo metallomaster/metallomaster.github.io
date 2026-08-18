@@ -8,40 +8,40 @@ lead: Прямоугольная вентиляционная труба эко�
 category: galvanized-air-ducts
 order: 40
 featured: false
-cover: ./rectangular-air-duct/stainless-steel-air-duct.png
+cover: ../_shared/stainless-steel-air-duct.webp
 coverAlt: Вентиляционный воздуховод из нержавеющей стали нашего производства
 images:
-  - src: ./rectangular-air-duct/stainless-steel-air-duct.png
+  - src: ../_shared/stainless-steel-air-duct.webp
     alt: Воздуховод из нержавейки, изготовленный на нашем производстве
-  - src: ./rectangular-air-duct/stainless-steel-adapters.png
+  - src: ../_shared/stainless-steel-adapters.webp
     alt: Переходы из нержавейки между сечениями воздуховодов
-  - src: ./rectangular-air-duct/stainless-steel-deflector-4.png
+  - src: ../_shared/stainless-steel-deflector-4.webp
     alt: Дефлектор из нержавейки для вентиляционной системы
-  - src: ./rectangular-air-duct/brick-to-sandwich-adapter.png
+  - src: ../_shared/brick-to-sandwich-adapter.webp
     alt: Переход с кирпича на сэндвич-трубу
-  - src: ./rectangular-air-duct/stainless-steel-tees.png
+  - src: ../_shared/stainless-steel-tees.webp
     alt: Тройники из нержавейки для ветвления вентиляционных линий
-  - src: ./rectangular-air-duct/insulated-air-ducts.png
+  - src: ../_shared/insulated-air-ducts.webp
     alt: Утеплённые воздуховоды на складе в Минске
-  - src: ./rectangular-air-duct/stainless-steel-vent-caps.png
+  - src: ../_shared/stainless-steel-vent-caps.webp
     alt: Вентиляционные зонтики из нержавейки
-  - src: ./rectangular-air-duct/exhaust-canopy-minsk-2.png
+  - src: ../_shared/exhaust-canopy-minsk.webp
     alt: Зонт вытяжной из нержавеющей стали, Минск
-  - src: ./rectangular-air-duct/stainless-steel-reducer.png
+  - src: ../_shared/stainless-steel-reducer.webp
     alt: Переход из нержавеющей стали под заказ
-  - src: ./rectangular-air-duct/oval-vent-cap-2.png
+  - src: ../_shared/oval-vent-cap-2.webp
     alt: Зонтик овального сечения из нержавеющей стали
-  - src: ./rectangular-air-duct/chimney-pipe-cap.png
+  - src: ../_shared/chimney-pipe-cap.webp
     alt: Защитный колпак на дымоходную трубу
-  - src: ./rectangular-air-duct/chimney-components-2.png
+  - src: ../_shared/chimney-components-2.webp
     alt: Элементы дымохода из нержавеющей стали
-  - src: ./rectangular-air-duct/stainless-steel-vent-collector.png
+  - src: ../_shared/stainless-steel-vent-collector.webp
     alt: Коллектор вентиляционный из нержавеющей стали с врезками
-  - src: ./rectangular-air-duct/round-to-oval-adapter.png
+  - src: ../_shared/round-to-oval-adapter.webp
     alt: Переход с круглого на овальное сечение из нержавейки
-  - src: ./rectangular-air-duct/sandwich-air-ducts.png
+  - src: ../_shared/sandwich-air-ducts.webp
     alt: Утеплённые сэндвич-воздуховоды из оцинковки
-  - src: ./rectangular-air-duct/galvanized-air-ducts.png
+  - src: ../_shared/galvanized-air-ducts.webp
     alt: Оцинкованные воздуховоды, подготовленные к монтажу
 ---
 

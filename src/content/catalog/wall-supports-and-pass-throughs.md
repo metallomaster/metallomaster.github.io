@@ -8,20 +8,20 @@ lead: 'Элементы, которые делают дымоход безопа
 category: stainless-steel-chimneys
 order: 50
 featured: false
-cover: ./wall-supports-and-pass-throughs/wall-support.png
+cover: ./wall-supports-and-pass-throughs/wall-support.webp
 coverAlt: Стеновая опора для дымохода из нержавеющей стали
 images:
-  - src: ./wall-supports-and-pass-throughs/wall-support.png
+  - src: ./wall-supports-and-pass-throughs/wall-support.webp
     alt: Стеновая опора под вертикальный участок дымохода
-  - src: ./wall-supports-and-pass-throughs/ceiling-pass-through-unit.png
+  - src: ./wall-supports-and-pass-throughs/ceiling-pass-through-unit.webp
     alt: Проходной потолочный узел ППУ для дымохода
-  - src: ./wall-supports-and-pass-throughs/floor-pass-through.png
+  - src: ./wall-supports-and-pass-throughs/floor-pass-through.webp
     alt: Узел прохода дымохода через межэтажное перекрытие
-  - src: ./wall-supports-and-pass-throughs/support-platform.png
+  - src: ./wall-supports-and-pass-throughs/support-platform.webp
     alt: Опорная площадка для сэндвич-дымохода
-  - src: ./wall-supports-and-pass-throughs/roof-seal.png
+  - src: ./wall-supports-and-pass-throughs/roof-seal.webp
     alt: Уплотнение кровли на выходе трубы дымохода
-  - src: ./wall-supports-and-pass-throughs/roof-seal-2.png
+  - src: ./wall-supports-and-pass-throughs/roof-seal-2.webp
     alt: Кровельная проходка для дымоходной трубы на скатной крыше
 ---
 

@@ -8,22 +8,22 @@ lead: Двустенные дымоходы с базальтовой изоля
 category: stainless-steel-chimneys
 order: 10
 featured: false
-cover: ./insulated-chimneys/insulated-chimney-04.jpg
+cover: ../_shared/insulated-chimney-04.webp
 coverAlt: Утеплённый сэндвич-дымоход из нержавейки на фасаде частного дома
 images:
-  - src: ./insulated-chimneys/insulated-chimney-01.jpg
+  - src: ../_shared/insulated-chimney-01.webp
     alt: Утеплённый дымоход с зонтом-дефлектором на фасаде частного дома
-  - src: ./insulated-chimneys/insulated-chimney-02.jpg
+  - src: ../_shared/insulated-chimney-02.webp
     alt: Сэндвич-дымоход, подключённый к печи-камину в бревенчатом доме
-  - src: ./insulated-chimneys/insulated-chimney-03.jpg
+  - src: ../_shared/insulated-chimney-03.webp
     alt: Печь с дымоходом и утеплённой нержавеющей секцией под потолком
-  - src: ./insulated-chimneys/insulated-chimney-04.jpg
+  - src: ../_shared/insulated-chimney-04.webp
     alt: Утеплённый дымоход из нержавейки на кронштейнах вдоль стены дома
-  - src: ./insulated-chimneys/insulated-chimney-05.jpg
+  - src: ../_shared/insulated-chimney-05.webp
     alt: Наружный сэндвич-дымоход вдоль фронтона деревянного дачного дома
-  - src: ./insulated-chimneys/insulated-chimney-06.jpg
+  - src: ../_shared/insulated-chimney-06.webp
     alt: Утеплённая дымоходная труба на стене производственного здания
-  - src: ./insulated-chimneys/insulated-chimney-07.jpg
+  - src: ../_shared/insulated-chimney-07.webp
     alt: Высокий сэндвич-дымоход вдоль фасада двухэтажного кирпичного дома
 ---
 

@@ -8,20 +8,20 @@ lead: Металлические крышки, которые защищают �
 category: roof-accessories
 order: 20
 featured: true
-cover: ./parapet-cap/cover.png
+cover: ./parapet-cap/parapet-cap-04.webp
 coverAlt: Тёмно-серый парапет на ограждении плоской кровли частного дома
 images:
-  - src: ./parapet-cap/parapet-cap-01.jpg
+  - src: ./parapet-cap/parapet-cap-01.webp
     alt: Графитовый парапет с капельниками на парапетной стенке плоской кровли
-  - src: ./parapet-cap/parapet-cap-02.jpg
+  - src: ./parapet-cap/parapet-cap-02.webp
     alt: Основание из плит OSB на стенке ограждения перед монтажом парапета
-  - src: ./parapet-cap/parapet-cap-03.jpg
+  - src: ./parapet-cap/parapet-cap-03.webp
     alt: Тёмный парапет поверх оштукатуренной стены — вид снизу
-  - src: ./parapet-cap/parapet-cap-04.jpg
+  - src: ./parapet-cap/parapet-cap-04.webp
     alt: Угловое соединение парапетных крышек на ограждении террасы
-  - src: ./parapet-cap/parapet-cap-05.jpg
+  - src: ./parapet-cap/parapet-cap-05.webp
     alt: Кромка стального парапета с капельником крупным планом
-  - src: ./parapet-cap/parapet-cap-06.jpg
+  - src: ./parapet-cap/parapet-cap-06.webp
     alt: Парапеты с полимерным покрытием по периметру плоской крыши
 ---
 

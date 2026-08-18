@@ -8,40 +8,40 @@ lead: Круглая вентиляционная труба — основно�
 category: galvanized-air-ducts
 order: 30
 featured: false
-cover: ./round-air-duct/stainless-steel-air-duct.png
+cover: ../_shared/stainless-steel-air-duct.webp
 coverAlt: Круглая вентиляционная труба из нержавеющей стали
 images:
-  - src: ./round-air-duct/stainless-steel-air-duct.png
+  - src: ../_shared/stainless-steel-air-duct.webp
     alt: Прямошовный круглый воздуховод из нержавейки
-  - src: ./round-air-duct/stainless-steel-adapters.png
+  - src: ../_shared/stainless-steel-adapters.webp
     alt: Переходы из нержавейки под разные диаметры труб
-  - src: ./round-air-duct/stainless-steel-deflector-4.png
+  - src: ../_shared/stainless-steel-deflector-4.webp
     alt: Дефлектор из нержавейки на круглую трубу
-  - src: ./round-air-duct/brick-to-sandwich-adapter.png
+  - src: ../_shared/brick-to-sandwich-adapter.webp
     alt: Узел перехода с кирпичного канала на сэндвич-трубу
-  - src: ./round-air-duct/stainless-steel-tees.png
+  - src: ../_shared/stainless-steel-tees.webp
     alt: Круглые тройники из нержавеющей стали
-  - src: ./round-air-duct/insulated-air-ducts.png
+  - src: ../_shared/insulated-air-ducts.webp
     alt: Утеплённые круглые воздуховоды, изготовленные в Минске
-  - src: ./round-air-duct/stainless-steel-vent-caps.png
+  - src: ../_shared/stainless-steel-vent-caps.webp
     alt: Зонтики из нержавейки для круглых вентиляционных труб
-  - src: ./round-air-duct/exhaust-canopy-minsk-2.png
+  - src: ../_shared/exhaust-canopy-minsk.webp
     alt: Вытяжной зонт нашего производства, Минск
-  - src: ./round-air-duct/stainless-steel-reducer.png
+  - src: ../_shared/stainless-steel-reducer.webp
     alt: Осевой переход из нержавеющей стали
-  - src: ./round-air-duct/oval-vent-cap-2.png
+  - src: ../_shared/oval-vent-cap-2.webp
     alt: Овальный зонтик на оголовок трубы
-  - src: ./round-air-duct/chimney-pipe-cap.png
+  - src: ../_shared/chimney-pipe-cap.webp
     alt: Колпак на трубу дымохода
-  - src: ./round-air-duct/chimney-components-2.png
+  - src: ../_shared/chimney-components-2.webp
     alt: Фасонные элементы дымохода из нержавеющей стали
-  - src: ./round-air-duct/stainless-steel-vent-collector.png
+  - src: ../_shared/stainless-steel-vent-collector.webp
     alt: Вентиляционный коллектор из нержавеющей стали
-  - src: ./round-air-duct/round-to-oval-adapter.png
+  - src: ../_shared/round-to-oval-adapter.webp
     alt: Переход с круга на овал из нержавеющей стали
-  - src: ./round-air-duct/sandwich-air-ducts.png
+  - src: ../_shared/sandwich-air-ducts.webp
     alt: Сэндвич-воздуховоды из оцинкованной стали
-  - src: ./round-air-duct/galvanized-air-ducts.png
+  - src: ../_shared/galvanized-air-ducts.webp
     alt: Оцинкованные воздуховоды круглого сечения
 ---
 

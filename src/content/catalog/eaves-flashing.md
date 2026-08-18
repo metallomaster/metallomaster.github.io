@@ -7,10 +7,10 @@ description: Изготавливаем карнизные планки (кап�
 lead: Планка на краю ската, которая прикрывает лобовую доску и направляет дождевую воду прямо в водосточный жёлоб — мимо карниза и фасада.
 category: roof-accessories
 order: 40
-cover: ./eaves-flashing/eaves-flashing.png
+cover: ./eaves-flashing/eaves-flashing.webp
 coverAlt: Карнизная планка из стали с полимерным покрытием
 images:
-  - src: ./eaves-flashing/eaves-flashing.png
+  - src: ./eaves-flashing/eaves-flashing.webp
     alt: Капельник для кровли, согнутый по размерам заказчика
 ---
 

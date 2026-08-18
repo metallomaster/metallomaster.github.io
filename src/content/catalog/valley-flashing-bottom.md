@@ -7,10 +7,10 @@ description: Изготавливаем нижние ендовы (разжел�
 lead: Жёлоб на внутреннем стыке скатов, который принимает и отводит основной поток воды с крыши. Согнём под угол именно вашей кровли.
 category: roof-accessories
 order: 70
-cover: ./valley-flashing-bottom/valley-flashing-bottom.png
+cover: ./valley-flashing-bottom/valley-flashing-bottom.webp
 coverAlt: Ендова нижняя из оцинкованной стали
 images:
-  - src: ./valley-flashing-bottom/valley-flashing-bottom.png
+  - src: ./valley-flashing-bottom/valley-flashing-bottom.webp
     alt: Разжелобок для внутреннего стыка скатов кровли
 ---
 

@@ -7,10 +7,10 @@ description: Изготавливаем коньки кровли из оцин�
 lead: Коньковая планка закрывает верхний стык скатов от осадков и при этом оставляет крыше возможность дышать. Согнём под угол именно вашей кровли.
 category: roof-accessories
 order: 10
-cover: ./roof-ridge/roof-ridge.png
+cover: ./roof-ridge/roof-ridge.webp
 coverAlt: Конёк кровли из окрашенной стали
 images:
-  - src: ./roof-ridge/roof-ridge.png
+  - src: ./roof-ridge/roof-ridge.webp
     alt: Коньковая планка для кровли, изготовленная в Минске
 ---
 

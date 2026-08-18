@@ -8,40 +8,40 @@ lead: Воздуховоды из нержавейки для систем, гд
 category: galvanized-air-ducts
 order: 10
 featured: false
-cover: ./stainless-steel-air-ducts/stainless-steel-exhaust-hood.jpg
+cover: ../_shared/stainless-steel-exhaust-hood.webp
 coverAlt: Вытяжной зонт из нержавеющей стали, изготовленный на нашем производстве
 images:
-  - src: ./stainless-steel-air-ducts/stainless-steel-exhaust-hood.jpg
+  - src: ../_shared/stainless-steel-exhaust-hood.webp
     alt: Вытяжной зонт из нержавеющей стали крупным планом
-  - src: ./stainless-steel-air-ducts/exhaust-hood-minsk.jpg
+  - src: ../_shared/exhaust-hood-minsk.webp
     alt: Готовый вытяжной зонт из нержавейки перед отгрузкой в Минске
-  - src: ./stainless-steel-air-ducts/stainless-steel-air-duct.png
+  - src: ../_shared/stainless-steel-air-duct.webp
     alt: Прямой участок воздуховода из нержавеющей стали
-  - src: ./stainless-steel-air-ducts/stainless-steel-adapters.png
+  - src: ../_shared/stainless-steel-adapters.webp
     alt: Набор переходов из нержавейки разных диаметров
-  - src: ./stainless-steel-air-ducts/stainless-steel-deflector-4.png
+  - src: ../_shared/stainless-steel-deflector-4.webp
     alt: Вентиляционный дефлектор из нержавеющей стали
-  - src: ./stainless-steel-air-ducts/brick-to-sandwich-adapter.png
+  - src: ../_shared/brick-to-sandwich-adapter.webp
     alt: Переходный элемент с кирпичного дымохода на сэндвич-трубу
-  - src: ./stainless-steel-air-ducts/insulated-air-ducts.png
+  - src: ../_shared/insulated-air-ducts.webp
     alt: Утеплённые воздуховоды, изготовленные в Минске
-  - src: ./stainless-steel-air-ducts/stainless-steel-tees.png
+  - src: ../_shared/stainless-steel-tees.webp
     alt: Тройники из нержавейки для разводки вентиляционных линий
-  - src: ./stainless-steel-air-ducts/stainless-steel-vent-caps.png
+  - src: ../_shared/stainless-steel-vent-caps.webp
     alt: Зонтики из нержавейки на оголовки вентиляционных труб
-  - src: ./stainless-steel-air-ducts/exhaust-canopy-minsk-2.png
+  - src: ../_shared/exhaust-canopy-minsk.webp
     alt: Пристенный зонт вытяжной для профессиональной кухни
-  - src: ./stainless-steel-air-ducts/stainless-steel-reducer.png
+  - src: ../_shared/stainless-steel-reducer.webp
     alt: Симметричный переход из нержавеющей стали
-  - src: ./stainless-steel-air-ducts/oval-vent-cap-2.png
+  - src: ../_shared/oval-vent-cap-2.webp
     alt: Овальный зонтик для трубы из нержавеющей стали
-  - src: ./stainless-steel-air-ducts/chimney-pipe-cap.png
+  - src: ../_shared/chimney-pipe-cap.webp
     alt: Колпак на трубу дымохода из нержавеющей стали
-  - src: ./stainless-steel-air-ducts/stainless-steel-vent-collector-2.png
+  - src: ./stainless-steel-air-ducts/stainless-steel-vent-collector-2.webp
     alt: Вентиляционный коллектор из нержавеющей стали с врезками
-  - src: ./stainless-steel-air-ducts/sandwich-air-ducts.png
+  - src: ../_shared/sandwich-air-ducts.webp
     alt: Сэндвич-воздуховоды из оцинкованной стали с утеплителем
-  - src: ./stainless-steel-air-ducts/round-to-oval-adapter.png
+  - src: ../_shared/round-to-oval-adapter.webp
     alt: Переход с круглого сечения на овальное из нержавеющей стали
 ---
 

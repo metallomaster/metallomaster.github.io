@@ -8,16 +8,16 @@ lead: Овальная труба из нержавейки создана дл�
 category: stainless-steel-chimneys
 order: 30
 featured: false
-cover: ./oval-chimney-pipe/oval-chimney-pipe.png
+cover: ./oval-chimney-pipe/oval-chimney-pipe.webp
 coverAlt: Овальная труба дымохода из нержавеющей стали
 images:
-  - src: ./oval-chimney-pipe/oval-chimney-pipe.png
+  - src: ./oval-chimney-pipe/oval-chimney-pipe.webp
     alt: Овальная одностенная труба дымохода из нержавеющей стали
-  - src: ./oval-chimney-pipe/oval-pipe-drawing-1000mm.png
+  - src: ./oval-chimney-pipe/oval-pipe-drawing-1000mm.webp
     alt: Чертёж овальной трубы дымохода длиной 1000 мм
-  - src: ./oval-chimney-pipe/oval-pipe-drawing-500mm.png
+  - src: ./oval-chimney-pipe/oval-pipe-drawing-500mm.webp
     alt: Чертёж овальной трубы дымохода длиной 500 мм
-  - src: ./oval-chimney-pipe/oval-pipe-drawing-250mm.png
+  - src: ./oval-chimney-pipe/oval-pipe-drawing-250mm.webp
     alt: Чертёж овальной трубы дымохода длиной 250 мм
 ---
 

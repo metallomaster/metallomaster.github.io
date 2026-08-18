@@ -8,14 +8,14 @@ lead: 'Крепёж, на котором держится весь дымохо�
 category: stainless-steel-chimneys
 order: 40
 featured: false
-cover: ./brackets-and-clamps/bracket-with-clamp.png
+cover: ./brackets-and-clamps/bracket-with-clamp.webp
 coverAlt: Монтажный кронштейн с хомутом для дымохода
 images:
-  - src: ./brackets-and-clamps/bracket-with-clamp.png
+  - src: ./brackets-and-clamps/bracket-with-clamp.webp
     alt: Стеновой кронштейн с хомутом из нержавеющей стали
-  - src: ./brackets-and-clamps/pipe-clamps.png
+  - src: ./brackets-and-clamps/pipe-clamps.webp
     alt: Обжимные хомуты для труб дымохода разных диаметров
-  - src: ./brackets-and-clamps/bracket-with-clamp-2.png
+  - src: ./brackets-and-clamps/bracket-with-clamp-2.webp
     alt: Кронштейн с хомутом для крепления дымохода к фасаду
 ---
 

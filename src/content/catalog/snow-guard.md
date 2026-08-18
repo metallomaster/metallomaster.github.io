@@ -7,10 +7,10 @@ description: Изготавливаем снегозадержатели для 
 lead: Снегозадержатель удерживает снег и наледь на скате, пока они не растают, — пласт не рухнет на крыльцо, машину или прохожих.
 category: roof-accessories
 order: 50
-cover: ./snow-guard/snow-guard.png
+cover: ./snow-guard/snow-guard.webp
 coverAlt: Снеговой барьер на скате кровли
 images:
-  - src: ./snow-guard/snow-guard.png
+  - src: ./snow-guard/snow-guard.webp
     alt: Снегозадержатель для металлочерепицы, изготовленный в Минске
 ---
 

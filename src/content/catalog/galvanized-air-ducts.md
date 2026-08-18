@@ -7,40 +7,40 @@ description: Изготавливаем оцинкованные воздухо�
 lead: Воздуховоды из оцинкованной стали и фасонные части к ним — от прямых участков до дроссель-клапанов. Делаем на собственном производстве, по стандартным размерам и по вашему эскизу.
 order: 40
 featured: true
-cover: ./galvanized-air-ducts/cover.png
+cover: ../_shared/galvanized-air-ducts.webp
 coverAlt: Оцинкованные воздуховоды круглого сечения на складе производства
 images:
-  - src: ./galvanized-air-ducts/galvanized-air-ducts-2.png
+  - src: ./galvanized-air-ducts/galvanized-air-ducts-2.webp
     alt: Оцинкованные воздуховоды разных диаметров, подготовленные к отгрузке
-  - src: ./galvanized-air-ducts/air-ducts.png
+  - src: ./galvanized-air-ducts/air-ducts.webp
     alt: Собранный участок вентиляционных воздуховодов с фасонными элементами
-  - src: ./galvanized-air-ducts/pipe-cap.png
+  - src: ./galvanized-air-ducts/pipe-cap.webp
     alt: Защитный колпак на вентиляционную трубу из оцинкованной стали
-  - src: ./galvanized-air-ducts/galvanized-air-ducts-3.png
+  - src: ./galvanized-air-ducts/galvanized-air-ducts-3.webp
     alt: Прямые участки воздуховодов из оцинкованной стали
-  - src: ./galvanized-air-ducts/exhaust-canopy-2.png
+  - src: ./galvanized-air-ducts/exhaust-canopy-2.webp
     alt: Вытяжной зонт над тепловым оборудованием кухни
-  - src: ./galvanized-air-ducts/exhaust-canopy-minsk.png
+  - src: ../_shared/exhaust-canopy-minsk.webp
     alt: Пристенный вытяжной зонт, изготовленный в Минске
-  - src: ./galvanized-air-ducts/sandwich-air-ducts-2.png
+  - src: ./galvanized-air-ducts/sandwich-air-ducts-2.webp
     alt: Утеплённые сэндвич-воздуховоды из оцинкованной стали
-  - src: ./galvanized-air-ducts/stainless-steel-vent-collector-3.png
+  - src: ./galvanized-air-ducts/stainless-steel-vent-collector-3.webp
     alt: Вентиляционный коллектор из нержавеющей стали с несколькими врезками
-  - src: ./galvanized-air-ducts/grigorovich-deflector-2.png
+  - src: ./galvanized-air-ducts/grigorovich-deflector-2.webp
     alt: Дефлектор Григоровича для усиления тяги в вентиляционном канале
-  - src: ./galvanized-air-ducts/stainless-steel-deflector-3.png
+  - src: ./galvanized-air-ducts/stainless-steel-deflector-3.webp
     alt: Дефлектор из нержавеющей стали на оголовке трубы
-  - src: ./galvanized-air-ducts/stainless-steel-air-duct-2.png
+  - src: ../_shared/stainless-steel-air-duct.webp
     alt: Круглый воздуховод из нержавеющей стали
-  - src: ./galvanized-air-ducts/chimney-components.png
+  - src: ./galvanized-air-ducts/chimney-components.webp
     alt: Элементы дымохода из нержавеющей стали в цехе
-  - src: ./galvanized-air-ducts/oval-to-round-elbow-2.png
+  - src: ./galvanized-air-ducts/oval-to-round-elbow-2.webp
     alt: Колено-переход с овального сечения на круглое
-  - src: ./galvanized-air-ducts/stainless-steel-adapters-2.png
+  - src: ./galvanized-air-ducts/stainless-steel-adapters-2.webp
     alt: Переходы из нержавейки для стыковки труб разного диаметра
-  - src: ./galvanized-air-ducts/stainless-steel-reducer-2.png
+  - src: ./galvanized-air-ducts/stainless-steel-reducer-2.webp
     alt: Конусный переход из нержавеющей стали
-  - src: ./galvanized-air-ducts/brick-to-sandwich-adapter-2.png
+  - src: ./galvanized-air-ducts/brick-to-sandwich-adapter-2.webp
     alt: Переход с кирпичного канала на сэндвич-трубу
 ---
 

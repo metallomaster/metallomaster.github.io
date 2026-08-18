@@ -7,16 +7,16 @@ description: Монтаж дымоходов из нержавеющей ста�
 lead: Устанавливаем дымоходы из нержавеющей стали под ключ — от замера на объекте до проверки тяги. Монтируем то, что сами изготовили, поэтому отвечаем за всю систему целиком.
 order: 10
 featured: false
-cover: ./chimney-installation/chimney-installation.png
+cover: ./chimney-installation/chimney-installation.webp
 coverAlt: Монтаж дымохода из нержавеющей стали на объекте
 images:
-  - src: ./chimney-installation/chimney-installation.png
+  - src: ./chimney-installation/chimney-installation.webp
     alt: Монтажник устанавливает секцию дымохода из нержавейки
-  - src: ./chimney-installation/chimney-installation-2.png
+  - src: ./chimney-installation/chimney-installation-2.webp
     alt: Смонтированный дымоход по фасаду частного дома
-  - src: ./chimney-installation/stainless-steel-chimney.png
+  - src: ./chimney-installation/stainless-steel-chimney.webp
     alt: Готовый дымоход из нержавеющей стали после монтажа
-  - src: ./chimney-installation/chimney-height-diagram.png
+  - src: ./chimney-installation/chimney-height-diagram.webp
     alt: Схема выбора высоты дымохода относительно конька крыши
 ---
 

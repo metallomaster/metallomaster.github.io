@@ -7,10 +7,10 @@ description: Изготавливаем торцевые (ветровые) пл
 lead: 'Ветровая планка закрывает торцы скатов: не пускает под кровлю влагу и мусор и держит края покрытия при сильном ветре.'
 category: roof-accessories
 order: 60
-cover: ./gable-flashing/gable-flashing.png
+cover: ./gable-flashing/gable-flashing.webp
 coverAlt: Торцевая планка из окрашенной стали
 images:
-  - src: ./gable-flashing/gable-flashing.png
+  - src: ./gable-flashing/gable-flashing.webp
     alt: Ветровая планка для торца кровельного ската
 ---
 

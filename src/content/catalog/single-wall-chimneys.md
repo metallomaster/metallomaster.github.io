@@ -8,22 +8,22 @@ lead: Одноконтурные трубы из нержавейки — гил
 category: stainless-steel-chimneys
 order: 20
 featured: false
-cover: ./single-wall-chimneys/single-wall-chimney-06.jpg
+cover: ../_shared/insulated-chimney-06.webp
 coverAlt: Полированная одностенная труба дымохода из нержавеющей стали на кронштейнах
 images:
-  - src: ./single-wall-chimneys/single-wall-chimney-01.jpg
+  - src: ../_shared/insulated-chimney-01.webp
     alt: Дымоход из нержавеющей стали с оголовком на фоне вечернего неба
-  - src: ./single-wall-chimneys/single-wall-chimney-02.jpg
+  - src: ../_shared/insulated-chimney-02.webp
     alt: Дымовая труба, подключённая к отопительной печи в срубе
-  - src: ./single-wall-chimneys/single-wall-chimney-03.jpg
+  - src: ../_shared/insulated-chimney-03.webp
     alt: Стальная труба дымохода над печью в помещении с деревянной отделкой
-  - src: ./single-wall-chimneys/single-wall-chimney-04.jpg
+  - src: ../_shared/insulated-chimney-04.webp
     alt: Нержавеющий дымоход на кронштейнах вдоль оштукатуренного фасада
-  - src: ./single-wall-chimneys/single-wall-chimney-05.jpg
+  - src: ../_shared/insulated-chimney-05.webp
     alt: Дымоходная труба из нержавейки у деревянного дома с мансардой
-  - src: ./single-wall-chimneys/single-wall-chimney-06.jpg
+  - src: ../_shared/insulated-chimney-06.webp
     alt: Зеркальная труба дымохода на стене производственного помещения
-  - src: ./single-wall-chimneys/single-wall-chimney-07.jpg
+  - src: ../_shared/insulated-chimney-07.webp
     alt: Дымоход из нержавеющей стали по стене кирпичного жилого дома
 ---
 

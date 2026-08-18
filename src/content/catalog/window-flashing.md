@@ -7,10 +7,10 @@ description: Изготавливаем оконные отливы из оци�
 lead: 'Наружный подоконник из металла: отводит дождевую воду от окна, закрывает монтажный шов и не даёт влаге уходить в стену.'
 category: roof-accessories
 order: 30
-cover: ./window-flashing/window-flashing.png
+cover: ./window-flashing/window-flashing.webp
 coverAlt: Оконный отлив из окрашенной стали
 images:
-  - src: ./window-flashing/window-flashing.png
+  - src: ./window-flashing/window-flashing.webp
     alt: Металлический отлив на окно, изготовленный по размерам заказчика
 ---
 

@@ -8,40 +8,40 @@ lead: Вытяжной зонт ставят над плитами и тепло
 category: galvanized-air-ducts
 order: 20
 featured: false
-cover: ./exhaust-hood/stainless-steel-exhaust-hood.jpg
+cover: ../_shared/stainless-steel-exhaust-hood.webp
 coverAlt: Вытяжной зонт из нержавеющей стали для профессиональной кухни
 images:
-  - src: ./exhaust-hood/stainless-steel-exhaust-hood.jpg
+  - src: ../_shared/stainless-steel-exhaust-hood.webp
     alt: Вытяжной зонт из нержавеющей стали, вид спереди
-  - src: ./exhaust-hood/exhaust-hood-minsk.jpg
+  - src: ../_shared/exhaust-hood-minsk.webp
     alt: Готовый вытяжной зонт на производстве в Минске
-  - src: ./exhaust-hood/exhaust-hood-2.png
+  - src: ./exhaust-hood/exhaust-hood-2.webp
     alt: Пристенный вытяжной зонт с патрубком под воздуховод
-  - src: ./exhaust-hood/round-exhaust-canopy.png
+  - src: ./exhaust-hood/round-exhaust-canopy.webp
     alt: Круглый вытяжной зонт над тепловым оборудованием
-  - src: ./exhaust-hood/exhaust-hood-minsk-2.png
+  - src: ./exhaust-hood/exhaust-hood-minsk-2.webp
     alt: Вытяжной зонт, установленный на кухне заведения в Минске
-  - src: ./exhaust-hood/galvanized-exhaust-hood.png
+  - src: ./exhaust-hood/galvanized-exhaust-hood.webp
     alt: Вытяжной зонт из оцинкованной стали
-  - src: ./exhaust-hood/exhaust-hood.png
+  - src: ./exhaust-hood/exhaust-hood.webp
     alt: Островной вытяжной зонт трапецеидальной формы
-  - src: ./exhaust-hood/stainless-steel-air-duct.png
+  - src: ../_shared/stainless-steel-air-duct.webp
     alt: Воздуховод из нержавейки для подключения вытяжного зонта
-  - src: ./exhaust-hood/stainless-steel-adapters.png
+  - src: ../_shared/stainless-steel-adapters.webp
     alt: Переходы из нержавейки для вентиляционной линии
-  - src: ./exhaust-hood/stainless-steel-deflector-4.png
+  - src: ../_shared/stainless-steel-deflector-4.webp
     alt: Дефлектор из нержавейки для вытяжного канала
-  - src: ./exhaust-hood/brick-to-sandwich-adapter.png
+  - src: ../_shared/brick-to-sandwich-adapter.webp
     alt: Переход с кирпичной трубы на сэндвич-дымоход
-  - src: ./exhaust-hood/stainless-steel-tees.png
+  - src: ../_shared/stainless-steel-tees.webp
     alt: Вентиляционные тройники из нержавеющей стали
-  - src: ./exhaust-hood/insulated-air-ducts.png
+  - src: ../_shared/insulated-air-ducts.webp
     alt: Утеплённые воздуховоды нашего производства, Минск
-  - src: ./exhaust-hood/stainless-steel-vent-caps.png
+  - src: ../_shared/stainless-steel-vent-caps.webp
     alt: Зонтики из нержавейки на трубы разных диаметров
-  - src: ./exhaust-hood/exhaust-canopy-minsk-2.png
+  - src: ../_shared/exhaust-canopy-minsk.webp
     alt: Зонт вытяжной прямоугольной формы, изготовлен в Минске
-  - src: ./exhaust-hood/stainless-steel-reducer.png
+  - src: ../_shared/stainless-steel-reducer.webp
     alt: Переход из нержавеющей стали для стыковки сечений
 ---
 
