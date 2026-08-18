@@ -9,6 +9,10 @@
 - Astro 7, TypeScript strict, npm, Node 22.12+ (`nvm use 22`).
 - `npm run dev` / `build` / `check` (типы) / `lint` (ESLint + Steiger FSD) / `format`.
 - Перед завершением любой задачи: `npm run build && npm run check && npm run lint` — всё должно быть зелёным.
+- Фоновый dev-демон может «протухнуть»: content layer в памяти пустеет (в `.astro/dev.log` —
+  «The collection "catalog" does not exist or is empty»), симптомы — пустой каталог и 404 на
+  страницах из коллекции. Лечится перезапуском: `npx astro dev stop && npm run dev`.
+  Смотреть сайт «как в проде» надёжнее через `npm run build && npm run preview`.
 
 ## Архитектура — FSD (см. .documentation/04-architecture.md)
 

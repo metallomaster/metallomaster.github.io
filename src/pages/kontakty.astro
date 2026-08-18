@@ -4,8 +4,11 @@ import { ContactInfo } from '@widgets/contact-info';
 import { Container } from '@shared/ui';
 import { siteConfig } from '@shared/config';
 
-/* Ссылка на карты вместо iframe: не тянем чужие скрипты ради одной точки */
-const mapsUrl = 'https://yandex.by/maps/?text=Колодищи%20Путейская';
+/* Ссылки на карты вместо iframe: не тянем чужие скрипты ради одной точки */
+const yandexMapsUrl = 'https://yandex.by/maps/?text=Колодищи%20Путейская';
+const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  'Колодищи улица Путейская',
+)}`;
 ---
 
 <BaseLayout
@@ -30,22 +33,40 @@ const mapsUrl = 'https://yandex.by/maps/?text=Колодищи%20Путейск�
               Производство находится в агрогородке Колодищи на улице Путейской — десять минут от
               МКАД по Московскому шоссе.
             </p>
-            <a class="contacts__map-link" href={mapsUrl} target="_blank" rel="noopener">
-              Открыть в Яндекс.Картах
-              <svg
-                class="contacts__map-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M7 17 17 7"></path>
-                <path d="M8 7h9v9"></path>
-              </svg>
-            </a>
+            <div class="contacts__map-links">
+              <a class="contacts__map-link" href={yandexMapsUrl} target="_blank" rel="noopener">
+                Открыть в Яндекс.Картах
+                <svg
+                  class="contacts__map-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17 17 7"></path>
+                  <path d="M8 7h9v9"></path>
+                </svg>
+              </a>
+              <a class="contacts__map-link" href={googleMapsUrl} target="_blank" rel="noopener">
+                Открыть в Google Картах
+                <svg
+                  class="contacts__map-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17 17 7"></path>
+                  <path d="M8 7h9v9"></path>
+                </svg>
+              </a>
+            </div>
           </section>
 
           <section class="contacts__card">
@@ -109,6 +130,12 @@ const mapsUrl = 'https://yandex.by/maps/?text=Колодищи%20Путейск�
 
   .contacts__card p {
     font-size: var(--text-sm);
+  }
+
+  .contacts__map-links {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-5);
   }
 
   .contacts__map-link {

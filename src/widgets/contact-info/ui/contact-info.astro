@@ -160,4 +160,11 @@ import { siteConfig } from '@shared/config';
   .contact-info__link:hover {
     color: var(--color-accent);
   }
+
+  /* Узкие экраны: номер компактнее, чтобы не переносился внутри цифр */
+  @media (max-width: 480px) {
+    .contact-info__phone {
+      font-size: var(--text-lg);
+    }
+  }
 </style>

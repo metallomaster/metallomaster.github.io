@@ -72,4 +72,13 @@ const Tag = href ? 'a' : 'button';
     padding: var(--space-3) var(--space-6);
     font-size: var(--text-base);
   }
+
+  /* На маленьких экранах кнопки занимают всю ширину контейнера;
+     боковые отступы уже не нужны большими — текст важнее */
+  @media (max-width: 480px) {
+    .button {
+      width: 100%;
+      padding-inline: var(--space-4);
+    }
+  }
 </style>
