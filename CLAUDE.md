@@ -20,11 +20,11 @@
 Карта папок (`src/`):
 
 - `components/atoms/` — неделимые элементы UI (button, container, logo, picture);
-- `components/molecules/` — простые связки атомов (breadcrumbs, catalog-card, theme-toggle, contact-info);
+- `components/molecules/` — простые связки атомов (catalog-card);
 - `components/organisms/` — самостоятельные блоки страницы (header, footer, hero, order-form, lightbox…);
 - `components/templates/` — atomic templates (base-layout.astro);
 - `pages/` — файловый роутинг Astro;
-- `lib/` — вся логика и типы чистым TS (types, content, seo, images, theme, menu, lightbox, order-form);
+- `lib/` — вся логика и типы чистым TS (types, content, seo, images, menu, lightbox, order-form);
 - `config/` — site.ts (адаптер astro:env), tokens.css, fonts.css, global.css.
 
 Компоненты — плоские файлы без папок-обёрток и index.ts; импорты напрямую через единый
@@ -47,8 +47,9 @@
 
 - Все цвета/размеры/отступы — только через токены `src/config/tokens.css`. Сырые
   значения (`#fff`, `16px` отступа) в компонентах запрещены.
-- Темы: светлая — основная, тёмная — через `light-dark()`. Никаких отдельных
-  `[data-theme]`-блоков в компонентах: если нужен разный цвет — новый токен.
+- Темы: светлая — основная, тёмная — через `light-dark()`. Переключателя темы на сайте нет
+  (решение владельца): тема берётся с устройства через `prefers-color-scheme`, в localStorage
+  ничего не пишется. Никаких `[data-theme]`-блоков в компонентах: нужен другой цвет — новый токен.
 - Классы: BEM внутри компонента (`.header__nav-link`).
 - Брейкпоинты: 360 / 768 / 1024 / 1440, mobile-first, тач-таргеты ≥ 44px.
 - Комментарии по-русски, только там, где код не может сказать сам.
@@ -87,7 +88,7 @@
   сохраняем (см. `.documentation/seo-audit-raw.json` — старые title/description).
 - Цены НЕ указывать (решение владельца). CTA — «Рассчитать стоимость».
 - Контакты/реквизиты — только из `siteConfig` (`@/config/site`), никаких хардкодов
-  телефона или email в разметке: они различаются между dev и prod.
+  телефона или email в разметке: значения меняются в одном месте — в самом `site.ts`.
 
 ## Запреты
 
