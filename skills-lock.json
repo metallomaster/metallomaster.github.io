@@ -7,12 +7,6 @@
       "skillPath": "skills/accessibility/SKILL.md",
       "computedHash": "10e83284d3395ab5ec2f2db602b663480a37a4ff404d16510eefe86b034fcc1a"
     },
-    "astro": {
-      "source": "astrolicious/agent-skills",
-      "sourceType": "github",
-      "skillPath": "skills/astro/SKILL.md",
-      "computedHash": "ebefe26b231d32379c14e41a46c2de7b4b0184543bedab7febdabe4fb21fba4e"
-    },
     "best-practices": {
       "source": "addyosmani/web-quality-skills",
       "sourceType": "github",
