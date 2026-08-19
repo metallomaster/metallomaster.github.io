@@ -1,0 +1,73 @@
+# Превью-деплой на GitHub Pages: показать сайт заказчику до переезда на боевой хостинг.
+#
+# Собирает GitHub, не мы: dist/ лежит в .gitignore и в репозиторий не попадает.
+# Работает только если репозиторий назван <username>.github.io — тогда сайт встаёт
+# на корень домена. В подпути (github.io/<repo>/) отвалятся абсолютные пути:
+# шрифты из config/fonts.css, иконки и манифест из base-layout, ссылки меню.
+#
+# Разовая настройка в репозитории: Settings → Pages → Source: GitHub Actions.
+#
+# Чего на превью НЕТ по сравнению с боевым Apache: всего из public/.htaccess —
+# 301-редиректов со старых адресов, HSTS, CSP, Cache-Control, сжатия.
+# Pages не позволяет задавать ни заголовки, ни редиректы.
+
+name: Превью на GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Параллельные деплои Pages конфликтуют: держим один, лишние отменяем.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Секреты не нужны: контакты в config/site.ts, у WEB3FORMS_KEY в схеме
+      # astro.config.ts есть default ''. Пустой ключ = форма в демо-режиме:
+      # сценарий успеха показывает, письмо не отправляет.
+      - run: npm run build
+
+      # Превью не должно попасть в поиск: боевой домен metallomaster.by, дубли
+      # контента ему только навредят. Заголовок X-Robots-Tag на Pages задать
+      # нельзя, поэтому только robots.txt и мета. Правим сборку, не исходники —
+      # боевой код остаётся чистым.
+      - name: Закрыть превью от индексации
+        run: |
+          printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+          find dist -name '*.html' -exec sed -i \
+            's|<meta name="robots" content="[^"]*"|<meta name="robots" content="noindex, nofollow"|' {} +
+          # На Pages бесполезен, а публичным текстовым файлом ему лежать незачем.
+          rm -f dist/.htaccess
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
