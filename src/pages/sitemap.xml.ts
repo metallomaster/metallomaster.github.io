@@ -8,6 +8,7 @@
 import type { APIRoute } from 'astro';
 import { getCatalogItems, getWorks } from '@/lib/content';
 import { siteConfig } from '@/config/site';
+import { lastModified } from '@/lib/lastmod';
 import { catalogItemUrl } from '@/lib/types';
 import type { CatalogImage } from '@/lib/types';
 
@@ -20,20 +21,25 @@ const escapeXml = (text: string): string =>
 
 const absolute = (path: string): string => new URL(path, siteConfig.siteUrl).toString();
 
-/** Пути статических страниц прямо из файловой структуры src/pages */
-function staticPaths(): string[] {
+/** Пути статических страниц прямо из файловой структуры src/pages, вместе с их исходниками */
+function staticPages(): { path: string; file: string }[] {
   const modules = import.meta.glob('/src/pages/**/*.astro');
-  return Object.keys(modules)
-    .map((file) => file.replace('/src/pages', '').replace(/\.astro$/, ''))
-    // [param] — динамические маршруты, их адреса даёт контент
-    .filter((path) => !path.includes('['))
-    .map((path) => path.replace(/\/index$/, '/'))
-    // 404 в карте не нужен, и служебные подчёркнутые файлы тоже
-    .filter((path) => path !== '/404' && !path.includes('/_'))
-    .map((path) => (path.endsWith('/') ? path : `${path}/`));
+  return (
+    Object.keys(modules)
+      .map((file) => ({
+        file: file.slice(1),
+        path: file.replace('/src/pages', '').replace(/\.astro$/, ''),
+      }))
+      // [param] — динамические маршруты, их адреса даёт контент
+      .filter(({ path }) => !path.includes('['))
+      .map((page) => ({ ...page, path: page.path.replace(/\/index$/, '/') }))
+      // 404 в карте не нужен, и служебные подчёркнутые файлы тоже
+      .filter(({ path }) => path !== '/404' && !path.includes('/_'))
+      .map((page) => ({ ...page, path: page.path.endsWith('/') ? page.path : `${page.path}/` }))
+  );
 }
 
-function urlEntry(path: string, images: CatalogImage[]): string {
+function urlEntry(path: string, images: CatalogImage[], lastmod: string): string {
   const tags = images.map(
     (image) =>
       `    <image:image>\n` +
@@ -41,7 +47,13 @@ function urlEntry(path: string, images: CatalogImage[]): string {
       `      <image:title>${escapeXml(image.alt)}</image:title>\n` +
       `    </image:image>`,
   );
-  return [`  <url>`, `    <loc>${escapeXml(absolute(path))}</loc>`, ...tags, `  </url>`].join('\n');
+  return [
+    `  <url>`,
+    `    <loc>${escapeXml(absolute(path))}</loc>`,
+    `    <lastmod>${lastmod}</lastmod>`,
+    ...tags,
+    `  </url>`,
+  ].join('\n');
 }
 
 export const GET: APIRoute = async () => {
@@ -54,8 +66,19 @@ export const GET: APIRoute = async () => {
     return item.images.length > 0 ? item.images : item.cover ? [item.cover] : [];
   };
 
-  const paths = [...staticPaths(), ...items.map(catalogItemUrl)].sort();
-  const entries = paths.map((path) => urlEntry(path, photosOf(path)));
+  /* Считаем только по исходнику самой страницы: правка шапки — не повод
+     объявлять весь сайт обновившимся, такому lastmod поисковики перестают верить */
+  const pages = [
+    ...staticPages(),
+    ...items.map((item) => ({
+      path: catalogItemUrl(item),
+      file: `src/content/catalog/${item.slug}.md`,
+    })),
+  ].sort((a, b) => a.path.localeCompare(b.path));
+
+  const entries = pages.map(({ path, file }) =>
+    urlEntry(path, photosOf(path), lastModified([file])),
+  );
 
   const xml =
     `<?xml version="1.0" encoding="UTF-8"?>\n` +

@@ -1,7 +1,7 @@
 /*
  * Параметры обработки изображений — чистые данные без единого вызова фреймворка.
- * Сами вызовы getImage живут в адаптерах: atoms/picture.astro, atoms/photo-link.astro,
- * templates/base-layout.astro и pages/sitemap-images.xml.ts.
+ * Сами вызовы getImage живут в адаптерах: atoms/picture.astro, lib/content.ts
+ * и templates/base-layout.astro.
  *
  * Важно: параметры одного пресета обязаны совпадать во всех местах вызова — тогда
  * фреймворк отдаёт один и тот же файл, а не плодит копии под каждый вызов.

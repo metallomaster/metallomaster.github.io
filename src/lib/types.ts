@@ -9,13 +9,6 @@ import type { ImageMetadata } from 'astro';
 /** Нейтральное имя для метаданных картинки */
 export type PictureSrc = ImageMetadata;
 
-/** Хлебная крошка */
-export interface Crumb {
-  label: string;
-  /** Последняя крошка — без ссылки */
-  href?: string;
-}
-
 export type CatalogItemType = 'category' | 'product' | 'service';
 
 export interface CatalogImage {

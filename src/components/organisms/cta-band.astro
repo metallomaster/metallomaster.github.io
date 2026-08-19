@@ -22,7 +22,7 @@ const {
         <p class="cta-band__subtitle">{subtitle}</p>
       </div>
       <div class="cta-band__actions">
-        <a class="cta-band__phone" href={`tel:${siteConfig.phone}`}>{siteConfig.phoneDisplay}</a>
+        <a class="cta-band__phone" href={`tel:${siteConfig.phoneHref}`}>{siteConfig.phone}</a>
         <Button href="/order/" size="lg">Рассчитать стоимость</Button>
       </div>
     </div>
@@ -66,6 +66,10 @@ const {
   }
 
   .cta-band__phone {
+    /* Номер рядом с кнопкой — такой же тач-таргет, как кнопка: 44 px по высоте */
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-size: var(--text-xl);
     font-weight: 800;
     text-decoration: none;

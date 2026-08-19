@@ -4,7 +4,20 @@ import { siteConfig } from '@/config/site';
 import Button from '@/components/atoms/button.astro';
 ---
 
-<form class="order-form" data-order-form data-access-key={siteConfig.web3formsKey} novalidate>
+{/* id обязателен: без него автоцель Яндекс.Метрики не опознаёт отправку формы */}
+<form
+  class="order-form"
+  id="order-form"
+  data-order-form
+  data-access-key={siteConfig.web3formsKey}
+  novalidate
+>
+  {/* Сводка: скринридер объявляет её целиком, иначе озвучилась бы только ошибка у поля в фокусе */}
+  <div class="order-form__summary" data-validation-summary role="alert" tabindex="-1" hidden>
+    <p class="order-form__summary-title" data-validation-summary-title></p>
+    <ul class="order-form__summary-list" data-validation-summary-list></ul>
+  </div>
+
   <div class="order-form__field">
     <label class="order-form__label" for="order-name">
       Имя <span class="order-form__required" aria-hidden="true">*</span>
@@ -82,18 +95,25 @@ import Button from '@/components/atoms/button.astro';
 
   <div class="order-form__field">
     <label class="order-form__consent">
-      <input class="order-form__checkbox" type="checkbox" name="consent" required />
+      <input
+        class="order-form__checkbox"
+        id="order-consent"
+        type="checkbox"
+        name="consent"
+        required
+        aria-describedby="order-consent-error"
+      />
       <span>
         Согласен(на) на <a href="/privacy-policy/">обработку персональных данных</a>
         <span class="order-form__required" aria-hidden="true">*</span>
       </span>
     </label>
-    <p class="order-form__error" data-error-for="consent" hidden></p>
+    <p class="order-form__error" id="order-consent-error" data-error-for="consent" hidden></p>
   </div>
 
   <p class="order-form__alert" data-submit-error role="alert" hidden>
     Не получилось отправить заявку — попробуйте ещё раз или позвоните нам:{' '}
-    <a href={`tel:${siteConfig.phone}`}>{siteConfig.phoneDisplay}</a>
+    <a href={`tel:${siteConfig.phoneHref}`}>{siteConfig.phone}</a>
   </p>
 
   <Button class="order-form__submit" type="submit" size="lg">Отправить заявку</Button>
@@ -185,6 +205,27 @@ import Button from '@/components/atoms/button.astro';
     margin-top: var(--space-1);
     accent-color: var(--color-accent);
     cursor: pointer;
+  }
+
+  .order-form__summary {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+  }
+
+  .order-form__summary-title {
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  .order-form__summary-list {
+    margin-block-start: var(--space-1);
+    padding-inline-start: var(--space-5);
+  }
+
+  .order-form__summary-list :global(a) {
+    font-weight: 600;
   }
 
   .order-form__alert {

@@ -6,21 +6,21 @@ import Container from '@/components/atoms/container.astro';
 interface Props {
   items: CatalogItem[];
   heading?: string;
-  headingLevel?: 'h2';
+  /** Сетка на первом экране: первая обложка — кандидат в LCP, грузим её без задержки */
+  aboveFold?: boolean;
 }
 
-const { items, heading, headingLevel = 'h2' } = Astro.props;
-const Heading = headingLevel;
+const { items, heading, aboveFold = false } = Astro.props;
 ---
 
 <section class="category-grid">
   <Container>
-    {heading && <Heading class="category-grid__heading">{heading}</Heading>}
+    {heading && <h2 class="category-grid__heading">{heading}</h2>}
     <ul class="category-grid__list">
       {
-        items.map((item) => (
+        items.map((item, index) => (
           <li class="category-grid__cell">
-            <CatalogCard item={item} />
+            <CatalogCard item={item} priority={aboveFold && index === 0} />
           </li>
         ))
       }

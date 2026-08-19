@@ -2,7 +2,7 @@
 interface Props {
   /** href превращает кнопку в ссылку */
   href?: string;
-  variant?: 'primary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'outline';
   size?: 'md' | 'lg';
   type?: 'button' | 'submit';
   class?: string;
@@ -40,6 +40,12 @@ const Tag = href ? 'a' : 'button';
       color var(--transition-fast);
   }
 
+  /* Занятая кнопка: aria-disabled вместо disabled, чтобы не терять фокус (см. lib/order-form.ts) */
+  .button[aria-disabled='true'] {
+    cursor: progress;
+    opacity: 0.7;
+  }
+
   .button--primary {
     background: var(--color-accent-solid);
     color: var(--color-on-accent);
@@ -57,14 +63,6 @@ const Tag = href ? 'a' : 'button';
   .button--outline:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
-  }
-
-  .button--ghost {
-    background: transparent;
-  }
-
-  .button--ghost:hover {
-    background: var(--color-surface);
   }
 
   .button--lg {

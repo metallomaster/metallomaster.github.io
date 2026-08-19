@@ -2,6 +2,7 @@
 import { siteConfig } from '@/config/site';
 import Container from '@/components/atoms/container.astro';
 import Logo from '@/components/atoms/logo.astro';
+import { formatOpeningHours } from '@/lib/schedule';
 
 const catalogLinks = [
   { label: 'Дымоходы из нержавеющей стали', href: '/catalog/stainless-steel-chimneys/' },
@@ -60,24 +61,22 @@ const year = new Date().getFullYear();
       </ul>
     </nav>
 
-    <address class="footer__contacts">
+    {/* Заголовок вне <address>: заголовки внутри него разметка не допускает */}
+    <div class="footer__contacts">
       <h2 class="footer__heading">Контакты</h2>
-      <ul class="footer__list">
-        <li>
-          <a class="footer__link" href={`tel:${siteConfig.phone}`}>{siteConfig.phoneDisplay}</a>
-        </li>
-        <li>
-          <a class="footer__link" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-        </li>
-        <li>{siteConfig.address}</li>
-        <li>{siteConfig.openingHours}</li>
-        <li>
-          <a class="footer__link" href={siteConfig.instagram} rel="noopener" target="_blank">
-            Instagram
-          </a>
-        </li>
-      </ul>
-    </address>
+      <address>
+        <ul class="footer__list">
+          <li>
+            <a class="footer__link" href={`tel:${siteConfig.phoneHref}`}>{siteConfig.phone}</a>
+          </li>
+          <li>
+            <a class="footer__link" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          </li>
+          <li>{siteConfig.address.text}</li>
+          <li>{formatOpeningHours(siteConfig.openingHours)}</li>
+        </ul>
+      </address>
+    </div>
   </Container>
 
   <div class="footer__legal">
@@ -127,7 +126,8 @@ const year = new Date().getFullYear();
     font-size: var(--text-sm);
   }
 
-  .footer__contacts {
+  /* Курсив у <address> браузер ставит сам — наследование его не перебивает */
+  .footer__contacts address {
     font-style: normal;
   }
 
@@ -159,6 +159,42 @@ const year = new Date().getFullYear();
       grid-template-columns: 1fr;
       gap: var(--space-6);
       padding-block: var(--space-6);
+    }
+
+    .footer :global(.footer__legal-inner) {
+      gap: var(--space-2);
+    }
+  }
+
+  /* Пальцем по футеру: строка текста даёт 21 px, соседние ссылки стоят в 8 px друг от друга —
+     промах вместо перехода. Отдаём каждой строке списка 44 px и убираем зазор, чтобы футер
+     не вырос вдвое. Растягивать нужно саму ссылку: цель — она, а не <li>.
+     Условие по указателю, а не только по ширине: планшет в 768 px и тач-ноутбук — те же пальцы,
+     а мышью по 21 px попадают точно (WCAG 2.5.8 такой шаг между целями пропускает). */
+  @media (max-width: 767px), (pointer: coarse) {
+    .footer__list {
+      gap: 0;
+    }
+
+    .footer__list li {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
+    .footer__link {
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+      flex: 1;
+    }
+
+    /* Ссылка в нижней плашке стоит между двумя строками текста — inline-flex, иначе
+       min-height у строчного элемента не работает */
+    .footer__legal .footer__link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
     }
   }
 </style>

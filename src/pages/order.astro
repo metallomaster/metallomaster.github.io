@@ -1,12 +1,11 @@
 ---
 import BaseLayout from '@/components/templates/base-layout.astro';
 import OrderForm from '@/components/organisms/order-form.astro';
-import ContactInfo from '@/components/molecules/contact-info.astro';
 import Container from '@/components/atoms/container.astro';
 ---
 
 <BaseLayout
-  title="Заказать изделие из металла в Минске"
+  title="Расчёт стоимости изделия из металла"
   description="Оставьте заявку на изготовление изделия из листовой стали: перезвоним, поможем с размерами и назовём точную цену. Дымоходы, колпаки, воздуховоды — производство в Минске."
   path="/order/"
 >
@@ -20,15 +19,7 @@ import Container from '@/components/atoms/container.astro';
         </p>
       </div>
 
-      <div class="order__grid">
-        <OrderForm />
-        <aside class="order__aside" aria-label="Контакты">
-          <ContactInfo />
-          <p class="order__aside-note">
-            Удобнее говорить, чем писать? Звоните — посчитаем стоимость прямо по телефону.
-          </p>
-        </aside>
-      </div>
+      <OrderForm />
     </section>
   </Container>
 </BaseLayout>
@@ -52,29 +43,5 @@ import Container from '@/components/atoms/container.astro';
     font-size: var(--text-lg);
     color: var(--color-text-muted);
     max-width: 52ch;
-  }
-
-  .order__grid {
-    display: grid;
-    gap: var(--space-6);
-    align-items: start;
-  }
-
-  .order__aside {
-    display: grid;
-    gap: var(--space-4);
-  }
-
-  .order__aside-note {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    padding-inline: var(--space-2);
-  }
-
-  @media (min-width: 1024px) {
-    .order__grid {
-      grid-template-columns: 1.4fr 1fr;
-      gap: var(--space-7);
-    }
   }
 </style>

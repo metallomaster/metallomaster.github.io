@@ -1,44 +1,91 @@
 /*
- * Единственный адаптер к окружению фреймворка (astro:env).
- * Значения различаются между dev и prod — см. .env.development / .env.production.
+ * Все данные компании и единственный адаптер к окружению фреймворка (astro:env).
+ * Контакты заданы здесь же — из окружения приходит только ключ формы.
  * При смене фреймворка переписывается только этот файл.
  */
-import {
-  CONTACT_EMAIL,
-  CONTACT_PHONE,
-  CONTACT_PHONE_DISPLAY,
-  WEB3FORMS_KEY,
-} from 'astro:env/client';
+import { WEB3FORMS_KEY } from 'astro:env/client';
+
+/* Из человекочитаемого номера в формат для tel:/JSON-LD: только плюс и цифры. */
+function telFormat(phone: string): string {
+  return phone.replace(/[^\d+]/g, '');
+}
+
+/** Адрес по частям: так его требует PostalAddress в разметке */
+export interface SiteAddress {
+  /** Код страны по ISO 3166-1 alpha-2 */
+  readonly country: string;
+  readonly region: string;
+  readonly locality: string;
+  /** Только улица и дом — населённый пункт сюда не дублируем */
+  readonly street: string;
+  /** Почтовый индекс: его требует PostalAddress в разметке и модерация Яндекс.Бизнеса */
+  readonly postalCode?: string;
+  /** Готовая строка для страниц: «аг. Колодищи, ул. Путейская» */
+  readonly text: string;
+}
 
 export interface SiteConfig {
   /** Название компании для шапки, футера и разметки Organization */
   readonly name: string;
   readonly legalName: string;
   readonly unp: string;
-  readonly address: string;
+  readonly address: SiteAddress;
+  /** Координаты производства: разметка организации и ссылки на карты */
+  readonly geo: {
+    readonly latitude: number;
+    readonly longitude: number;
+  };
   readonly siteUrl: string;
-  /** Телефон в формате для ссылки tel: */
+  /** Телефон в человекочитаемом формате — как показываем на странице */
   readonly phone: string;
-  /** Телефон в человекочитаемом формате */
-  readonly phoneDisplay: string;
+  /** Тот же номер без разделителей — для ссылки tel: и разметки */
+  readonly phoneHref: string;
   readonly email: string;
-  readonly instagram: string;
   /** Ключ Web3Forms; пустая строка — форма в режиме заглушки */
   readonly web3formsKey: string;
-  /** Режим работы (TODO: уточнить у владельца, пока заглушка) */
-  readonly openingHours: string;
+  /**
+   * Режим работы машиночитаемо: отсюда и текст на страницах (formatOpeningHours),
+   * и openingHoursSpecification в разметке. График подтверждён владельцем 19.08.2026.
+   * Дни — именами schema.org, время — HH:MM. Форма совпадает с OpeningHours из lib/schedule.
+   */
+  readonly openingHours: {
+    readonly days: readonly string[];
+    readonly opens: string;
+    readonly closes: string;
+  };
 }
+
+const TAX_ID = '690869052';
+const LOCALITY = 'аг. Колодищи';
+const STREET = 'ул. Путейская';
+const PHONE = '+375 (29) 322-00-10';
+const EMAIL = '3220010@mail.ru';
+const POSTAL_CODE = '223050';
 
 export const siteConfig: SiteConfig = {
   name: 'METALLOMASTER',
   legalName: 'ИП Гунько Д. В.',
-  unp: '690869052',
-  address: 'аг. Колодищи, ул. Путейская',
+  unp: TAX_ID,
+  address: {
+    country: 'BY',
+    region: 'Минская область',
+    locality: LOCALITY,
+    street: STREET,
+    postalCode: POSTAL_CODE,
+    text: `${LOCALITY}, ${STREET}`,
+  },
+  geo: {
+    latitude: 53.944855,
+    longitude: 27.772073,
+  },
   siteUrl: 'https://metallomaster.by',
-  phone: CONTACT_PHONE,
-  phoneDisplay: CONTACT_PHONE_DISPLAY,
-  email: CONTACT_EMAIL,
-  instagram: 'https://www.instagram.com/vasieleek/',
+  phone: PHONE,
+  phoneHref: telFormat(PHONE),
+  email: EMAIL,
   web3formsKey: WEB3FORMS_KEY,
-  openingHours: 'Пн–Пт 9:00–18:00',
+  openingHours: {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '18:00',
+  },
 };

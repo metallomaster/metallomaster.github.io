@@ -8,9 +8,7 @@ import WorksGallery from '@/components/organisms/works-gallery.astro';
 import { catalogItemUrl } from '@/lib/types';
 import { siteConfig } from '@/config/site';
 import { breadcrumbsJsonLd } from '@/lib/seo';
-import Breadcrumbs from '@/components/molecules/breadcrumbs.astro';
 import Container from '@/components/atoms/container.astro';
-import type { Crumb } from '@/lib/types';
 
 export async function getStaticPaths() {
   const categories = await getCategories();
@@ -24,18 +22,13 @@ const { item, Content } = entry;
 
 const children = await getProductsOf(item.slug);
 
-const crumbs: Crumb[] = [
-  { label: 'Главная', href: '/' },
-  { label: 'Каталог', href: '/catalog/' },
-  { label: item.navTitle },
-];
-
 const path = catalogItemUrl(item);
 const jsonLd = [
-  breadcrumbsJsonLd(
-    siteConfig.siteUrl,
-    crumbs.map((crumb) => ({ name: crumb.label, path: crumb.href ?? path })),
-  ),
+  breadcrumbsJsonLd(siteConfig.siteUrl, [
+    { name: 'Главная', path: '/' },
+    { name: 'Каталог', path: '/catalog/' },
+    { name: item.navTitle, path },
+  ]),
 ];
 ---
 
@@ -48,13 +41,12 @@ const jsonLd = [
 >
   <Container>
     <div class="page-head">
-      <Breadcrumbs items={crumbs} />
       <h1>{item.title}</h1>
       <p class="page-head__lead">{item.lead}</p>
     </div>
   </Container>
 
-  {children.length > 0 && <CategoryGrid items={children} heading="Изделия раздела" />}
+  {children.length > 0 && <CategoryGrid items={children} heading="Изделия раздела" aboveFold />}
 
   {item.images.length > 0 && <WorksGallery images={item.images} heading="Фотографии изделий" />}
 

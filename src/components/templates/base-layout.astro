@@ -6,8 +6,9 @@ import Header from '@/components/organisms/header.astro';
 import { siteConfig } from '@/config/site';
 import { getDefaultShareImage } from '@/lib/content';
 import { OG_IMAGE } from '@/lib/images';
-import { buildTitle, canonicalUrl, clampDescription, organizationJsonLd } from '@/lib/seo';
+import { buildTitle, canonicalUrl, clampDescription, jsonLdText, organizationJsonLd } from '@/lib/seo';
 import type { PageSeo } from '@/lib/seo';
+import { speculationRules } from '@/lib/speculation';
 
 interface Props extends PageSeo {
   /** Дополнительные JSON-LD объекты страницы (Product, BreadcrumbList и т.д.) */
@@ -30,10 +31,12 @@ const organization = organizationJsonLd({
   legalName: siteConfig.legalName,
   url: siteConfig.siteUrl,
   logoUrl: `${siteConfig.siteUrl}/favicon.svg`,
-  phone: siteConfig.phone,
+  phone: siteConfig.phoneHref,
   email: siteConfig.email,
   address: siteConfig.address,
-  instagram: siteConfig.instagram,
+  geo: siteConfig.geo,
+  taxID: siteConfig.unp,
+  openingHours: siteConfig.openingHours,
 });
 
 const jsonLdBlocks = [organization, ...jsonLd];
@@ -48,6 +51,8 @@ const jsonLdBlocks = [organization, ...jsonLd];
     <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" href="/sitemap.xml" />
+    {/* Крупные превью фото в выдаче и Discover; текст и переходы не ограничиваем */}
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
     {/* .ico ради Яндекса и старых браузеров, .svg — везде, где понимают вектор */}
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -85,27 +90,24 @@ const jsonLdBlocks = [organization, ...jsonLd];
       crossorigin
     />
 
-    {/* Анти-FOUC: тема до первой отрисовки. Синхронизирован с src/lib/theme.ts */}
-    <script is:inline>
-      (() => {
-        const theme = localStorage.getItem('theme');
-        if (theme === 'light' || theme === 'dark') {
-          document.documentElement.dataset.theme = theme;
-        }
-      })();
-    </script>
+    {/* Предзагрузка внутренних страниц при наведении — см. src/lib/speculation.ts */}
+    <script is:inline type="speculationrules" set:html={jsonLdText(speculationRules)} />
 
     {/* is:inline — разметка для поисковиков идёт в страницу как есть, без сборки */}
     {
       jsonLdBlocks.map((block) => (
-        <script is:inline type="application/ld+json" set:html={JSON.stringify(block)} />
+        <script is:inline type="application/ld+json" set:html={jsonLdText(block)} />
       ))
     }
   </head>
   <body>
     <a class="skip-link" href="#main">Перейти к содержимому</a>
     <Header />
-    <main id="main">
+    {
+      /* tabindex="-1" — чтобы после skip-link фокус реально уезжал в контент:
+        без него браузер только прокручивает страницу, а скринридер остаётся в шапке */
+    }
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer />
@@ -132,5 +134,11 @@ const jsonLdBlocks = [organization, ...jsonLd];
 
   .skip-link:focus-visible {
     top: var(--space-2);
+  }
+
+  /* Рамка вокруг всего контента ничего не сообщает: цель перехода видна по заголовку,
+     а следующий Tab покажет фокус там, где он полезен */
+  #main:focus-visible {
+    outline: none;
   }
 </style>

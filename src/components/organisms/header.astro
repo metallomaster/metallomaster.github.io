@@ -1,5 +1,4 @@
 ---
-import ThemeToggle from '@/components/molecules/theme-toggle.astro';
 import { siteConfig } from '@/config/site';
 import Container from '@/components/atoms/container.astro';
 import Logo from '@/components/atoms/logo.astro';
@@ -41,18 +40,13 @@ const isCurrent = (href: string) =>
           ))
         }
       </ul>
-      <a class="header__phone header__phone--mobile" href={`tel:${siteConfig.phone}`}>
-        {siteConfig.phoneDisplay}
+      <a class="header__phone header__phone--mobile" href={`tel:${siteConfig.phoneHref}`}>
+        {siteConfig.phone}
       </a>
-      <div class="header__theme-row">
-        <span class="header__theme-label">Тема</span>
-        <ThemeToggle />
-      </div>
     </nav>
 
     <div class="header__actions">
-      <a class="header__phone" href={`tel:${siteConfig.phone}`}>{siteConfig.phoneDisplay}</a>
-      <span class="header__theme-desktop"><ThemeToggle /></span>
+      <a class="header__phone" href={`tel:${siteConfig.phoneHref}`}>{siteConfig.phone}</a>
       <button
         class="header__burger"
         type="button"
@@ -85,6 +79,10 @@ const isCurrent = (href: string) =>
   }
 
   .header__logo {
+    display: inline-flex;
+    align-items: center;
+    /* Тач-таргет: сама надпись 43 px, до требуемых 44 не хватало пикселя */
+    min-height: 44px;
     text-decoration: none;
     flex-shrink: 0;
   }
@@ -128,6 +126,10 @@ const isCurrent = (href: string) =>
   }
 
   .header__phone {
+    /* Строка текста даёт 24 px по высоте — добираем до тач-таргета 44 px */
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-weight: 800;
     font-size: var(--text-sm);
     text-decoration: none;
@@ -140,15 +142,6 @@ const isCurrent = (href: string) =>
 
   .header__phone--mobile {
     display: none;
-  }
-
-  /* Строка «Тема» с переключателем — только в мобильной панели меню */
-  .header__theme-row {
-    display: none;
-  }
-
-  .header__theme-desktop {
-    display: inline-flex;
   }
 
   .header__burger {
@@ -181,10 +174,6 @@ const isCurrent = (href: string) =>
     }
 
     /* На узких экранах в строке только логотип и бургер справа */
-    .header__theme-desktop {
-      display: none;
-    }
-
     .header__actions {
       margin-inline-start: auto;
     }
@@ -237,22 +226,6 @@ const isCurrent = (href: string) =>
       min-height: 48px;
       padding: var(--space-1) var(--space-3);
       color: var(--color-accent);
-    }
-
-    .header__theme-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 48px;
-      margin-block-start: var(--space-2);
-      padding-inline: var(--space-3);
-      border-top: 1px solid var(--color-border);
-    }
-
-    .header__theme-label {
-      font-weight: 600;
-      font-size: var(--text-base);
-      color: var(--color-text-muted);
     }
   }
 </style>

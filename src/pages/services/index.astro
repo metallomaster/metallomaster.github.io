@@ -1,0 +1,60 @@
+---
+import { getCatalogItems } from '@/lib/content';
+import BaseLayout from '@/components/templates/base-layout.astro';
+import CategoryGrid from '@/components/organisms/category-grid.astro';
+import CtaBand from '@/components/organisms/cta-band.astro';
+import { siteConfig } from '@/config/site';
+import { breadcrumbsJsonLd } from '@/lib/seo';
+import Container from '@/components/atoms/container.astro';
+
+const services = (await getCatalogItems()).filter((item) => item.type === 'service');
+
+const jsonLd = [
+  breadcrumbsJsonLd(siteConfig.siteUrl, [
+    { name: 'Главная', path: '/' },
+    { name: 'Услуги', path: '/services/' },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Услуги: монтаж дымоходов и вентиляционные системы"
+  description="Услуги METALLOMASTER: монтаж дымоходов из нержавеющей стали под ключ и изготовление элементов вентиляционных систем. Выезд на объект по Минску и области."
+  path="/services/"
+  jsonLd={jsonLd}
+>
+  <Container>
+    <div class="page-head">
+      <h1>Услуги</h1>
+      <p class="page-head__lead">
+        Не только изготавливаем, но и устанавливаем: монтируем дымоходы под ключ и собираем
+        вентиляционные системы под ваш проект. Работаем по Минску и области.
+      </p>
+    </div>
+  </Container>
+
+  <CategoryGrid items={services} aboveFold />
+
+  <CtaBand
+    title="Не знаете, с чего начать?"
+    subtitle="Оставьте заявку — подскажем решение и рассчитаем стоимость по вашему объекту."
+  />
+</BaseLayout>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-6) var(--space-2);
+  }
+
+  .page-head h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .page-head__lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    max-width: 60ch;
+  }
+</style>

@@ -64,10 +64,29 @@
     </svg>
   </button>
 
-  <span class="lightbox__counter" data-lightbox-counter aria-live="polite"></span>
+  <span class="lightbox__counter" data-lightbox-counter aria-hidden="true"></span>
+
+  {
+    /* Объявление для скринридера: сам счётчик виден глазами, но «2 / 9» без подписи
+      не говорит, что на фото. Отдельный регион, потому что aria-label на live-области
+      перекрывает её содержимое и объявление становится ненадёжным. */
+  }
+  <span class="lightbox__status" data-lightbox-status role="status" aria-live="polite"></span>
 </dialog>
 
 <style>
+  /* Видно только скринридеру */
+  .lightbox__status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
   .lightbox {
     position: fixed;
     inset: 0;

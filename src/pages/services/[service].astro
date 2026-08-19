@@ -7,9 +7,7 @@ import WorksGallery from '@/components/organisms/works-gallery.astro';
 import { catalogItemUrl } from '@/lib/types';
 import { siteConfig } from '@/config/site';
 import { breadcrumbsJsonLd } from '@/lib/seo';
-import Breadcrumbs from '@/components/molecules/breadcrumbs.astro';
 import Container from '@/components/atoms/container.astro';
-import type { Crumb } from '@/lib/types';
 
 export async function getStaticPaths() {
   const items = await getCatalogItems();
@@ -23,18 +21,13 @@ const entry = await getCatalogEntryWithContent(service);
 if (!entry) throw new Error(`Нет контента для услуги ${service}`);
 const { item, Content } = entry;
 
-const crumbs: Crumb[] = [
-  { label: 'Главная', href: '/' },
-  { label: 'Каталог', href: '/catalog/' },
-  { label: item.navTitle },
-];
-
 const path = catalogItemUrl(item);
 const jsonLd = [
-  breadcrumbsJsonLd(
-    siteConfig.siteUrl,
-    crumbs.map((crumb) => ({ name: crumb.label, path: crumb.href ?? path })),
-  ),
+  breadcrumbsJsonLd(siteConfig.siteUrl, [
+    { name: 'Главная', path: '/' },
+    { name: 'Услуги', path: '/services/' },
+    { name: item.navTitle, path },
+  ]),
 ];
 ---
 
@@ -47,13 +40,10 @@ const jsonLd = [
 >
   <Container>
     <div class="page-head">
-      <Breadcrumbs items={crumbs} />
       <h1>{item.title}</h1>
       <p class="page-head__lead">{item.lead}</p>
     </div>
   </Container>
-
-  {item.images.length > 0 && <WorksGallery images={item.images} heading="Примеры наших работ" />}
 
   <Container>
     <div class="prose">
@@ -61,9 +51,11 @@ const jsonLd = [
     </div>
   </Container>
 
+  {item.images.length > 0 && <WorksGallery images={item.images} heading="Примеры наших работ" />}
+
   <CtaBand
-    title={`Нужно изделие «${item.navTitle.toLowerCase()}»?`}
-    subtitle="Рассчитаем стоимость по вашим размерам и изготовим в короткий срок."
+    title={`Нужна услуга «${item.navTitle.toLowerCase()}»?`}
+    subtitle="Оставьте заявку — рассчитаем стоимость по вашему объекту и ответим на вопросы."
   />
 
   {item.images.length > 0 && <Lightbox />}
@@ -96,6 +88,11 @@ const jsonLd = [
     margin-block: var(--space-6) var(--space-4);
   }
 
+  /* Первый заголовок не дублирует отступ, который уже даёт page-head */
+  .prose :global(h2:first-child) {
+    margin-block-start: 0;
+  }
+
   .prose :global(p) {
     margin-block-end: var(--space-4);
   }
@@ -109,5 +106,14 @@ const jsonLd = [
 
   .prose :global(li)::marker {
     color: var(--color-accent);
+  }
+
+  /* Схемы и иллюстрации внутри markdown-текста */
+  .prose :global(img) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
   }
 </style>

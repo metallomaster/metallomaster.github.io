@@ -6,9 +6,11 @@ import Picture from '@/components/atoms/picture.astro';
 interface Props {
   images: CatalogImage[];
   heading?: string;
+  /** Галерея на первом экране: первый кадр — кандидат в LCP, грузим его без задержки */
+  aboveFold?: boolean;
 }
 
-const { images, heading = 'Наши работы' } = Astro.props;
+const { images, heading = 'Наши работы', aboveFold = false } = Astro.props;
 ---
 
 <section class="works-gallery">
@@ -16,13 +18,14 @@ const { images, heading = 'Наши работы' } = Astro.props;
     <h2 class="works-gallery__heading">{heading}</h2>
     <ul class="works-gallery__grid">
       {
-        images.map((image) => (
+        images.map((image, index) => (
           <li>
             {/* href на пережатый полноразмер — его откроет лайтбокс */}
             <a class="works-gallery__link" href={image.full} data-lightbox-group="works">
               <Picture
                 src={image.src}
                 alt={image.alt}
+                priority={aboveFold && index === 0}
                 sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (max-width: 1439px) 25vw, 200px"
               />
             </a>

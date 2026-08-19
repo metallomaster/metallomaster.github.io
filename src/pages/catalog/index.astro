@@ -5,14 +5,11 @@ import CategoryGrid from '@/components/organisms/category-grid.astro';
 import CtaBand from '@/components/organisms/cta-band.astro';
 import { siteConfig } from '@/config/site';
 import { breadcrumbsJsonLd } from '@/lib/seo';
-import Breadcrumbs from '@/components/molecules/breadcrumbs.astro';
 import Container from '@/components/atoms/container.astro';
 
 const items = await getCatalogItems();
 const categories = items.filter((item) => item.type === 'category');
-const services = items.filter((item) => item.type === 'service');
 
-const crumbs = [{ label: 'Главная', href: '/' }, { label: 'Каталог продукции' }];
 const jsonLd = [
   breadcrumbsJsonLd(siteConfig.siteUrl, [
     { name: 'Главная', path: '/' },
@@ -29,7 +26,6 @@ const jsonLd = [
 >
   <Container>
     <div class="page-head">
-      <Breadcrumbs items={crumbs} />
       <h1>Каталог продукции</h1>
       <p class="page-head__lead">
         Изготавливаем изделия из оцинкованной и нержавеющей стали, металла с полимерным покрытием —
@@ -38,9 +34,7 @@ const jsonLd = [
     </div>
   </Container>
 
-  <CategoryGrid items={categories} heading="Разделы каталога" />
-
-  {services.length > 0 && <CategoryGrid items={services} heading="Услуги" />}
+  <CategoryGrid items={categories} aboveFold />
 
   <CtaBand
     title="Не нашли нужное изделие?"

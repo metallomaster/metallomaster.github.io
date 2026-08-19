@@ -11,7 +11,8 @@ export function initLightbox(root: HTMLElement): void {
   const dialog = root.querySelector<HTMLDialogElement>('[data-lightbox-dialog]');
   const image = dialog?.querySelector<HTMLImageElement>('[data-lightbox-image]');
   const counter = dialog?.querySelector<HTMLElement>('[data-lightbox-counter]');
-  if (!dialog || !image || !counter) return;
+  const status = dialog?.querySelector<HTMLElement>('[data-lightbox-status]');
+  if (!dialog || !image || !counter || !status) return;
 
   let group: HTMLAnchorElement[] = [];
   let index = 0;
@@ -19,9 +20,11 @@ export function initLightbox(root: HTMLElement): void {
   const render = (): void => {
     const link = group[index];
     if (!link) return;
+    const caption = link.querySelector('img')?.alt ?? '';
     image.src = link.href;
-    image.alt = link.querySelector('img')?.alt ?? '';
+    image.alt = caption;
     counter.textContent = `${index + 1} / ${group.length}`;
+    status.textContent = `Фото ${index + 1} из ${group.length}. ${caption}`;
   };
 
   const show = (shift: number): void => {
@@ -86,10 +89,17 @@ export function initLightbox(root: HTMLElement): void {
       swiped = false;
       return;
     }
-    if (!(event.target as HTMLElement).closest('img, button')) dialog.close();
+    if (!(event.target as HTMLElement).closest('img, button, [data-lightbox-counter]'))
+      dialog.close();
   });
 
   dialog.addEventListener('close', () => {
     document.body.style.overflow = '';
+  });
+
+  /* Страница из bfcache возвращается ровно в том виде, в каком её покинули: если уходили
+     с открытым лайтбоксом, «назад» вернёт оверлей и заблокированную прокрутку. Закрываем. */
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted && dialog.open) dialog.close();
   });
 }

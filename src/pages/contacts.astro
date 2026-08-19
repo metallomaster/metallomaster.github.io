@@ -1,14 +1,18 @@
 ---
 import BaseLayout from '@/components/templates/base-layout.astro';
-import ContactInfo from '@/components/molecules/contact-info.astro';
+import CtaBand from '@/components/organisms/cta-band.astro';
 import Container from '@/components/atoms/container.astro';
 import { siteConfig } from '@/config/site';
+import { formatOpeningHours } from '@/lib/schedule';
 
-/* Ссылки на карты вместо iframe: не тянем чужие скрипты ради одной точки */
-const yandexMapsUrl = 'https://yandex.by/maps/?text=Колодищи%20Путейская';
-const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  'Колодищи улица Путейская',
-)}`;
+const openingHours = formatOpeningHours(siteConfig.openingHours);
+
+/* Ссылки на карты вместо iframe: не тянем чужие скрипты ради одной точки.
+   Ведём по координатам, а не текстовым поиском — метка встаёт ровно на производство.
+   У Яндекса порядок «долгота,широта», у Google — наоборот. */
+const { latitude, longitude } = siteConfig.geo;
+const yandexMapsUrl = `https://yandex.by/maps/?ll=${longitude},${latitude}&z=17&pt=${longitude},${latitude}`;
+const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
 ---
 
 <BaseLayout
@@ -23,72 +27,101 @@ const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeU
         <p>Звоните или пишите — подскажем по материалам и размерам, посчитаем стоимость изделия.</p>
       </div>
 
-      <div class="contacts__grid">
-        <ContactInfo />
+      <section class="route">
+        <h2 class="route__title">Как доехать</h2>
 
-        <div class="contacts__details">
-          <section class="contacts__card">
-            <h2 class="contacts__heading">Как доехать</h2>
-            <p>
-              Производство находится в агрогородке Колодищи на улице Путейской — десять минут от
-              МКАД по Московскому шоссе.
-            </p>
-            <div class="contacts__map-links">
-              <a class="contacts__map-link" href={yandexMapsUrl} target="_blank" rel="noopener">
-                Открыть в Яндекс.Картах
-                <svg
-                  class="contacts__map-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M7 17 17 7"></path>
-                  <path d="M8 7h9v9"></path>
-                </svg>
-              </a>
-              <a class="contacts__map-link" href={googleMapsUrl} target="_blank" rel="noopener">
-                Открыть в Google Картах
-                <svg
-                  class="contacts__map-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M7 17 17 7"></path>
-                  <path d="M8 7h9v9"></path>
-                </svg>
-              </a>
-            </div>
-          </section>
+        <p class="route__address">
+          <svg
+            class="route__pin"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          {siteConfig.address.text}, {siteConfig.address.region}
+        </p>
 
-          <section class="contacts__card">
-            <h2 class="contacts__heading">Реквизиты</h2>
-            <p>{siteConfig.legalName}</p>
-            <p>УНП {siteConfig.unp}</p>
-          </section>
+        <p class="route__text">
+          Производство находится в агрогородке Колодищи на улице Путейской — десять минут от МКАД по
+          Московскому шоссе. Приезжайте с размерами или эскизом: подберём решение на месте и
+          покажем, как изделие делается.
+        </p>
+
+        <ul class="route__facts">
+          <li class="route__fact">
+            <span class="route__fact-value">10 мин</span>
+            <span class="route__fact-label">от МКАД по Московскому шоссе</span>
+          </li>
+          <li class="route__fact">
+            <span class="route__fact-value">{openingHours}</span>
+            <span class="route__fact-label">приезжайте в рабочее время</span>
+          </li>
+          <li class="route__fact">
+            <span class="route__fact-value">Самовывоз</span>
+            <span class="route__fact-label">забрать готовое изделие с производства</span>
+          </li>
+        </ul>
+
+        <div class="route__links">
+          <a class="route__link" href={yandexMapsUrl} target="_blank" rel="noopener">
+            <span>Открыть в Яндекс.Картах</span>
+            <svg
+              class="route__icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M7 17 17 7"></path>
+              <path d="M8 7h9v9"></path>
+            </svg>
+          </a>
+          <a class="route__link" href={googleMapsUrl} target="_blank" rel="noopener">
+            <span>Открыть в Google Картах</span>
+            <svg
+              class="route__icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M7 17 17 7"></path>
+              <path d="M8 7h9v9"></path>
+            </svg>
+          </a>
         </div>
-      </div>
+      </section>
     </section>
   </Container>
+
+  <CtaBand
+    title="Нужен расчёт стоимости?"
+    subtitle="Позвоните или оставьте заявку с размерами — ответим в рабочее время и назовём срок."
+  />
 </BaseLayout>
 
 <style>
   .contacts {
-    padding-block: var(--space-7) var(--space-9);
+    display: grid;
+    gap: var(--space-7);
+    padding-block: var(--space-6);
   }
 
   .contacts__intro {
     display: grid;
     gap: var(--space-4);
-    margin-bottom: var(--space-7);
   }
 
   .contacts__intro h1 {
@@ -101,68 +134,115 @@ const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeU
     max-width: 52ch;
   }
 
-  .contacts__grid {
+  .route {
     display: grid;
-    gap: var(--space-6);
-    align-items: start;
-  }
-
-  .contacts__details {
-    display: grid;
-    gap: var(--space-6);
-  }
-
-  .contacts__card {
-    display: grid;
-    gap: var(--space-3);
+    gap: var(--space-4);
     padding: var(--space-6);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
+    background: var(--color-surface);
   }
 
-  .contacts__heading {
+  .route__title {
+    font-size: var(--text-lg);
+  }
+
+  .route__address {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-weight: 700;
+  }
+
+  .route__pin {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
+  .route__text {
     font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    max-width: 68ch;
+  }
+
+  .route__facts {
+    display: grid;
+    gap: var(--space-4);
+    margin-block: var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .route__fact {
+    display: grid;
+    gap: var(--space-1);
+    /* Акцентная кромка вместо буллита — как у CTA-панели */
+    padding-inline-start: var(--space-4);
+    border-inline-start: 2px solid var(--color-accent);
+  }
+
+  .route__fact-value {
+    font-size: var(--text-base);
     font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+  }
+
+  .route__fact-label {
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
   }
 
-  .contacts__card p {
-    font-size: var(--text-sm);
+  .route__links {
+    display: grid;
+    gap: var(--space-3);
   }
 
-  .contacts__map-links {
+  /* Ссылки на карты — плитки: заметнее обычной ссылки и удобнее для тача */
+  .route__link {
     display: flex;
-    flex-wrap: wrap;
-    column-gap: var(--space-5);
-  }
-
-  .contacts__map-link {
-    display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
-    justify-self: start;
+    justify-content: space-between;
+    gap: var(--space-3);
     min-height: 44px;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
     font-size: var(--text-sm);
     font-weight: 700;
-    color: var(--color-accent);
     text-decoration: none;
+    transition:
+      border-color var(--transition-fast),
+      color var(--transition-fast);
   }
 
-  .contacts__map-link:hover {
-    color: var(--color-accent-hover);
+  .route__link:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 
-  .contacts__map-icon {
+  .route__icon {
     width: 16px;
     height: 16px;
+    flex-shrink: 0;
+    color: var(--color-accent);
   }
 
   @media (min-width: 768px) {
-    .contacts__grid {
-      grid-template-columns: 1.2fr 1fr;
-      gap: var(--space-7);
+    .route {
+      gap: var(--space-5);
+      padding: var(--space-7);
+    }
+
+    .route__facts {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    /* Плитки карт не растягиваем на всю карточку — иначе кнопка шириной в экран */
+    .route__links {
+      grid-template-columns: repeat(2, minmax(0, 300px));
     }
   }
 </style>

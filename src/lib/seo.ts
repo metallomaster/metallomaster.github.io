@@ -3,6 +3,8 @@
  * Вставка в <head> — задача src/components/templates/base-layout.astro.
  */
 
+import { weekDays } from '@/lib/schedule';
+import type { OpeningHours } from '@/lib/schedule';
 import type { PictureSrc } from '@/lib/types';
 
 /** Хвост убран из H1 навсегда: бренд добавляется только в <title> */
@@ -39,6 +41,16 @@ export function canonicalUrl(siteUrl: string, path: string): string {
   return new URL(path, siteUrl).toString();
 }
 
+/**
+ * JSON для вставки внутрь <script>: угловая скобка уходит в \u003c.
+ * Разметку мы отдаём как есть (set:html), а браузер ищет в теле тега сырую
+ * строку «</script>» — без экранирования скобка в описании товара или в alt
+ * закрыла бы тег, и остаток JSON оказался бы разметкой страницы.
+ */
+export function jsonLdText(data: object): string {
+  return JSON.stringify(data).replace(/</g, '\\u003c');
+}
+
 export interface OrganizationParams {
   name: string;
   legalName: string;
@@ -46,17 +58,35 @@ export interface OrganizationParams {
   logoUrl: string;
   phone: string;
   email: string;
-  address: string;
-  instagram: string;
+  /** Адрес по частям — форма совпадает с SiteAddress из config/site */
+  address: {
+    country: string;
+    region: string;
+    locality: string;
+    street: string;
+    postalCode?: string;
+  };
+  /** Координаты производства — по ним поисковики ставят точку на карте */
+  geo: { latitude: number; longitude: number };
+  /** УНП: у schema.org для него есть законное место — taxID */
+  taxID: string;
+  openingHours: OpeningHours;
 }
 
+/**
+ * Паспорт организации: по нему поисковики связывают сайт с карточкой на картах.
+ * Тип RoofingContractor, а не общий LocalBusiness: Google требует самый конкретный
+ * подтип, и этот подтип из числа поддерживаемых Яндекс.Бизнесом.
+ * (ProfessionalService не годится — deprecated самим schema.org.)
+ */
 export function organizationJsonLd(p: OrganizationParams): object {
   return {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'RoofingContractor',
     '@id': `${p.url}/#organization`,
     name: p.name,
     legalName: p.legalName,
+    taxID: p.taxID,
     url: p.url,
     logo: p.logoUrl,
     image: p.logoUrl,
@@ -64,12 +94,30 @@ export function organizationJsonLd(p: OrganizationParams): object {
     email: p.email,
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'BY',
-      addressRegion: 'Минская область',
-      addressLocality: 'аг. Колодищи',
-      streetAddress: p.address,
+      addressCountry: p.address.country,
+      addressRegion: p.address.region,
+      addressLocality: p.address.locality,
+      streetAddress: p.address.street,
+      ...(p.address.postalCode ? { postalCode: p.address.postalCode } : {}),
     },
-    sameAs: [p.instagram],
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: p.geo.latitude,
+      longitude: p.geo.longitude,
+    },
+    /* Машиночитаемый график — тот же источник, что и строка в футере */
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: weekDays(p.openingHours),
+        opens: p.openingHours.opens,
+        closes: p.openingHours.closes,
+      },
+    ],
+    areaServed: [
+      { '@type': 'City', name: 'Минск' },
+      { '@type': 'AdministrativeArea', name: 'Минский район' },
+    ],
   };
 }
 

@@ -27,7 +27,11 @@ const works = await getWorks();
     <Button href="/catalog/" variant="outline" size="lg">Смотреть каталог</Button>
   </Hero>
 
-  {featured.length > 0 && <CategoryGrid items={featured} heading="Что мы изготавливаем" />}
+  {
+    featured.length > 0 && (
+      <CategoryGrid items={featured} heading="Что мы изготавливаем" aboveFold />
+    )
+  }
 
   {works.length > 0 && <WorksGallery images={works} heading="Наши работы" />}
 

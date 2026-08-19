@@ -8,9 +8,7 @@ import WorksGallery from '@/components/organisms/works-gallery.astro';
 import { catalogItemUrl } from '@/lib/types';
 import { siteConfig } from '@/config/site';
 import { breadcrumbsJsonLd, productJsonLd } from '@/lib/seo';
-import Breadcrumbs from '@/components/molecules/breadcrumbs.astro';
 import Container from '@/components/atoms/container.astro';
-import type { Crumb } from '@/lib/types';
 
 export async function getStaticPaths() {
   const items = await getCatalogItems();
@@ -30,19 +28,14 @@ const related = item.category
   ? (await getProductsOf(item.category)).filter((i) => i.slug !== item.slug)
   : [];
 
-const crumbs: Crumb[] = [
-  { label: 'Главная', href: '/' },
-  { label: 'Каталог', href: '/catalog/' },
-  ...(parent ? [{ label: parent.navTitle, href: catalogItemUrl(parent) }] : []),
-  { label: item.navTitle },
-];
-
 const path = catalogItemUrl(item);
 const jsonLd: object[] = [
-  breadcrumbsJsonLd(
-    siteConfig.siteUrl,
-    crumbs.map((crumb) => ({ name: crumb.label, path: crumb.href ?? path })),
-  ),
+  breadcrumbsJsonLd(siteConfig.siteUrl, [
+    { name: 'Главная', path: '/' },
+    { name: 'Каталог', path: '/catalog/' },
+    ...(parent ? [{ name: parent.navTitle, path: catalogItemUrl(parent) }] : []),
+    { name: item.navTitle, path },
+  ]),
   productJsonLd({
     name: item.title,
     description: item.description,
@@ -66,13 +59,16 @@ const jsonLd: object[] = [
 >
   <Container>
     <div class="page-head">
-      <Breadcrumbs items={crumbs} />
       <h1>{item.title}</h1>
       <p class="page-head__lead">{item.lead}</p>
     </div>
   </Container>
 
-  {item.images.length > 0 && <WorksGallery images={item.images} heading="Фотографии изделий" />}
+  {
+    item.images.length > 0 && (
+      <WorksGallery images={item.images} heading="Фотографии изделий" aboveFold />
+    )
+  }
 
   <Container>
     <div class="prose">

@@ -5,18 +5,18 @@ import type { CatalogItem } from '@/lib/types';
 
 interface Props {
   item: CatalogItem;
-  /** eager для карточек над сгибом (LCP) */
-  loading?: 'lazy' | 'eager';
+  /** Обложка над сгибом — кандидат в LCP */
+  priority?: boolean;
 }
 
-const { item, loading = 'lazy' } = Astro.props;
+const { item, priority = false } = Astro.props;
 ---
 
 <a class="catalog-card" href={catalogItemUrl(item)}>
   {
     item.cover && (
       <div class="catalog-card__media">
-        <Picture src={item.cover.src} alt={item.cover.alt} loading={loading} />
+        <Picture src={item.cover.src} alt={item.cover.alt} priority={priority} />
       </div>
     )
   }
@@ -57,7 +57,7 @@ const { item, loading = 'lazy' } = Astro.props;
   .catalog-card__media :global(img) {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .catalog-card__title {
