@@ -82,8 +82,8 @@ const year = new Date().getFullYear();
   <div class="footer__legal">
     <Container class="footer__legal-inner">
       <span>© {year} {siteConfig.name}</span>
-      <a class="footer__link" href="/privacy-policy/">Политика персональных данных</a>
       <span>{siteConfig.legalName} · УНП {siteConfig.unp}</span>
+      <a class="footer__link" href="/privacy-policy/">Политика персональных данных</a>
     </Container>
   </div>
 </footer>
@@ -161,7 +161,11 @@ const year = new Date().getFullYear();
       padding-block: var(--space-6);
     }
 
+    /* Три блока в строку не влезают: ссылка сжимается до колонки из отдельных слов.
+       На узком экране — столбик, каждая строка целиком */
     .footer :global(.footer__legal-inner) {
+      flex-direction: column;
+      align-items: start;
       gap: var(--space-2);
     }
   }
@@ -189,12 +193,14 @@ const year = new Date().getFullYear();
       flex: 1;
     }
 
-    /* Ссылка в нижней плашке стоит между двумя строками текста — inline-flex, иначе
-       min-height у строчного элемента не работает */
+    /* Ссылка в нижней плашке — строчный элемент, min-height на нём не работает:
+       переводим в inline-flex */
     .footer__legal .footer__link {
       display: inline-flex;
       align-items: center;
       min-height: 44px;
+      /* flex-цель не растягиваем на всю строку: клик мимо текста — не переход */
+      align-self: start;
     }
   }
 </style>
