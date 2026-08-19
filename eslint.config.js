@@ -5,7 +5,7 @@ import boundaries from 'eslint-plugin-boundaries';
 
 export default defineConfig([
   {
-    ignores: ['dist/**', '.astro/**', '.documentation/**', 'node_modules/**', 'public/**'],
+    ignores: ['dist/**', '.astro/**', '.deprecated/**', 'node_modules/**', 'public/**'],
   },
   ...tseslint.configs.recommended,
   ...astro.configs.recommended,

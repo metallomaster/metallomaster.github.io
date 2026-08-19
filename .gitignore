@@ -6,7 +6,6 @@ dist/
 .astro/
 
 .env
-.env.local
 
 # tooling
 .playwright-mcp/

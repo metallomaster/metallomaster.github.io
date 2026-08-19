@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "name": "metallomaster",
-  "description": "Сайт производителя металлоизделий metallomaster.by",
   "scripts": {
     "dev": "astro dev",
+    "stop": "astro dev stop",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
