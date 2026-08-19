@@ -9,7 +9,31 @@ order: 10
 featured: true
 cover: ../_shared/insulated-air-ducts.webp
 coverAlt: Элементы дымохода из нержавеющей стали — трубы, отводы, зонты
-images: []
+images:
+  - src: ../_shared/insulated-chimney-01.webp
+    alt: Дымоход из нержавеющей стали с зонтом-дефлектором на фасаде дома
+  - src: ../_shared/insulated-chimney-02.webp
+    alt: Сэндвич-дымоход, подключённый к печи-камину в бревенчатом доме
+  - src: ../_shared/insulated-chimney-03.webp
+    alt: Нержавеющая дымоходная секция над печью в жилом помещении
+  - src: ../_shared/insulated-chimney-04.webp
+    alt: Утеплённый дымоход на стеновых кронштейнах вдоль фасада
+  - src: ../_shared/insulated-chimney-05.webp
+    alt: Наружный сэндвич-дымоход вдоль фронтона деревянного дома
+  - src: ../_shared/insulated-chimney-06.webp
+    alt: Дымоходная труба из нержавейки на производственном здании
+  - src: ../_shared/insulated-chimney-07.webp
+    alt: Высокий дымоход вдоль фасада двухэтажного кирпичного дома
+  - src: ../_shared/insulated-air-ducts.webp
+    alt: Секции утеплённого дымохода из нержавеющей стали в цехе
+  - src: ../_shared/chimney-components-2.webp
+    alt: 'Комплект элементов дымохода: трубы, отводы, тройники, зонты'
+  - src: ../_shared/stainless-steel-tees.webp
+    alt: Тройники из нержавеющей стали для дымоходных систем
+  - src: ../_shared/stainless-steel-adapters.webp
+    alt: Переходы дымохода с одного диаметра на другой из нержавейки
+  - src: ../_shared/brick-to-sandwich-adapter.webp
+    alt: Переход с кирпичного дымохода на сэндвич-трубу из нержавейки
 ---
 
 ## Что входит в раздел

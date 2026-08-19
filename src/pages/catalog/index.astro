@@ -1,5 +1,5 @@
 ---
-import { getCatalogItems } from '@/lib/content';
+import { getCatalogSections } from '@/lib/content';
 import BaseLayout from '@/components/templates/base-layout.astro';
 import CategoryGrid from '@/components/organisms/category-grid.astro';
 import CtaBand from '@/components/organisms/cta-band.astro';
@@ -7,8 +7,7 @@ import { siteConfig } from '@/config/site';
 import { breadcrumbsJsonLd } from '@/lib/seo';
 import Container from '@/components/atoms/container.astro';
 
-const items = await getCatalogItems();
-const categories = items.filter((item) => item.type === 'category');
+const sections = await getCatalogSections();
 
 const jsonLd = [
   breadcrumbsJsonLd(siteConfig.siteUrl, [
@@ -34,7 +33,7 @@ const jsonLd = [
     </div>
   </Container>
 
-  <CategoryGrid items={categories} aboveFold />
+  <CategoryGrid items={sections} aboveFold />
 
   <CtaBand
     title="Не нашли нужное изделие?"

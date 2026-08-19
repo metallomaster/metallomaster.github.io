@@ -9,6 +9,17 @@ order: 30
 featured: true
 cover: ./parapet-cap/parapet-cap-01.webp
 coverAlt: Парапетная крышка на ограждении плоской кровли
+images:
+  - src: ./parapet-cap/parapet-cap-01.webp
+    alt: Графитовый парапет с капельниками на стенке плоской кровли
+  - src: ./parapet-cap/parapet-cap-06.webp
+    alt: Парапеты с полимерным покрытием по периметру плоской крыши
+  - src: ./parapet-cap/parapet-cap-04.webp
+    alt: Угловое соединение парапетных крышек на ограждении террасы
+  - src: ./parapet-cap/parapet-cap-03.webp
+    alt: Тёмный парапет поверх оштукатуренной стены ограждения
+  - src: ./parapet-cap/parapet-cap-05.webp
+    alt: Кромка стального парапета с капельником крупным планом
 ---
 
 ## Зачем кровле доборные элементы

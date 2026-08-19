@@ -30,6 +30,22 @@ images:
     alt: Колпак на дымоход из окрашенной стали
   - src: ./chimney-cap-minsk-2.webp
     alt: Колпак для дымоходной трубы, наша работа
+  - src: ../_shared/insulated-chimney-05.webp
+    alt: Наружный сэндвич-дымоход, смонтированный вдоль фронтона дома
+  - src: ../_shared/insulated-chimney-07.webp
+    alt: Дымоход по фасаду двухэтажного кирпичного дома — наш монтаж
+  - src: ../_shared/insulated-chimney-01.webp
+    alt: Смонтированный дымоход с зонтом-дефлектором на кровле дома
+  - src: ../_shared/insulated-chimney-03.webp
+    alt: Печь с дымоходом из нержавейки, установленным внутри дома
+  - src: ../_shared/insulated-air-ducts.webp
+    alt: Утеплённые воздуховоды нашего производства перед отправкой
+  - src: ../_shared/sandwich-air-ducts.webp
+    alt: Сэндвич-воздуховоды из оцинкованной стали в нашем цехе
+  - src: ../_shared/stainless-steel-vent-collector.webp
+    alt: Вентиляционный коллектор из нержавейки, изготовлен под заказ
+  - src: ../_shared/stainless-steel-tees.webp
+    alt: Тройники из нержавеющей стали для вентиляционной системы
   - src: ./work-example-01.webp
     alt: Смонтированный дымоход из нержавеющей стали — фото с объекта
   - src: ./work-example-02.webp
