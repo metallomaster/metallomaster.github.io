@@ -15,7 +15,7 @@ images:
   - src: ../_shared/copper-post-cap.webp
     alt: Колпак на столб из меди
   - src: ../_shared/chimney-cap-ral-8017.webp
-    alt: Колпак коричневого цвета RAL 8017
+    alt: Дымник на кирпичную трубу в коричневом RAL 8017
   - src: ../_shared/weather-vane-cap.webp
     alt: Флюгарка на дымоходной трубе
   - src: ../_shared/chimney-cap-ral-3005.webp
@@ -42,6 +42,16 @@ images:
     alt: Колпак с отбойником для защиты от ветра
   - src: ../_shared/stainless-steel-deflector.webp
     alt: Дефлектор из нержавеющей стали
+  - src: ./post-cap/post-cap-old-01.webp
+    alt: Колпак на столб забора
+  - src: ./post-cap/post-cap-old-02.webp
+    alt: Колпаки на столбы забора рядом
+  - src: ./post-cap/post-cap-old-03.webp
+    alt: Коричневый колпак на столб, вид сбоку
+  - src: ./post-cap/post-cap-old-04.webp
+    alt: Коричневый четырёхскатный колпак на столб
+  - src: ./post-cap/post-cap-old-05.webp
+    alt: Чёрный колпак-флюгарка на столб с ярусными козырьками
 ---
 
 ## Зачем столбу колпак

@@ -25,6 +25,18 @@ images:
     alt: Утеплённая дымоходная труба на стене производственного здания
   - src: ../_shared/insulated-chimney-07.webp
     alt: Высокий сэндвич-дымоход вдоль фасада двухэтажного кирпичного дома
+  - src: ./insulated-chimneys/insulated-chimneys-old-01.webp
+    alt: 'Схема утеплённого дымохода: труба сэндвич, хомуты, отводы, кронштейны'
+  - src: ./insulated-chimneys/insulated-chimneys-old-02.webp
+    alt: Двустенные утеплённые дымоходы в разрезе
+  - src: ./insulated-chimneys/insulated-chimneys-old-03.webp
+    alt: Утеплённая труба дымохода сэндвич в разрезе
+  - src: ./insulated-chimneys/insulated-chimneys-old-04.webp
+    alt: Тройник дымохода утеплённый сэндвич
+  - src: ./insulated-chimneys/insulated-chimneys-old-05.webp
+    alt: Колено дымохода утеплённое сэндвич
+  - src: ./insulated-chimneys/insulated-chimneys-old-06.webp
+    alt: Наконечник утеплённого дымохода с закрытым торцом изоляции
 ---
 
 ## Как устроен сэндвич-дымоход

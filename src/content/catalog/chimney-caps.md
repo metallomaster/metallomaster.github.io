@@ -6,12 +6,13 @@ seoTitle: Колпаки на дымоходные трубы в Минске
 description: Изготавливаем колпаки на трубу дымохода — зонты, дымники, дефлекторы, колпаки на столб. Оцинкованная сталь и нержавейка, цвета по RAL. Производство в Минске.
 lead: Колпак закрывает дымоход от дождя, снега и ветра, отводит конденсат и завершает облик кровли. Изготавливаем по вашим размерам и эскизу.
 order: 20
+featuredOrder: 50
 featured: true
-cover: ../_shared/chimney-cap-ral-8017.webp
-coverAlt: Коричневый дымник с защитной сеткой, изготовлен на заказ
+cover: ../_shared/chimney-pipe-cap-3.webp
+coverAlt: Многоярусный дымник цвета меди с четырёхскатной крышкой, изготовлен на заказ
 images:
   - src: ../_shared/chimney-cap-ral-8017.webp
-    alt: Колпак на дымоход в коричневом цвете RAL 8017
+    alt: Дымник с защитной сеткой на кирпичную трубу, RAL 8017
   - src: ../_shared/weather-vane-cap.webp
     alt: Флюгарка из окрашенной стали на дымоходной трубе
   - src: ../_shared/chimney-cap-ral-3005.webp
@@ -25,7 +26,7 @@ images:
   - src: ../_shared/hip-chimney-cap.webp
     alt: Четырёхскатный колпак на дымоход
   - src: ../_shared/chimney-pipe-cap-3.webp
-    alt: Готовый колпак на трубу дымохода перед установкой
+    alt: Многоярусный дымник цвета меди с четырёхскатной крышкой
   - src: ../_shared/chimney-cap-minsk.webp
     alt: Металлический колпак на дымоход, изготовленный в Минске
   - src: ../_shared/chimney-caps-minsk.webp
@@ -42,6 +43,34 @@ images:
     alt: Колпак с отбойником для защиты от ветра
   - src: ../_shared/stainless-steel-deflector.webp
     alt: Дефлектор из нержавеющей стали
+  - src: ./chimney-caps/chimney-caps-old-01.webp
+    alt: Колпак на дымоход в цвете RAL 7024, графитовый серый
+  - src: ./chimney-caps/chimney-caps-old-02.webp
+    alt: Колпак на дымоход в цвете RAL 9005, чёрный
+  - src: ./chimney-caps/chimney-caps-old-03.webp
+    alt: Колпак на дымоход с полимерным покрытием
+  - src: ./chimney-caps/chimney-caps-old-04.webp
+    alt: Колпаки для дымоходных труб разных размеров
+  - src: ./chimney-caps/chimney-caps-old-05.webp
+    alt: Изготовление колпаков на дымоход на производстве
+  - src: ./chimney-caps/chimney-caps-old-06.webp
+    alt: Колпак на трубу дымохода с многоярусной крышкой
+  - src: ./chimney-caps/chimney-caps-old-07.webp
+    alt: Колпак на дымоход, изготовленный в Минске
+  - src: ./chimney-caps/chimney-caps-old-08.webp
+    alt: Многоярусный колпак-флюгарка на трубу дымохода
+  - src: ./chimney-caps/chimney-caps-old-09.webp
+    alt: Партия колпаков с многоярусными крышками перед отправкой
+  - src: ./chimney-caps/chimney-caps-old-10.webp
+    alt: Колпак на кирпичный дымоход
+  - src: ./chimney-caps/chimney-caps-old-11.webp
+    alt: Колпак с ярусными козырьками на кирпичном дымоходе
+  - src: ./chimney-caps/chimney-caps-old-12.webp
+    alt: Колпаки для дымоходных труб на кирпичной кладке
+  - src: ./chimney-caps/chimney-caps-old-13.webp
+    alt: Колпак для дымоходной трубы, вид сбоку
+  - src: ./chimney-caps/chimney-caps-old-14.webp
+    alt: Дымоходная труба с колпаком на кровле частного дома
 ---
 
 ## Зачем дымоходу колпак

@@ -15,7 +15,7 @@ images:
   - src: ../_shared/brick-chimney-cap-minsk.webp
     alt: Дымник на кирпичной трубе, изготовленный в Минске
   - src: ../_shared/chimney-cap-ral-8017.webp
-    alt: Колпак коричневого цвета RAL 8017 на дымоход
+    alt: Дымник на кирпичную трубу с сеткой от птиц, цвет RAL 8017
   - src: ../_shared/weather-vane-cap.webp
     alt: Флюгарка на дымоходной трубе частного дома
   - src: ../_shared/chimney-cap-ral-3005.webp
@@ -42,6 +42,28 @@ images:
     alt: Колпак с отбойником от ветра
   - src: ../_shared/stainless-steel-deflector.webp
     alt: Дефлектор из нержавеющей стали
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-01.webp
+    alt: Чёрный дымник с многоярусной крышкой на кирпичной трубе
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-02.webp
+    alt: Дымник с коричневой крышкой на кирпичном основании
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-03.webp
+    alt: Дымник с коричневой многоярусной крышкой
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-04.webp
+    alt: Дымник в коричневом цвете с ярусными козырьками
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-05.webp
+    alt: Два дымника с четырёхскатными крышками, вид сбоку
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-06.webp
+    alt: Дымник с четырёхскатной крышкой и ярусными козырьками
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-07.webp
+    alt: Дымник антрацитового цвета с сеткой, упакован в плёнку
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-08.webp
+    alt: Чёрный дымник с искрогасительной сеткой на плоском основании
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-09.webp
+    alt: Крышка на дымоход с овальным отверстием под трубу
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-10.webp
+    alt: Чёрный дымник с ярусными козырьками и двумя отверстиями под трубы
+  - src: ./brick-chimney-cap/brick-chimney-cap-old-11.webp
+    alt: Дымник на кирпичную дымоходную трубу
 ---
 
 ## Что делает дымник

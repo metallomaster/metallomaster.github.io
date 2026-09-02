@@ -15,7 +15,7 @@ images:
   - src: ./ventilation-deflector/grigorovich-deflector.webp
     alt: Дефлектор Григоровича из нержавейки
   - src: ../_shared/stainless-steel-air-duct.webp
-    alt: Воздуховод из нержавеющей стали
+    alt: Круглые воздуховоды и зонты-дефлекторы из нержавеющей стали
   - src: ../_shared/stainless-steel-adapters.webp
     alt: Переходы из нержавейки разных диаметров
   - src: ../_shared/brick-to-sandwich-adapter.webp
@@ -23,7 +23,7 @@ images:
   - src: ../_shared/stainless-steel-tees.webp
     alt: Тройники из нержавеющей стали
   - src: ../_shared/insulated-air-ducts.webp
-    alt: Утеплённые воздуховоды, изготовленные в Минске
+    alt: Воздуховоды с отводом и зонтом, изготовлены в Минске
   - src: ../_shared/stainless-steel-vent-caps.webp
     alt: Зонтики из нержавейки для вентиляционных труб
   - src: ../_shared/exhaust-canopy-minsk.webp
@@ -42,6 +42,16 @@ images:
     alt: Вентиляционный коллектор из нержавеющей стали
   - src: ../_shared/round-to-oval-adapter.webp
     alt: Переход с круглого сечения на овальное из нержавейки
+  - src: ./ventilation-deflector/ventilation-deflector-old-02.webp
+    alt: 'Габаритная схема дефлектора: диаметры d и D, высота H'
+  - src: ./ventilation-deflector/ventilation-deflector-old-03.webp
+    alt: Дефлектор вентиляционный круглый из нержавейки
+  - src: ./ventilation-deflector/ventilation-deflector-old-04.webp
+    alt: Дефлектор вентиляционный круглый на трубе
+  - src: ./ventilation-deflector/ventilation-deflector-old-05.webp
+    alt: Дефлектор из нержавеющей стали на монтажной площадке
+  - src: ./ventilation-deflector/ventilation-deflector-old-06.webp
+    alt: Дефлектор из нержавеющей стали с направляющими лопатками
 ---
 
 ## Как работает дефлектор

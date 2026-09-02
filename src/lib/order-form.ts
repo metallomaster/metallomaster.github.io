@@ -6,8 +6,30 @@
 
 const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
 
-/* Белорусский номер: +375 и девять цифр. Пробелы, скобки и дефисы не мешают. */
+/* Белорусский номер в международном виде: +375 и девять цифр. */
 const PHONE_RE = /^\+375\d{9}$/;
+
+/* Адрес без пробелов, с собакой и точкой в домене: строже проверять на клиенте нечего,
+   настоящую проверку делает доставка письма. */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+/**
+ * Номер к виду +375XXXXXXXXX. Люди пишут телефон бытовыми записями — «8 029 322-00-10»,
+ * «029 322-00-10», «29 322-00-10», — и все они означают один и тот же номер.
+ * Отбивать такую заявку сообщением об ошибке значит терять живого клиента.
+ */
+function normalizePhone(raw: string): string {
+  const value = raw.replace(/[^\d+]/g, '');
+  /* 80 291234567 — междугородний набор внутри страны */
+  if (/^80\d{9}$/.test(value)) return `+375${value.slice(2)}`;
+  /* 375291234567 — тот же номер, но плюс потеряли */
+  if (/^375\d{9}$/.test(value)) return `+${value}`;
+  /* 0291234567 — код оператора с ведущим нулём */
+  if (/^0\d{9}$/.test(value)) return `+375${value.slice(1)}`;
+  /* 291234567 — только код оператора и номер */
+  if (/^\d{9}$/.test(value)) return `+375${value}`;
+  return value;
+}
 
 /*
  * Порог времени заполнения — вторая линия против спама: honeypot Web3Forms сам сервис
@@ -21,7 +43,8 @@ const MIN_FILL_MS = 1500;
 
 const FIELD_ERRORS = {
   name: 'Напишите имя — хотя бы две буквы',
-  phone: 'Нужен номер в формате +375 (29) 123-45-67',
+  phone: 'Нужен белорусский номер: +375 29 123-45-67 или 8 029 123-45-67',
+  email: 'Проверьте адрес — похоже, в нём опечатка',
   consent: 'Без согласия мы не вправе обработать заявку',
 } as const;
 
@@ -29,6 +52,7 @@ const FIELD_ERRORS = {
 const FIELD_LABELS = {
   name: 'Имя',
   phone: 'Телефон',
+  email: 'Email',
   consent: 'Согласие на обработку данных',
 } as const;
 
@@ -95,8 +119,12 @@ function validate(form: HTMLFormElement): Field[] {
 
   if (fieldValue(form, 'name').length < 2) invalid.push('name');
 
-  const phone = fieldValue(form, 'phone').replace(/[\s()-]/g, '');
-  if (!PHONE_RE.test(phone)) invalid.push('phone');
+  if (!PHONE_RE.test(normalizePhone(fieldValue(form, 'phone')))) invalid.push('phone');
+
+  /* Email необязателен, но если его оставили — он должен быть рабочим: с опечаткой
+     сервис доставки отклонит письмо целиком, и человек увидит невнятный сбой отправки */
+  const email = fieldValue(form, 'email');
+  if (email !== '' && !EMAIL_RE.test(email)) invalid.push('email');
 
   const consent = form.elements.namedItem('consent');
   if (!(consent instanceof HTMLInputElement) || !consent.checked) invalid.push('consent');
@@ -136,7 +164,8 @@ function buildPayload(form: HTMLFormElement, accessKey: string): OrderPayload {
     subject: `Заявка с metallomaster.by: ${product || 'изделие из металла'}`,
     from_name: 'Сайт METALLOMASTER',
     name: fieldValue(form, 'name'),
-    phone: fieldValue(form, 'phone'),
+    /* В письмо уходит приведённый номер: по нему сразу видно, куда звонить */
+    phone: normalizePhone(fieldValue(form, 'phone')),
     ...(email ? { email } : {}),
     message,
     botcheck: fieldValue(form, 'botcheck'),

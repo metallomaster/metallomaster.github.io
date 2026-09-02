@@ -26,7 +26,7 @@ images:
   - src: ./exhaust-hood/exhaust-hood.webp
     alt: Островной вытяжной зонт трапецеидальной формы
   - src: ../_shared/stainless-steel-air-duct.webp
-    alt: Воздуховод из нержавейки для подключения вытяжного зонта
+    alt: Круглые воздуховоды и зонты из нержавеющей стали для вытяжной линии
   - src: ../_shared/stainless-steel-adapters.webp
     alt: Переходы из нержавейки для вентиляционной линии
   - src: ../_shared/stainless-steel-deflector-4.webp
@@ -36,13 +36,37 @@ images:
   - src: ../_shared/stainless-steel-tees.webp
     alt: Вентиляционные тройники из нержавеющей стали
   - src: ../_shared/insulated-air-ducts.webp
-    alt: Утеплённые воздуховоды нашего производства, Минск
+    alt: Воздуховоды и фасонные части нашего производства, Минск
   - src: ../_shared/stainless-steel-vent-caps.webp
     alt: Зонтики из нержавейки на трубы разных диаметров
   - src: ../_shared/exhaust-canopy-minsk.webp
     alt: Зонт вытяжной прямоугольной формы, изготовлен в Минске
   - src: ../_shared/stainless-steel-reducer.webp
     alt: Переход из нержавеющей стали для стыковки сечений
+  - src: ./exhaust-hood/exhaust-hood-old-01.webp
+    alt: Вытяжной зонт из оцинкованной стали пирамидальной формы
+  - src: ./exhaust-hood/exhaust-hood-old-02.webp
+    alt: Вытяжной зонт из нержавеющей стали с отводом
+  - src: ./exhaust-hood/exhaust-hood-old-03.webp
+    alt: Пристенный вытяжной зонт из нержавеющей стали
+  - src: ./exhaust-hood/exhaust-hood-old-04.webp
+    alt: Островной вытяжной зонт из нержавеющей стали с патрубком
+  - src: ./exhaust-hood/exhaust-hood-old-05.webp
+    alt: Пирамидальный вытяжной зонт с патрубком под воздуховод
+  - src: ./exhaust-hood/exhaust-hood-old-06.webp
+    alt: Вытяжной зонт из нержавейки с наклонным экраном
+  - src: ./exhaust-hood/exhaust-hood-old-07.webp
+    alt: Пристенный вытяжной зонт с подключённым воздуховодом
+  - src: ./exhaust-hood/exhaust-hood-old-08.webp
+    alt: Вытяжной зонт из нержавейки с боковым отводом
+  - src: ./exhaust-hood/exhaust-hood-old-09.webp
+    alt: Вытяжной зонт из нержавеющей стали, вид сбоку
+  - src: ./exhaust-hood/exhaust-hood-old-10.webp
+    alt: Вытяжной зонт с патрубком под круглый воздуховод
+  - src: ./exhaust-hood/exhaust-hood-old-11.webp
+    alt: Вытяжной зонт из оцинкованной стали
+  - src: ./exhaust-hood/exhaust-hood-old-12.webp
+    alt: 'Схема типов вытяжных зонтов: пристенные и островные'
 ---
 
 ## Зачем нужен вытяжной зонт

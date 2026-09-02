@@ -7,6 +7,7 @@ description: Изготавливаем металлические парапе�
 lead: Металлические крышки, которые защищают верх забора, парапетную стенку кровли и фундамент от дождя и снега — и придают конструкции завершённый вид.
 category: roof-accessories
 order: 20
+featuredOrder: 90
 featured: true
 cover: ./parapet-cap/parapet-cap-04.webp
 coverAlt: Тёмно-серый парапет на ограждении плоской кровли частного дома
@@ -23,6 +24,16 @@ images:
     alt: Кромка стального парапета с капельником крупным планом
   - src: ./parapet-cap/parapet-cap-06.webp
     alt: Парапеты с полимерным покрытием по периметру плоской крыши
+  - src: ./parapet-cap/parapet-cap-old-01.webp
+    alt: Парапетная крышка золотисто-коричневого цвета
+  - src: ./parapet-cap/parapet-cap-old-02.webp
+    alt: Парапет с капельниками, вид в перспективе
+  - src: ./parapet-cap/parapet-cap-old-03.webp
+    alt: Угловое соединение парапетов на ограждении кровли
+  - src: ./parapet-cap/parapet-cap-old-04.webp
+    alt: Парапет по периметру плоской кровли, вид с угла
+  - src: ./parapet-cap/parapet-cap-old-05.webp
+    alt: Длинная парапетная планка тёмного цвета с патрубком
 ---
 
 ## Что делает парапет

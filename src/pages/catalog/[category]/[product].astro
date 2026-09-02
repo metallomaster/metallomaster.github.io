@@ -29,13 +29,15 @@ const related = item.category
   : [];
 
 const path = catalogItemUrl(item);
+/* Цепочка для разметки BreadcrumbList: на странице её не показываем */
+const crumbs = [
+  { name: 'Главная', path: '/' },
+  { name: 'Каталог', path: '/catalog/' },
+  ...(parent ? [{ name: parent.navTitle, path: catalogItemUrl(parent) }] : []),
+  { name: item.navTitle, path },
+];
 const jsonLd: object[] = [
-  breadcrumbsJsonLd(siteConfig.siteUrl, [
-    { name: 'Главная', path: '/' },
-    { name: 'Каталог', path: '/catalog/' },
-    ...(parent ? [{ name: parent.navTitle, path: catalogItemUrl(parent) }] : []),
-    { name: item.navTitle, path },
-  ]),
+  breadcrumbsJsonLd(siteConfig.siteUrl, crumbs),
   productJsonLd({
     name: item.title,
     description: item.description,

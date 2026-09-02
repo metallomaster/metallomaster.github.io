@@ -9,10 +9,10 @@ category: galvanized-air-ducts
 order: 30
 featured: false
 cover: ../_shared/stainless-steel-air-duct.webp
-coverAlt: Круглая вентиляционная труба из нержавеющей стали
+coverAlt: Круглые воздуховоды с тройниками и зонтами из нержавеющей стали
 images:
   - src: ../_shared/stainless-steel-air-duct.webp
-    alt: Прямошовный круглый воздуховод из нержавейки
+    alt: Комплект круглых воздуховодов и фасонных частей из нержавейки
   - src: ../_shared/stainless-steel-adapters.webp
     alt: Переходы из нержавейки под разные диаметры труб
   - src: ../_shared/stainless-steel-deflector-4.webp
@@ -22,7 +22,7 @@ images:
   - src: ../_shared/stainless-steel-tees.webp
     alt: Круглые тройники из нержавеющей стали
   - src: ../_shared/insulated-air-ducts.webp
-    alt: Утеплённые круглые воздуховоды, изготовленные в Минске
+    alt: Круглые воздуховоды с отводом и зонтом, изготовлены в Минске
   - src: ../_shared/stainless-steel-vent-caps.webp
     alt: Зонтики из нержавейки для круглых вентиляционных труб
   - src: ../_shared/exhaust-canopy-minsk.webp
@@ -43,6 +43,30 @@ images:
     alt: Сэндвич-воздуховоды из оцинкованной стали
   - src: ../_shared/galvanized-air-ducts.webp
     alt: Оцинкованные воздуховоды круглого сечения
+  - src: ./round-air-duct/round-air-duct-old-01.webp
+    alt: Круглый вентиляционный воздуховод из оцинкованной стали
+  - src: ./round-air-duct/round-air-duct-old-02.webp
+    alt: Отвод вентиляционный круглый 90 градусов
+  - src: ./round-air-duct/round-air-duct-old-03.webp
+    alt: Тройник вентиляционный круглый для врезки ответвления
+  - src: ./round-air-duct/round-air-duct-old-04.webp
+    alt: Крестовина вентиляционная круглая на четыре направления
+  - src: ./round-air-duct/round-air-duct-old-05.webp
+    alt: Переход вентиляционный круглый с одного диаметра на другой
+  - src: ./round-air-duct/round-air-duct-old-06.webp
+    alt: Врезка вентиляционная круглая в стенку воздуховода
+  - src: ./round-air-duct/round-air-duct-old-07.webp
+    alt: Заглушка вентиляционная круглая на торец воздуховода
+  - src: ./round-air-duct/round-air-duct-old-08.webp
+    alt: Утка вентиляционная круглая для смещения оси воздуховода
+  - src: ./round-air-duct/round-air-duct-old-09.webp
+    alt: Дроссель-клапан вентиляционный круглый для регулировки расхода
+  - src: ./round-air-duct/round-air-duct-old-10.webp
+    alt: Зонт вентиляционный круглый на выходе воздуховода
+  - src: ./round-air-duct/round-air-duct-old-11.webp
+    alt: Круглые вентиляционные трубы разной длины
+  - src: ./round-air-duct/round-air-duct-old-12.webp
+    alt: Круглые вентиляционные трубы из оцинкованной стали в сборе
 ---
 
 ## Конструкция и размеры

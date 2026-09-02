@@ -38,7 +38,12 @@ jobs:
     if: endsWith(github.repository, '.github.io')
     runs-on: ubuntu-latest
     steps:
+      # Вся история нужна lib/lastmod.ts: даты для карты сайта он берёт из git log,
+      # а на клоне глубиной 1 все страницы получают один и тот же lastmod — такой
+      # карте сайта поисковики перестают верить.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:

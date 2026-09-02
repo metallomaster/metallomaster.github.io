@@ -22,13 +22,13 @@ if (!entry) throw new Error(`Нет контента для услуги ${servi
 const { item, Content } = entry;
 
 const path = catalogItemUrl(item);
-const jsonLd = [
-  breadcrumbsJsonLd(siteConfig.siteUrl, [
-    { name: 'Главная', path: '/' },
-    { name: 'Услуги', path: '/services/' },
-    { name: item.navTitle, path },
-  ]),
+/* Цепочка для разметки BreadcrumbList: на странице её не показываем */
+const crumbs = [
+  { name: 'Главная', path: '/' },
+  { name: 'Услуги', path: '/services/' },
+  { name: item.navTitle, path },
 ];
+const jsonLd = [breadcrumbsJsonLd(siteConfig.siteUrl, crumbs)];
 ---
 
 <BaseLayout

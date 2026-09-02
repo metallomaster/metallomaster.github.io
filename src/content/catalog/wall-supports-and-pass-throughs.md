@@ -23,6 +23,12 @@ images:
     alt: Уплотнение кровли на выходе трубы дымохода
   - src: ./wall-supports-and-pass-throughs/roof-seal-2.webp
     alt: Кровельная проходка для дымоходной трубы на скатной крыше
+  - src: ./wall-supports-and-pass-throughs/wall-supports-and-pass-throughs-old-01.webp
+    alt: Опорная площадка дымохода с кронштейном
+  - src: ./wall-supports-and-pass-throughs/wall-supports-and-pass-throughs-old-02.webp
+    alt: Проходной узел дымохода через перекрытие
+  - src: ./wall-supports-and-pass-throughs/wall-supports-and-pass-throughs-old-03.webp
+    alt: Уплотнение кровли на проходе дымохода через скат
 ---
 
 ## Где дымоходу нужны эти элементы

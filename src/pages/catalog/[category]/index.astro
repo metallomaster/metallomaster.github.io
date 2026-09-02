@@ -23,13 +23,13 @@ const { item, Content } = entry;
 const children = await getProductsOf(item.slug);
 
 const path = catalogItemUrl(item);
-const jsonLd = [
-  breadcrumbsJsonLd(siteConfig.siteUrl, [
-    { name: 'Главная', path: '/' },
-    { name: 'Каталог', path: '/catalog/' },
-    { name: item.navTitle, path },
-  ]),
+/* Цепочка для разметки BreadcrumbList: на странице её не показываем */
+const crumbs = [
+  { name: 'Главная', path: '/' },
+  { name: 'Каталог', path: '/catalog/' },
+  { name: item.navTitle, path },
 ];
+const jsonLd = [breadcrumbsJsonLd(siteConfig.siteUrl, crumbs)];
 ---
 
 <BaseLayout
@@ -57,7 +57,7 @@ const jsonLd = [
   </Container>
 
   <CtaBand
-    title={`Нужно изделие «${item.navTitle.toLowerCase()}»?`}
+    title={`Нужно что-то из раздела «${item.navTitle.toLowerCase()}»?`}
     subtitle="Рассчитаем стоимость по вашим размерам и изготовим в короткий срок."
   />
 

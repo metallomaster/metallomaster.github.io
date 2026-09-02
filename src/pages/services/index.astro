@@ -9,17 +9,17 @@ import Container from '@/components/atoms/container.astro';
 
 const services = (await getCatalogItems()).filter((item) => item.type === 'service');
 
-const jsonLd = [
-  breadcrumbsJsonLd(siteConfig.siteUrl, [
-    { name: 'Главная', path: '/' },
-    { name: 'Услуги', path: '/services/' },
-  ]),
+/* Цепочка для разметки BreadcrumbList: на странице её не показываем */
+const crumbs = [
+  { name: 'Главная', path: '/' },
+  { name: 'Услуги', path: '/services/' },
 ];
+const jsonLd = [breadcrumbsJsonLd(siteConfig.siteUrl, crumbs)];
 ---
 
 <BaseLayout
-  title="Услуги: монтаж дымоходов и вентиляционные системы"
-  description="Услуги METALLOMASTER: монтаж дымоходов из нержавеющей стали под ключ и изготовление элементов вентиляционных систем. Выезд на объект по Минску и области."
+  title="Услуги: монтаж дымоходов под ключ"
+  description="Услуги METALLOMASTER: монтаж дымоходов из нержавеющей стали под ключ — замер на объекте, изготовление, установка и проверка тяги. Минск и область."
   path="/services/"
   jsonLd={jsonLd}
 >
@@ -27,8 +27,8 @@ const jsonLd = [
     <div class="page-head">
       <h1>Услуги</h1>
       <p class="page-head__lead">
-        Не только изготавливаем, но и устанавливаем: монтируем дымоходы под ключ и собираем
-        вентиляционные системы под ваш проект. Работаем по Минску и области.
+        Мы не только изготавливаем изделия, но и монтируем их: ставим дымоходы под ключ —
+        от замера на объекте до проверки тяги. Работаем по Минску и области.
       </p>
     </div>
   </Container>

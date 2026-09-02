@@ -1,7 +1,7 @@
 ---
 images:
   - src: ../_shared/chimney-cap-ral-8017.webp
-    alt: Колпак на дымоходную трубу, окрашенный в RAL 8017
+    alt: Дымник на кирпичную трубу, окрашенный в RAL 8017
   - src: ../_shared/weather-vane-cap.webp
     alt: Флюгарка на кирпичный дымоход
   - src: ./brick-chimney-cap.webp
@@ -39,7 +39,7 @@ images:
   - src: ../_shared/insulated-chimney-03.webp
     alt: Печь с дымоходом из нержавейки, установленным внутри дома
   - src: ../_shared/insulated-air-ducts.webp
-    alt: Утеплённые воздуховоды нашего производства перед отправкой
+    alt: Воздуховоды и фасонные части нашего производства перед отправкой
   - src: ../_shared/sandwich-air-ducts.webp
     alt: Сэндвич-воздуховоды из оцинкованной стали в нашем цехе
   - src: ../_shared/stainless-steel-vent-collector.webp

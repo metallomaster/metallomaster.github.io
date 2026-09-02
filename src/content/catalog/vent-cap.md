@@ -7,11 +7,11 @@ description: Изготавливаем зонты вентиляционные 
 lead: Небольшая насадка на трубу, без которой вентиляция быстро засоряется — зонт закрывает канал от дождя, снега и мусора, не мешая тяге.
 category: chimney-caps
 order: 10
-cover: ../_shared/chimney-cap-ral-8017.webp
-coverAlt: Вентиляционный зонт коричневого цвета RAL 8017 на трубе
+cover: ../_shared/stainless-steel-vent-caps.webp
+coverAlt: Зонты вентиляционные из нержавеющей стали на круглых трубах
 images:
   - src: ../_shared/chimney-cap-ral-8017.webp
-    alt: Зонт на дымоход в коричневом цвете RAL 8017
+    alt: Дымник на кирпичную трубу с сеткой от птиц, RAL 8017
   - src: ../_shared/weather-vane-cap.webp
     alt: Флюгарка на трубе дымохода частного дома
   - src: ../_shared/chimney-cap-ral-3005.webp
@@ -42,6 +42,20 @@ images:
     alt: Зонт вытяжной из оцинкованной стали
   - src: ../_shared/oval-vent-cap.webp
     alt: Овальный зонтик на трубу дымохода
+  - src: ./vent-cap/vent-cap-old-01.webp
+    alt: Медный зонт на вентиляционную трубу
+  - src: ./vent-cap/vent-cap-old-02.webp
+    alt: Медный зонт с ярусными козырьками
+  - src: ./vent-cap/vent-cap-old-03.webp
+    alt: Зонт вентиляционный с плоской крышкой на прямоугольном основании
+  - src: ./vent-cap/vent-cap-old-04.webp
+    alt: Зонт дымохода круглый из нержавеющей стали
+  - src: ./vent-cap/vent-cap-old-05.webp
+    alt: Зонт дымохода овальный из нержавеющей стали
+  - src: ./vent-cap/vent-cap-old-06.webp
+    alt: Круглая крышка-заглушка из нержавеющей стали с ручкой
+  - src: ./vent-cap/vent-cap-old-08.webp
+    alt: Медный зонт-колпак с пирамидальной крышкой
 ---
 
 ## Зачем нужен вентиляционный зонт

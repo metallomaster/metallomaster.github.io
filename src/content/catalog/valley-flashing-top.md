@@ -12,6 +12,8 @@ coverAlt: Ендова верхняя из окрашенной стали
 images:
   - src: ./valley-flashing-top/valley-flashing-top.webp
     alt: Верхняя планка ендовы в цвет кровельного покрытия
+  - src: ./valley-flashing-top/valley-flashing-top-old-01.webp
+    alt: Ендова верхняя с полимерным покрытием
 ---
 
 ## Не только украшение

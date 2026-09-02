@@ -29,6 +29,8 @@ export interface CatalogItem {
   lead: string;
   category?: string;
   order: number;
+  /** Порядок в витрине каталога и на главной; не задан — берём order */
+  featuredOrder?: number;
   featured: boolean;
   cover?: CatalogImage;
   images: CatalogImage[];

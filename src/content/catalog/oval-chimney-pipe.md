@@ -19,6 +19,22 @@ images:
     alt: Чертёж овальной трубы дымохода длиной 500 мм
   - src: ./oval-chimney-pipe/oval-pipe-drawing-250mm.webp
     alt: Чертёж овальной трубы дымохода длиной 250 мм
+  - src: ./oval-chimney-pipe/oval-chimney-pipe-old-01.webp
+    alt: Овальная труба дымохода из нержавеющей стали
+  - src: ./oval-chimney-pipe/oval-chimney-pipe-old-02.webp
+    alt: Тройник дымохода овальный
+  - src: ./oval-chimney-pipe/oval-chimney-pipe-old-03.webp
+    alt: Колено дымохода овальное
+  - src: ./oval-chimney-pipe/oval-chimney-pipe-old-04.webp
+    alt: Сборник конденсата овальный со сливом
+  - src: ./oval-chimney-pipe/oval-chimney-pipe-old-05.webp
+    alt: Овальная труба дымохода длиной 250 мм
+  - src: ./oval-chimney-pipe/oval-chimney-pipe-old-06.webp
+    alt: Овальная труба дымохода длиной 500 мм
+  - src: ./oval-chimney-pipe/oval-chimney-pipe-old-07.webp
+    alt: Овальная труба дымохода длиной 1000 мм
+  - src: ./oval-chimney-pipe/oval-chimney-pipe-old-08.webp
+    alt: Элементы дымохода овального сечения из стали AISI 304
 ---
 
 ## Зачем кирпичному дымоходу овальная гильза

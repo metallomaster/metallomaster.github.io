@@ -47,6 +47,30 @@ const isCurrent = (href: string) =>
 
     <div class="header__actions">
       <a class="header__phone" href={`tel:${siteConfig.phoneHref}`}>{siteConfig.phone}</a>
+      {
+        /* Кнопка звонка для узких экранов: там номер целиком не помещается, а прятать
+          единственный способ позвонить внутрь бургера нельзя — звонок здесь основной
+          канал заказа. Внутри меню номер остаётся цифрами, чтобы его можно было прочесть. */
+      }
+      <a
+        class="header__call"
+        href={`tel:${siteConfig.phoneHref}`}
+        aria-label={`Позвонить: ${siteConfig.phone}`}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path
+            d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"
+          ></path>
+        </svg>
+      </a>
       <button
         class="header__burger"
         type="button"
@@ -144,6 +168,29 @@ const isCurrent = (href: string) =>
     display: none;
   }
 
+  /* На широких экранах номер виден цифрами — иконка не нужна */
+  .header__call {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: border-color var(--transition-fast);
+  }
+
+  .header__call:hover {
+    border-color: var(--color-accent);
+  }
+
+  .header__call svg {
+    width: 22px;
+    height: 22px;
+  }
+
   .header__burger {
     display: none;
     flex-direction: column;
@@ -180,6 +227,10 @@ const isCurrent = (href: string) =>
 
     .header__burger {
       display: flex;
+    }
+
+    .header__call {
+      display: inline-flex;
     }
 
     .header__nav {

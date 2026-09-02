@@ -16,11 +16,11 @@ export interface SiteAddress {
   readonly country: string;
   readonly region: string;
   readonly locality: string;
-  /** Только улица и дом — населённый пункт сюда не дублируем */
+  /** Улица или кооператив с номером — населённый пункт сюда не дублируем */
   readonly street: string;
   /** Почтовый индекс: его требует PostalAddress в разметке и модерация Яндекс.Бизнеса */
   readonly postalCode?: string;
-  /** Готовая строка для страниц: «аг. Колодищи, ул. Путейская» */
+  /** Готовая строка для страниц: «аг. Колодищи, ГСПК «Колодищи»» */
   readonly text: string;
 }
 
@@ -57,7 +57,7 @@ export interface SiteConfig {
 
 const TAX_ID = '690869052';
 const LOCALITY = 'аг. Колодищи';
-const STREET = 'ул. Путейская';
+const STREET = 'ГСПК «Колодищи»';
 const PHONE = '+375 (29) 322-00-10';
 const EMAIL = '3220010@mail.ru';
 const POSTAL_CODE = '223050';
@@ -75,8 +75,11 @@ export const siteConfig: SiteConfig = {
     text: `${LOCALITY}, ${STREET}`,
   },
   geo: {
-    latitude: 53.944855,
-    longitude: 27.772073,
+    /* Точка карточки «Металломастер» в Яндекс.Картах (найдена по телефону компании,
+       org/metallomaster/212145119949) — она стоит в рядах боксов ГСПК «Колодищи».
+       Совпадает с полигоном ГСК «Колодищи» в OpenStreetMap (way/98723318). */
+    latitude: 53.952978,
+    longitude: 27.789054,
   },
   siteUrl: 'https://metallomaster.by',
   phone: PHONE,

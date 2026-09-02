@@ -12,6 +12,8 @@ coverAlt: Оконный отлив из окрашенной стали
 images:
   - src: ./window-flashing/window-flashing.webp
     alt: Металлический отлив на окно, изготовленный по размерам заказчика
+  - src: ./window-flashing/window-flashing-old-01.webp
+    alt: Отлив оконный из стали с полимерным покрытием
 ---
 
 ## Зачем окну отлив

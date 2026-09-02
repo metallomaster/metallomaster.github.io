@@ -12,6 +12,8 @@ coverAlt: Торцевая планка из окрашенной стали
 images:
   - src: ./gable-flashing/gable-flashing.webp
     alt: Ветровая планка для торца кровельного ската
+  - src: ./gable-flashing/gable-flashing-old-01.webp
+    alt: Торцевая ветровая планка кровли
 ---
 
 ## Зачем кровле торцевая планка

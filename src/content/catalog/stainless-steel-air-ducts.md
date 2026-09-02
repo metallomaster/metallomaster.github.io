@@ -16,7 +16,7 @@ images:
   - src: ../_shared/exhaust-hood-minsk.webp
     alt: Готовый вытяжной зонт из нержавейки перед отгрузкой в Минске
   - src: ../_shared/stainless-steel-air-duct.webp
-    alt: Прямой участок воздуховода из нержавеющей стали
+    alt: Воздуховоды, тройники и зонты из нержавеющей стали в цехе
   - src: ../_shared/stainless-steel-adapters.webp
     alt: Набор переходов из нержавейки разных диаметров
   - src: ../_shared/stainless-steel-deflector-4.webp
@@ -24,7 +24,7 @@ images:
   - src: ../_shared/brick-to-sandwich-adapter.webp
     alt: Переходный элемент с кирпичного дымохода на сэндвич-трубу
   - src: ../_shared/insulated-air-ducts.webp
-    alt: Утеплённые воздуховоды, изготовленные в Минске
+    alt: Прямые участки воздуховодов и фасонные части, Минск
   - src: ../_shared/stainless-steel-tees.webp
     alt: Тройники из нержавейки для разводки вентиляционных линий
   - src: ../_shared/stainless-steel-vent-caps.webp
@@ -43,6 +43,14 @@ images:
     alt: Сэндвич-воздуховоды из оцинкованной стали с утеплителем
   - src: ../_shared/round-to-oval-adapter.webp
     alt: Переход с круглого сечения на овальное из нержавеющей стали
+  - src: ./stainless-steel-air-ducts/stainless-steel-air-ducts-old-01.webp
+    alt: Воздуховоды из нержавеющей стали с фасонными частями
+  - src: ./stainless-steel-air-ducts/stainless-steel-air-ducts-old-02.webp
+    alt: Круглый воздуховод из нержавеющей стали
+  - src: ./stainless-steel-air-ducts/stainless-steel-air-ducts-old-03.webp
+    alt: Отвод и тройник из нержавеющей стали для вентиляции
+  - src: ./stainless-steel-air-ducts/stainless-steel-air-ducts-old-04.webp
+    alt: Переход с круга на овал из нержавеющей стали
 ---
 
 ## Где нужна именно нержавейка

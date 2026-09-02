@@ -17,6 +17,10 @@
   --color-text: light-dark(#171a20, #e9ecf2);
   --color-text-muted: light-dark(#5a6373, #9aa3b5);
   --color-border: light-dark(#dde2e9, #2c3140);
+  /* Граница поля ввода: её видно только по контуру, поэтому нужен контраст ≥ 3:1
+     и к фону поля, и к фону карточки формы (WCAG 2.2, SC 1.4.11).
+     Светлая: 3.48 к #ffffff и 3.21 к #f4f6f8. Тёмная: 4.01 к #12141a и 3.67 к #1a1d25. */
+  --color-border-control: light-dark(#7f8a9e, #6b7590);
   /* Акцент для текста и штрихов: яркий, чтобы читаться на тёмном фоне */
   --color-accent: light-dark(#d40011, #ff4653);
   /* Заливка под белым текстом — глубже акцента: на ярком контраст падал до 3.4 */
@@ -73,4 +77,35 @@
   /* Анимация */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
+}
+
+/*
+ * Страховка для браузеров без light-dark() (Chrome < 123, Safari < 17.5, Firefox < 120).
+ * Там значение токена не вычисляется, свойство падает в initial — и кнопка теряет фон,
+ * оставляя белый текст на белом фоне. Отдаём таким браузерам светлую тему плоскими
+ * значениями; color-scheme тоже сужаем, иначе системные элементы останутся тёмными.
+ *
+ * Значения обязаны совпадать с первым аргументом light-dark() выше.
+ */
+@supports not (color: light-dark(#000, #fff)) {
+  :root {
+    color-scheme: light;
+
+    --color-bg: #ffffff;
+    --color-surface: #f4f6f8;
+    --color-surface-2: #e9edf2;
+    --color-text: #171a20;
+    --color-text-muted: #5a6373;
+    --color-border: #dde2e9;
+    --color-border-control: #7f8a9e;
+    --color-accent: #d40011;
+    --color-accent-solid: #d40011;
+    --color-accent-solid-hover: #a8000d;
+    --color-decor: #7f8a9e;
+    --color-steel: #39445c;
+    --color-focus: #1f5eff;
+
+    --shadow-md: 0 4px 16px rgb(23 26 32 / 10%);
+    --shadow-lg: 0 12px 40px rgb(23 26 32 / 14%);
+  }
 }

@@ -26,14 +26,16 @@ const catalog = defineCollection({
       navTitle: z.string(),
       /** <title> без брендового хвоста — хвост добавит buildTitle */
       seoTitle: z.string().max(60),
-      /** meta description, 120–160 символов */
-      description: z.string().min(80).max(165),
+      /** meta description, 80–160 символов: с 161-го clampDescription обрежет текст многоточием */
+      description: z.string().min(80).max(160),
       /** Лид-абзац под H1 */
       lead: z.string(),
       /** slug родительской категории (для товаров) */
       category: z.string().optional(),
       /** Порядок сортировки в списках */
       order: z.number().default(100),
+      /** Порядок в витрине каталога и на главной: владелец задаёт его вручную */
+      featuredOrder: z.number().optional(),
       /** Показывать на главной */
       featured: z.boolean().default(false),
       cover: image().optional(),

@@ -6,7 +6,13 @@ import Header from '@/components/organisms/header.astro';
 import { siteConfig } from '@/config/site';
 import { getDefaultShareImage } from '@/lib/content';
 import { OG_IMAGE } from '@/lib/images';
-import { buildTitle, canonicalUrl, clampDescription, jsonLdText, organizationJsonLd } from '@/lib/seo';
+import {
+  buildTitle,
+  canonicalUrl,
+  clampDescription,
+  jsonLdText,
+  organizationJsonLd,
+} from '@/lib/seo';
 import type { PageSeo } from '@/lib/seo';
 import { speculationRules } from '@/lib/speculation';
 
@@ -15,7 +21,15 @@ interface Props extends PageSeo {
   jsonLd?: object[];
 }
 
-const { title, description, path, ogImage, ogType = 'website', jsonLd = [] } = Astro.props;
+const {
+  title,
+  description,
+  path,
+  ogImage,
+  ogType = 'website',
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
 
 const fullTitle = buildTitle(title);
 const metaDescription = clampDescription(description);
@@ -49,10 +63,18 @@ const jsonLdBlocks = [organization, ...jsonLd];
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={metaDescription} />
-    <link rel="canonical" href={canonical} />
+    {!noindex && <link rel="canonical" href={canonical} />}
     <link rel="sitemap" href="/sitemap.xml" />
-    {/* Крупные превью фото в выдаче и Discover; текст и переходы не ограничиваем */}
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    {
+      /* Крупные превью фото в выдаче и Discover; текст и переходы не ограничиваем.
+        follow остаётся и у noindex-страниц: ссылки с них ведут на нужные разделы. */
+    }
+    <meta
+      name="robots"
+      content={noindex
+        ? 'noindex, follow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1'}
+    />
 
     {/* .ico ради Яндекса и старых браузеров, .svg — везде, где понимают вектор */}
     <link rel="icon" href="/favicon.ico" sizes="32x32" />

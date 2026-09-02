@@ -60,7 +60,9 @@ import Button from '@/components/atoms/button.astro';
       name="email"
       type="email"
       autocomplete="email"
+      aria-describedby="order-email-error"
     />
+    <p class="order-form__error" id="order-email-error" data-error-for="email" hidden></p>
   </div>
 
   <div class="order-form__field">
@@ -157,7 +159,9 @@ import Button from '@/components/atoms/button.astro';
     width: 100%;
     min-height: 48px;
     padding: var(--space-2) var(--space-3);
-    border: 1px solid var(--color-border);
+    /* Отдельный токен, а не --color-border: контур поля — единственный признак,
+       по которому его видно, и SC 1.4.11 требует держать его на 3:1 */
+    border: 1px solid var(--color-border-control);
     border-radius: var(--radius-md);
     background: var(--color-bg);
     transition: border-color var(--transition-fast);

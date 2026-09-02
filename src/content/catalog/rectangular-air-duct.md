@@ -9,10 +9,10 @@ category: galvanized-air-ducts
 order: 40
 featured: false
 cover: ../_shared/stainless-steel-air-duct.webp
-coverAlt: Вентиляционный воздуховод из нержавеющей стали нашего производства
+coverAlt: Круглые воздуховоды, тройники и зонты из нержавеющей стали
 images:
   - src: ../_shared/stainless-steel-air-duct.webp
-    alt: Воздуховод из нержавейки, изготовленный на нашем производстве
+    alt: Тройники, зонты и обечайки из нержавеющей стали нашего производства
   - src: ../_shared/stainless-steel-adapters.webp
     alt: Переходы из нержавейки между сечениями воздуховодов
   - src: ../_shared/stainless-steel-deflector-4.webp
@@ -22,7 +22,7 @@ images:
   - src: ../_shared/stainless-steel-tees.webp
     alt: Тройники из нержавейки для ветвления вентиляционных линий
   - src: ../_shared/insulated-air-ducts.webp
-    alt: Утеплённые воздуховоды на складе в Минске
+    alt: Врезка в прямоугольный воздуховод, отвод и зонт
   - src: ../_shared/stainless-steel-vent-caps.webp
     alt: Вентиляционные зонтики из нержавейки
   - src: ../_shared/exhaust-canopy-minsk.webp
@@ -43,6 +43,32 @@ images:
     alt: Утеплённые сэндвич-воздуховоды из оцинковки
   - src: ../_shared/galvanized-air-ducts.webp
     alt: Оцинкованные воздуховоды, подготовленные к монтажу
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-01.webp
+    alt: Прямоугольный вентиляционный воздуховод с фланцами
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-02.webp
+    alt: Отвод вентиляционный прямоугольный 90 градусов
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-03.webp
+    alt: Тройник вентиляционный прямоугольный для ответвления
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-04.webp
+    alt: Крестовина вентиляционная прямоугольная на четыре направления
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-05.webp
+    alt: Переход вентиляционный прямоугольный между сечениями
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-06.webp
+    alt: Врезка вентиляционная прямоугольная в стенку воздуховода
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-07.webp
+    alt: Заглушка вентиляционная прямоугольная на торец воздуховода
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-08.webp
+    alt: Утка вентиляционная прямоугольная для смещения оси
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-09.webp
+    alt: Дроссель-клапан вентиляционный прямоугольный
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-10.webp
+    alt: Зонт вентиляционный на прямоугольном воздуховоде
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-11.webp
+    alt: Прямоугольный воздуховод из оцинкованной стали
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-12.webp
+    alt: Прямоугольные вентиляционные трубы разных сечений
+  - src: ./rectangular-air-duct/rectangular-air-duct-old-13.webp
+    alt: Схема прямоугольного воздуховода с размерами A, B и длиной L
 ---
 
 ## Конструкция и размеры

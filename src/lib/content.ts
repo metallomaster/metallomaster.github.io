@@ -7,7 +7,7 @@ import { getCollection, getEntry, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getImage } from 'astro:assets';
 import { PHOTO_FULL } from '@/lib/images';
-import type { CatalogImage, CatalogItem, CatalogItemType, PictureSrc } from '@/lib/types';
+import type { CatalogImage, CatalogItem, PictureSrc } from '@/lib/types';
 
 /* Один и тот же файл встречается в разных разделах — считаем полноразмер по разу */
 const fullUrlCache = new Map<string, Promise<string>>();
@@ -41,11 +41,11 @@ async function toItem(entry: CollectionEntry<'catalog'>): Promise<CatalogItem> {
 
 const byOrder = (a: CatalogItem, b: CatalogItem) => a.order - b.order;
 
-/* Разделы каталога идут первыми, за ними отдельные изделия, в конце услуги */
-const TYPE_RANK: Record<CatalogItemType, number> = { category: 0, product: 1, service: 2 };
+/* Порядок витрины владелец задаёт вручную: разделы, изделия и услуги идут вперемешку,
+   поэтому сортируем одним ключом, а не по типу элемента */
+const showcaseOrder = (item: CatalogItem) => item.featuredOrder ?? item.order;
 
-const byTypeThenOrder = (a: CatalogItem, b: CatalogItem) =>
-  TYPE_RANK[a.type] - TYPE_RANK[b.type] || a.order - b.order;
+const byShowcaseOrder = (a: CatalogItem, b: CatalogItem) => showcaseOrder(a) - showcaseOrder(b);
 
 export async function getCatalogItems(): Promise<CatalogItem[]> {
   const entries = await getCollection('catalog');
@@ -67,12 +67,12 @@ export async function getProductsOf(categorySlug: string): Promise<CatalogItem[]
 export async function getCatalogSections(): Promise<CatalogItem[]> {
   return (await getCatalogItems())
     .filter((item) => item.type === 'category' || (item.type === 'product' && item.featured))
-    .sort(byTypeThenOrder);
+    .sort(byShowcaseOrder);
 }
 
 /** Карточки для главной: разделы каталога и услуги */
 export async function getFeatured(): Promise<CatalogItem[]> {
-  return (await getCatalogItems()).filter((item) => item.featured).sort(byTypeThenOrder);
+  return (await getCatalogItems()).filter((item) => item.featured).sort(byShowcaseOrder);
 }
 
 /** Элемент каталога вместе с отрендеренным markdown-телом */

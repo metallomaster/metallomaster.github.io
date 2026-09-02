@@ -25,6 +25,22 @@ images:
     alt: Зеркальная труба дымохода на стене производственного помещения
   - src: ../_shared/insulated-chimney-07.webp
     alt: Дымоход из нержавеющей стали по стене кирпичного жилого дома
+  - src: ./single-wall-chimneys/single-wall-chimneys-old-01.webp
+    alt: Одностенные дымоходы из нержавеющей стали
+  - src: ./single-wall-chimneys/single-wall-chimneys-old-02.webp
+    alt: 'Схема одностенного дымохода: зонт, труба, отводы, конденсатосборник'
+  - src: ./single-wall-chimneys/single-wall-chimneys-old-03.webp
+    alt: Круглая труба дымохода из нержавеющей стали
+  - src: ./single-wall-chimneys/single-wall-chimneys-old-04.webp
+    alt: Тройник дымохода круглый с ревизией
+  - src: ./single-wall-chimneys/single-wall-chimneys-old-05.webp
+    alt: Колено дымохода круглое из нержавеющей стали
+  - src: ./single-wall-chimneys/single-wall-chimneys-old-06.webp
+    alt: Сборник конденсата круглый со сливным патрубком
+  - src: ./single-wall-chimneys/single-wall-chimneys-old-07.webp
+    alt: Шибер дымохода с выдвижной заслонкой
+  - src: ./single-wall-chimneys/single-wall-chimneys-old-08.webp
+    alt: Переход дымохода с одного диаметра на другой
 ---
 
 ## Зачем гильзовать кирпичный дымоход

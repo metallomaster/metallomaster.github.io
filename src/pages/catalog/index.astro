@@ -9,17 +9,17 @@ import Container from '@/components/atoms/container.astro';
 
 const sections = await getCatalogSections();
 
-const jsonLd = [
-  breadcrumbsJsonLd(siteConfig.siteUrl, [
-    { name: 'Главная', path: '/' },
-    { name: 'Каталог продукции', path: '/catalog/' },
-  ]),
+/* Цепочка для разметки BreadcrumbList: на странице её не показываем */
+const crumbs = [
+  { name: 'Главная', path: '/' },
+  { name: 'Каталог', path: '/catalog/' },
 ];
+const jsonLd = [breadcrumbsJsonLd(siteConfig.siteUrl, crumbs)];
 ---
 
 <BaseLayout
   title="Каталог металлоизделий: дымоходы, колпаки, воздуховоды"
-  description="Каталог продукции METALLOMASTER: дымоходы из нержавеющей стали, колпаки на трубы и столбы, оцинкованные воздуховоды, доборные элементы кровли. Производство в Минске."
+  description="Каталог METALLOMASTER: дымоходы из нержавеющей стали, колпаки на трубы и столбы, оцинкованные воздуховоды, доборные элементы кровли. Производство в Минске."
   path="/catalog/"
   jsonLd={jsonLd}
 >

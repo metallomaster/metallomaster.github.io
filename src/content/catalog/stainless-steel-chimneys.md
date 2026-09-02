@@ -6,9 +6,10 @@ seoTitle: Дымоходы из нержавеющей стали в Минск�
 description: Производим дымоходы из нержавеющей стали в Минске — утеплённые сэндвич-системы, одностенные трубы круглого и овального сечения, крепёж и проходные узлы.
 lead: Изготавливаем дымоходные системы из нержавейки целиком — от трубы и тройника до кронштейнов и проходных узлов, по типовым размерам и по вашим чертежам.
 order: 10
+featuredOrder: 30
 featured: true
-cover: ../_shared/insulated-air-ducts.webp
-coverAlt: Элементы дымохода из нержавеющей стали — трубы, отводы, зонты
+cover: ../_shared/chimney-components-2.webp
+coverAlt: 'Элементы дымохода из нержавейки: тройник с зонтом и сборник конденсата'
 images:
   - src: ../_shared/insulated-chimney-01.webp
     alt: Дымоход из нержавеющей стали с зонтом-дефлектором на фасаде дома
@@ -25,7 +26,7 @@ images:
   - src: ../_shared/insulated-chimney-07.webp
     alt: Высокий дымоход вдоль фасада двухэтажного кирпичного дома
   - src: ../_shared/insulated-air-ducts.webp
-    alt: Секции утеплённого дымохода из нержавеющей стали в цехе
+    alt: Отвод, зонт и врезка — фасонные части из стали
   - src: ../_shared/chimney-components-2.webp
     alt: 'Комплект элементов дымохода: трубы, отводы, тройники, зонты'
   - src: ../_shared/stainless-steel-tees.webp
@@ -34,6 +35,16 @@ images:
     alt: Переходы дымохода с одного диаметра на другой из нержавейки
   - src: ../_shared/brick-to-sandwich-adapter.webp
     alt: Переход с кирпичного дымохода на сэндвич-трубу из нержавейки
+  - src: ./stainless-steel-chimneys/stainless-steel-chimneys-old-01.webp
+    alt: Смонтированный дымоход из нержавеющей стали
+  - src: ./stainless-steel-chimneys/stainless-steel-chimneys-old-02.webp
+    alt: Дымоходы из нержавеющей стали на кровле
+  - src: ./stainless-steel-chimneys/stainless-steel-chimneys-old-03.webp
+    alt: Элементы дымохода из нержавеющей стали в сборе
+  - src: ./stainless-steel-chimneys/stainless-steel-chimneys-old-04.webp
+    alt: Тройники, трубы, зонты и хомуты дымохода из нержавейки
+  - src: ./stainless-steel-chimneys/stainless-steel-chimneys-old-05.webp
+    alt: Дымоходы из нержавеющей стали разных диаметров
 ---
 
 ## Что входит в раздел

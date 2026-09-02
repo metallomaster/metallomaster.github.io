@@ -17,6 +17,8 @@ images:
     alt: Обжимные хомуты для труб дымохода разных диаметров
   - src: ./brackets-and-clamps/bracket-with-clamp-2.webp
     alt: Кронштейн с хомутом для крепления дымохода к фасаду
+  - src: ./brackets-and-clamps/brackets-and-clamps-old-01.webp
+    alt: Кронштейн с хомутом для крепления дымохода к стене
 ---
 
 ## Как труба держится на стене

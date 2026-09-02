@@ -9,15 +9,21 @@ const openingHours = formatOpeningHours(siteConfig.openingHours);
 
 /* Ссылки на карты вместо iframe: не тянем чужие скрипты ради одной точки.
    Ведём по координатам, а не текстовым поиском — метка встаёт ровно на производство.
-   У Яндекса порядок «долгота,широта», у Google — наоборот. */
+   У Яндекса порядок «долгота,широта», у Google и Apple — наоборот.
+   Все три адреса — универсальные ссылки: на телефоне система сама открывает
+   приложение карт, в остальных случаях остаётся веб-версия. */
 const { latitude, longitude } = siteConfig.geo;
 const yandexMapsUrl = `https://yandex.by/maps/?ll=${longitude},${latitude}&z=17&pt=${longitude},${latitude}`;
 const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+/* Формат /place — тот, на который Apple сама редиректит старый `?ll=&q=`:
+   coordinate ставит метку, name её подписывает. Параметр address Apple выбрасывает
+   из адреса при загрузке — не передаём. */
+const appleMapsUrl = `https://maps.apple.com/place?coordinate=${latitude},${longitude}&name=${encodeURIComponent(siteConfig.name)}&z=17`;
 ---
 
 <BaseLayout
   title="Контакты — металлоизделия в Минске"
-  description="Телефон, email и адрес производства METALLOMASTER: аг. Колодищи, ул. Путейская. Звоните — проконсультируем по дымоходам, колпакам и воздуховодам, посчитаем стоимость."
+  description="Телефон, email и адрес производства METALLOMASTER: аг. Колодищи, ГСПК «Колодищи». Звоните — проконсультируем по дымоходам, колпакам и воздуховодам."
   path="/contacts/"
 >
   <Container>
@@ -48,15 +54,15 @@ const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitud
         </p>
 
         <p class="route__text">
-          Производство находится в агрогородке Колодищи на улице Путейской — десять минут от МКАД по
-          Московскому шоссе. Приезжайте с размерами или эскизом: подберём решение на месте и
-          покажем, как изделие делается.
+          Производство находится в агрогородке Колодищи, в ГСПК «Колодищи»: заезд с улицы Волмянский
+          шлях через Михайлов проезд, четверть часа от МКАД со стороны Уручья. Приезжайте с
+          размерами или эскизом: подберём решение на месте и покажем, как изделие делается.
         </p>
 
         <ul class="route__facts">
           <li class="route__fact">
-            <span class="route__fact-value">10 мин</span>
-            <span class="route__fact-label">от МКАД по Московскому шоссе</span>
+            <span class="route__fact-value">15 мин</span>
+            <span class="route__fact-label">от МКАД со стороны Уручья</span>
           </li>
           <li class="route__fact">
             <span class="route__fact-value">{openingHours}</span>
@@ -87,6 +93,22 @@ const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitud
           </a>
           <a class="route__link" href={googleMapsUrl} target="_blank" rel="noopener">
             <span>Открыть в Google Картах</span>
+            <svg
+              class="route__icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M7 17 17 7"></path>
+              <path d="M8 7h9v9"></path>
+            </svg>
+          </a>
+          <a class="route__link" href={appleMapsUrl} target="_blank" rel="noopener">
+            <span>Открыть в Apple Картах</span>
             <svg
               class="route__icon"
               viewBox="0 0 24 24"
@@ -243,6 +265,14 @@ const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitud
     /* Плитки карт не растягиваем на всю карточку — иначе кнопка шириной в экран */
     .route__links {
       grid-template-columns: repeat(2, minmax(0, 300px));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    /* Три сервиса карт встают в один ряд только здесь: на 768 третья плитка
+       ушла бы в узкую колонку и текст в ней переносился бы */
+    .route__links {
+      grid-template-columns: repeat(3, minmax(0, 260px));
     }
   }
 </style>

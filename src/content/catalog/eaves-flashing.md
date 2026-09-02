@@ -12,6 +12,8 @@ coverAlt: Карнизная планка из стали с полимерны�
 images:
   - src: ./eaves-flashing/eaves-flashing.webp
     alt: Капельник для кровли, согнутый по размерам заказчика
+  - src: ./eaves-flashing/eaves-flashing-old-01.webp
+    alt: Карнизная планка с полимерным покрытием
 ---
 
 ## Маленькая планка с большой задачей

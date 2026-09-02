@@ -9,7 +9,7 @@
 # могут не примениться — кэш для них настраивается в ispmanager (см. раздел DEPLOY в TODO.md).
 #
 # Что здесь настроено:
-#   1. 301-редиректы со старых адресов (карта: .documentation/redirects.md)
+#   1. 301-редиректы со старых адресов (полная карта — этот файл, других копий нет)
 #   2. http → https и www → без www
 #   3. Своя страница 404
 #   4. Заголовки безопасности
@@ -38,8 +38,8 @@ AddDefaultCharset utf-8
   RewriteRule (^|/)\.(?!well-known/) - [F,L]
 
   # --- 1. Старые адреса → новые (301) --------------------------------------
-  # Карта ведётся в .documentation/redirects.md — при добавлении или переименовании
-  # страницы правило добавляется в ОБА файла. Цели указаны абсолютным https-адресом
+  # Этот блок — единственная карта 301: переименовали или удалили страницу — правило
+  # добавляется сюда, иначе адрес выпадет из индекса. Цели указаны абсолютным https-адресом
   # намеренно: запрос по старому http-адресу отдаёт один 301 вместо цепочки из двух.
   # Порядок важен — этот блок идёт до нормализации схемы и хоста.
 
@@ -48,6 +48,8 @@ AddDefaultCharset utf-8
   RewriteRule ^katalog-produkcii\.html$ https://metallomaster.by/catalog/ [R=301,L]
   RewriteRule ^kontakty\.html$ https://metallomaster.by/contacts/ [R=301,L]
   RewriteRule ^zakazatj\.html$ https://metallomaster.by/order/ [R=301,L]
+  # Страница «спасибо» старой формы: в карте сайта её не было, но живьём отдаёт 200
+  RewriteRule ^zayavka\.html$ https://metallomaster.by/order/ [R=301,L]
 
   # Категории
   RewriteRule ^dimohodi-iz-nerzhaveyuschej-stali\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/ [R=301,L]
@@ -86,10 +88,64 @@ AddDefaultCharset utf-8
 
   # Услуги
   RewriteRule ^montazh-dimohoda\.html$ https://metallomaster.by/services/chimney-installation/ [R=301,L]
-  RewriteRule ^ventilyacionnie-sistemi\.html$ https://metallomaster.by/services/ventilation-systems/ [R=301,L]
+  RewriteRule ^ventilyacionnie-sistemi\.html$ https://metallomaster.by/catalog/ventilation-systems/ [R=301,L]
 
-  # Остальные старые адреса намеренно отдают 404: массовый редирект «всё непонятное
-  # на главную» поисковики считают soft-404 и выбрасывают такие адреса из индекса.
+
+  # --- 1b. Старые адреса без прямого аналога (301 на ближайший раздел) --------
+  # На старом сайте каждый фитинг имел свою страницу; в новом каталоге они описаны
+  # внутри разделов. 301 ведёт в тот раздел, где изделие теперь описано: адрес не
+  # выпадает из индекса, а посетитель попадает на страницу по своему запросу.
+  # Пустой 404 здесь был бы дороже: это больше половины старого индекса.
+  # Узлы одностенного дымохода: своих страниц у них теперь нет — ведём в раздел одностенных
+  RewriteRule ^truba-dimohoda-kruglaya\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/single-wall-chimneys/ [R=301,L]
+  RewriteRule ^trojnik-dimohoda-kruglij\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/single-wall-chimneys/ [R=301,L]
+  RewriteRule ^trojnik-dimohoda-ovaljnij\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/oval-chimney-pipe/ [R=301,L]
+  RewriteRule ^koleno-dimohoda-krugloe\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/single-wall-chimneys/ [R=301,L]
+  RewriteRule ^koleno-dimohoda-ovaljnoe\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/oval-chimney-pipe/ [R=301,L]
+  RewriteRule ^sbornik-kondensata-kruglij\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/single-wall-chimneys/ [R=301,L]
+  RewriteRule ^sbornik-kondensata-ovaljnij\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/oval-chimney-pipe/ [R=301,L]
+  RewriteRule ^perehod\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/single-wall-chimneys/ [R=301,L]
+  RewriteRule ^shiber\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/single-wall-chimneys/ [R=301,L]
+
+  # Узлы утеплённого дымохода — в раздел утеплённых
+  RewriteRule ^truba-dimohoda-uteplennaya\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/insulated-chimneys/ [R=301,L]
+  RewriteRule ^trojnik-dimohoda-uteplennij\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/insulated-chimneys/ [R=301,L]
+  RewriteRule ^koleno-dimohoda-uteplennoe\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/insulated-chimneys/ [R=301,L]
+  RewriteRule ^nakonechnik\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/insulated-chimneys/ [R=301,L]
+
+  # Зонты дымохода — к зонтам и колпакам
+  RewriteRule ^zont-dimohoda-kruglij\.html$ https://metallomaster.by/catalog/chimney-caps/vent-cap/ [R=301,L]
+  RewriteRule ^zont-dimohoda-ovaljnij\.html$ https://metallomaster.by/catalog/chimney-caps/vent-cap/ [R=301,L]
+
+  # Фитинги круглой вентиляции — в раздел круглых воздуховодов
+  RewriteRule ^otvod-ventilyacionnij-kruglij\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/round-air-duct/ [R=301,L]
+  RewriteRule ^trojnik-ventilyacionnij-kruglij\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/round-air-duct/ [R=301,L]
+  RewriteRule ^krestovina-ventilyacionnaya-kruglaya\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/round-air-duct/ [R=301,L]
+  RewriteRule ^perehod-ventilyacionnij-kruglij\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/round-air-duct/ [R=301,L]
+  RewriteRule ^vrezka-ventilyacionnaya-kruglaya\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/round-air-duct/ [R=301,L]
+  RewriteRule ^zaglushka-ventilyacionnaya-kruglaya\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/round-air-duct/ [R=301,L]
+  RewriteRule ^utka-ventilyacionnaya-kruglaya\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/round-air-duct/ [R=301,L]
+  RewriteRule ^drosselj-klapan-ventilyacionnij-kruglij\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/round-air-duct/ [R=301,L]
+
+  # Фитинги прямоугольной вентиляции — в раздел прямоугольных воздуховодов
+  RewriteRule ^otvod-ventilyacionnij-pryamougoljnij\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/rectangular-air-duct/ [R=301,L]
+  RewriteRule ^trojnik-ventilyacionnij-pryamougoljnij\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/rectangular-air-duct/ [R=301,L]
+  RewriteRule ^krestovina-ventilyacionnaya-pryamougoljnaya\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/rectangular-air-duct/ [R=301,L]
+  RewriteRule ^perehod-ventilyacionnij-pryamougoljnij\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/rectangular-air-duct/ [R=301,L]
+  RewriteRule ^vrezka-ventilyacionnaya-pryamougoljnaya\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/rectangular-air-duct/ [R=301,L]
+  RewriteRule ^zaglushka-ventilyacionnaya-pryamougoljnaya\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/rectangular-air-duct/ [R=301,L]
+  RewriteRule ^utka-ventilyacionnaya-pryamougoljnaya\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/rectangular-air-duct/ [R=301,L]
+  RewriteRule ^drosselj-klapan-ventilyacionnij-pryamougoljnij\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/rectangular-air-duct/ [R=301,L]
+
+  # Страницы, у которых в старом меню было только человеческое имя
+  RewriteRule ^page-144\.html$ https://metallomaster.by/catalog/chimney-caps/ventilation-deflector/ [R=301,L]
+  RewriteRule ^page-147\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/stainless-steel-air-ducts/ [R=301,L]
+  RewriteRule ^page-152\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/static-pressure-chamber/ [R=301,L]
+  RewriteRule ^ventilation-dly-bani-i-sauni\.html$ https://metallomaster.by/catalog/bath-sauna-ventilation/ [R=301,L]
+
+  # Адреса, которых не было даже в старой карте сайта, намеренно отдают 404: массовый
+  # редирект «всё непонятное на главную» поисковики считают soft-404 и выбрасывают
+  # такие адреса из индекса.
 
   # --- 2. Схема и хост -----------------------------------------------------
   # http → https. Второе условие обязательно для хостингов, где TLS терминируется
