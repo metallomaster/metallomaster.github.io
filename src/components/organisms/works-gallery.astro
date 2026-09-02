@@ -1,5 +1,6 @@
 ---
 import type { CatalogImage } from '@/lib/types';
+import { TILE_MIN_IMAGES, buildTiles } from '@/lib/works-gallery';
 import Container from '@/components/atoms/container.astro';
 import Picture from '@/components/atoms/picture.astro';
 
@@ -11,29 +12,65 @@ interface Props {
 }
 
 const { images, heading = 'Наши работы', aboveFold = false } = Astro.props;
+
+// Много фото — вместо полотна из десятков квадратов выкладываем плитку с прокруткой
+const isTiled = images.length >= TILE_MIN_IMAGES;
+const tiles = isTiled ? buildTiles(images) : [];
+// Пара кадров растянутой сеткой смотрится сиротливо — ставим их по центру
+const isFew = images.length <= 4;
+
+const GRID_SIZES =
+  '(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (max-width: 1439px) 25vw, 200px';
+// Размеры плитки — в --tile ниже; крупная занимает две клетки по любой оси
+const TILE_SIZES = '(max-width: 767px) 132px, (max-width: 1023px) 164px, 196px';
+const LARGE_TILE_SIZES = '(max-width: 767px) 276px, (max-width: 1023px) 340px, 404px';
 ---
 
 <section class="works-gallery">
   <Container>
     <h2 class="works-gallery__heading">{heading}</h2>
-    <ul class="works-gallery__grid">
-      {
-        images.map((image, index) => (
-          <li>
+  </Container>
+
+  {
+    isTiled ? (
+      <ul class="works-gallery__track" data-works-track>
+        {tiles.map((tile, index) => (
+          <li
+            class="works-gallery__tile"
+            data-sm={tile.sm === 'unit' ? undefined : tile.sm}
+            data-lg={tile.lg === 'unit' ? undefined : tile.lg}
+          >
             {/* href на пережатый полноразмер — его откроет лайтбокс */}
-            <a class="works-gallery__link" href={image.full} data-lightbox-group="works">
+            <a class="works-gallery__link" href={tile.image.full} data-lightbox-group="works">
               <Picture
-                src={image.src}
-                alt={image.alt}
+                src={tile.image.src}
+                alt={tile.image.alt}
                 priority={aboveFold && index === 0}
-                sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (max-width: 1439px) 25vw, 200px"
+                sizes={tile.sm === 'unit' && tile.lg === 'unit' ? TILE_SIZES : LARGE_TILE_SIZES}
               />
             </a>
           </li>
-        ))
-      }
-    </ul>
-  </Container>
+        ))}
+      </ul>
+    ) : (
+      <Container>
+        <ul class:list={['works-gallery__grid', isFew && 'works-gallery__grid--few']}>
+          {images.map((image, index) => (
+            <li>
+              <a class="works-gallery__link" href={image.full} data-lightbox-group="works">
+                <Picture
+                  src={image.src}
+                  alt={image.alt}
+                  priority={aboveFold && index === 0}
+                  sizes={GRID_SIZES}
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    )
+  }
 </section>
 
 <style>
@@ -55,9 +92,67 @@ const { images, heading = 'Наши работы', aboveFold = false } = Astro.p
     list-style: none;
   }
 
+  /* Мало кадров: ряд по центру, без пустых колонок по краям */
+  .works-gallery__grid--few {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .works-gallery__grid--few > li {
+    flex: 0 1 220px;
+    min-width: 0;
+  }
+
+  .works-gallery__grid > li {
+    aspect-ratio: 1;
+  }
+
+  /* Плитка: колонки набегают слева направо, на узком экране две строки.
+     Прокрутка нативная, автопрокрутку сверху даёт lib/works-gallery.ts */
+  .works-gallery__track {
+    --tile: 132px;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--tile);
+    grid-template-rows: repeat(2, var(--tile));
+    /* Не набралось на всю ширину — плитка встаёт по центру. Именно safe center:
+       обычный center у прокручиваемой ленты уводит первые кадры за левый край,
+       откуда их не достать прокруткой. Браузер без safe останется на start. */
+    justify-content: start;
+    justify-content: safe center;
+    gap: var(--space-3);
+    margin: 0;
+    /* Лента начинается и заканчивается по контентной сетке — как заголовок секции:
+       в покое ни один кадр не срезан краем экрана */
+    padding-inline: calc(var(--container-pad) + max(0px, (100% - var(--container-max)) / 2));
+    padding-block: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    /* Полосу прокрутки не показываем: лента едет сама, тащить можно и без неё */
+    scrollbar-width: none;
+    list-style: none;
+  }
+
+  .works-gallery__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Крупные кадры вперемешку с обычными: рисунок плитки задаёт lib/works-gallery.ts */
+  .works-gallery__tile[data-sm='wide'],
+  .works-gallery__tile[data-sm='big'] {
+    grid-column: span 2;
+  }
+
+  .works-gallery__tile[data-sm='tall'],
+  .works-gallery__tile[data-sm='big'] {
+    grid-row: span 2;
+  }
+
   .works-gallery__link {
     display: block;
-    aspect-ratio: 1;
+    height: 100%;
     overflow: hidden;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
@@ -84,11 +179,37 @@ const { images, heading = 'Наши работы', aboveFold = false } = Astro.p
     .works-gallery__grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+
+    .works-gallery__track {
+      --tile: 164px;
+
+      grid-template-rows: repeat(3, var(--tile));
+    }
+
+    /* Строк стало три — рисунок другой, размеры узкого экрана сбрасываем */
+    .works-gallery__tile[data-sm] {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .works-gallery__tile[data-lg='wide'],
+    .works-gallery__tile[data-lg='big'] {
+      grid-column: span 2;
+    }
+
+    .works-gallery__tile[data-lg='tall'],
+    .works-gallery__tile[data-lg='big'] {
+      grid-row: span 2;
+    }
   }
 
   @media (min-width: 1024px) {
     .works-gallery__grid {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .works-gallery__track {
+      --tile: 196px;
     }
   }
 
@@ -98,3 +219,9 @@ const { images, heading = 'Наши работы', aboveFold = false } = Astro.p
     }
   }
 </style>
+
+<script>
+  import { initWorksGallery } from '@/lib/works-gallery';
+
+  initWorksGallery(document.body);
+</script>
