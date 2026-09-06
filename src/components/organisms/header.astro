@@ -2,29 +2,23 @@
 import { siteConfig } from '@/config/site';
 import Container from '@/components/atoms/container.astro';
 import Logo from '@/components/atoms/logo.astro';
+import { isCurrentPath, navItems, normalizePath } from '@/lib/menu';
 
-const navItems = [
-  { label: 'Главная', href: '/' },
-  { label: 'Каталог', href: '/catalog/' },
-  { label: 'Услуги', href: '/services/' },
-  { label: 'Контакты', href: '/contacts/' },
-];
-
-// Нормализуем путь к виду с завершающим слешем (trailingSlash: 'always')
-const currentPath = Astro.url.pathname.endsWith('/')
-  ? Astro.url.pathname
-  : `${Astro.url.pathname}/`;
-const isCurrent = (href: string) =>
-  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+const currentPath = normalizePath(Astro.url.pathname);
 ---
 
-<header class="header" data-menu-open="false">
+<header class="header">
   <Container class="header__inner">
     <a class="header__logo" href="/" aria-label="METALLOMASTER — на главную">
       <Logo idPrefix="header-logo" />
     </a>
 
-    <nav class="header__nav" aria-label="Основная навигация" data-menu-panel>
+    {
+      /* Меню шапки — только для широких экранов. На узких его место занимает
+        нижний таб-бар (@/components/organisms/tab-bar.astro): там разделы
+        всегда на виду, ничего не нужно открывать. */
+    }
+    <nav class="header__nav" aria-label="Основная навигация">
       <ul class="header__nav-list">
         {
           navItems.map((item) => (
@@ -32,7 +26,7 @@ const isCurrent = (href: string) =>
               <a
                 class="header__nav-link"
                 href={item.href}
-                aria-current={isCurrent(item.href) ? 'page' : undefined}
+                aria-current={isCurrentPath(item.href, currentPath) ? 'page' : undefined}
               >
                 {item.label}
               </a>
@@ -40,17 +34,13 @@ const isCurrent = (href: string) =>
           ))
         }
       </ul>
-      <a class="header__phone header__phone--mobile" href={`tel:${siteConfig.phoneHref}`}>
-        {siteConfig.phone}
-      </a>
     </nav>
 
     <div class="header__actions">
       <a class="header__phone" href={`tel:${siteConfig.phoneHref}`}>{siteConfig.phone}</a>
       {
-        /* Кнопка звонка для узких экранов: там номер целиком не помещается, а прятать
-          единственный способ позвонить внутрь бургера нельзя — звонок здесь основной
-          канал заказа. Внутри меню номер остаётся цифрами, чтобы его можно было прочесть. */
+        /* Кнопка звонка для узких экранов: номер целиком там не помещается,
+          а звонок — основной канал заказа, прятать его нельзя. */
       }
       <a
         class="header__call"
@@ -71,17 +61,6 @@ const isCurrent = (href: string) =>
           ></path>
         </svg>
       </a>
-      <button
-        class="header__burger"
-        type="button"
-        data-menu-toggle
-        aria-expanded="false"
-        aria-label="Открыть меню"
-      >
-        <span class="header__burger-line"></span>
-        <span class="header__burger-line"></span>
-        <span class="header__burger-line"></span>
-      </button>
     </div>
   </Container>
 </header>
@@ -93,6 +72,9 @@ const isCurrent = (href: string) =>
     z-index: 100;
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
+    /* В standalone-режиме шапка упирается в самый верх экрана: подкладываем
+       её фон под статус-бар, иначе логотип уезжает под часы */
+    padding-top: var(--safe-top);
   }
 
   .header :global(.header__inner) {
@@ -164,10 +146,6 @@ const isCurrent = (href: string) =>
     color: var(--color-accent);
   }
 
-  .header__phone--mobile {
-    display: none;
-  }
-
   /* На широких экранах номер виден цифрами — иконка не нужна */
   .header__call {
     display: none;
@@ -191,98 +169,19 @@ const isCurrent = (href: string) =>
     height: 22px;
   }
 
-  .header__burger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space-1);
-    width: 44px;
-    height: 44px;
-    padding: var(--space-2);
-    border: none;
-    border-radius: var(--radius-md);
-    background: transparent;
-    cursor: pointer;
-  }
-
-  .header__burger-line {
-    height: 2px;
-    width: 100%;
-    background: var(--color-text);
-    border-radius: 1px;
-    transition:
-      transform var(--transition-base),
-      opacity var(--transition-base);
-  }
-
+  /* Узкие экраны: в шапке остаются логотип и звонок, разделы уходят в таб-бар */
   @media (max-width: 1023px) {
-    .header__phone:not(.header__phone--mobile) {
+    .header__nav,
+    .header__phone {
       display: none;
     }
 
-    /* На узких экранах в строке только логотип и бургер справа */
     .header__actions {
       margin-inline-start: auto;
-    }
-
-    .header__burger {
-      display: flex;
     }
 
     .header__call {
       display: inline-flex;
     }
-
-    .header__nav {
-      position: absolute;
-      inset-inline: 0;
-      top: 100%;
-      display: none;
-      background: var(--color-bg);
-      border-bottom: 1px solid var(--color-border);
-      box-shadow: var(--shadow-md);
-      padding: var(--space-4) var(--container-pad) var(--space-5);
-    }
-
-    .header[data-menu-open='true'] .header__nav {
-      display: block;
-    }
-
-    .header[data-menu-open='true'] .header__burger-line:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .header[data-menu-open='true'] .header__burger-line:nth-child(2) {
-      opacity: 0;
-    }
-
-    .header[data-menu-open='true'] .header__burger-line:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    .header__nav-list {
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .header__nav-link {
-      width: 100%;
-      min-height: 48px;
-      font-size: var(--text-base);
-    }
-
-    .header__phone--mobile {
-      display: inline-flex;
-      align-items: center;
-      min-height: 48px;
-      padding: var(--space-1) var(--space-3);
-      color: var(--color-accent);
-    }
   }
 </style>
-
-<script>
-  import { initMobileMenu } from '@/lib/menu';
-
-  document.querySelectorAll<HTMLElement>('.header').forEach(initMobileMenu);
-</script>

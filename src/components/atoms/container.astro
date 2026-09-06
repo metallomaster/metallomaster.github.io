@@ -16,6 +16,8 @@ const { class: className } = Astro.props;
     width: 100%;
     max-width: var(--container-max);
     margin-inline: auto;
-    padding-inline: var(--container-pad);
+    /* В ландшафте чёлка заходит на страницу сбоку: отступ не меньше выреза */
+    padding-inline-start: max(var(--container-pad), var(--safe-left));
+    padding-inline-end: max(var(--container-pad), var(--safe-right));
   }
 </style>

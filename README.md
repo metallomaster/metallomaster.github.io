@@ -37,9 +37,9 @@ src/
 ├── components/
 │   ├── atoms/              # button, container, logo, picture
 │   ├── molecules/          # catalog-card
-│   ├── organisms/          # header, footer, hero, category-grid, works-gallery,
+│   ├── organisms/          # header, tab-bar, footer, hero, category-grid, works-gallery,
 │   │                       # how-we-work, advantages, cta-band, order-form, lightbox
-│   └── templates/          # base-layout.astro — <head>, шапка, футер, JSON-LD
+│   └── templates/          # base-layout.astro — <head>, шапка, футер, таб-бар, JSON-LD
 ├── lib/                    # вся логика чистым TS (см. ниже)
 ├── config/                 # site.ts (контакты и env), tokens.css, fonts.css, global.css
 ├── content/                # «база данных» сайта: markdown каталога + фото
@@ -60,7 +60,7 @@ public/                     # favicon-набор, шрифты Manrope, robots.t
 | `images.ts`     | пресеты обработки фото (размеры, качество, ширины srcset)              |
 | `lastmod.ts`    | дата последней правки страницы из истории git — для карты сайта        |
 | `schedule.ts`   | режим работы: формат хранения и строка «Пн–Пт 9:00–18:00»              |
-| `menu.ts`       | мобильное меню: открытие, закрытие, фокус                              |
+| `menu.ts`       | пункты основной навигации: общий список шапки и нижнего таб-бара       |
 | `lightbox.ts`   | просмотр фото на весь экран, свайп, клавиатура                         |
 | `order-form.ts` | валидация и отправка заявки, антиспам                                  |
 
@@ -204,10 +204,14 @@ WEB3FORMS_KEY=""
   в `.astro/dev.log` — «The collection "catalog" does not exist or is empty». Лечится
   перезапуском: `npm run stop && npm run dev`. Смотреть сайт «как в проде» надёжнее через
   `npm run build && npm run preview`.
+- **`env(safe-area-inset-*)` молчит без `viewport-fit=cover`.** По спецификации без него
+  вырезы экрана всегда 0, и весь код обхода чёлки работает вхолостую. Мета-тег стоит в
+  `base-layout.astro`, значения разложены по токенам `--safe-top/right/bottom/left`
+  (`tokens.css`) — в компонентах пишем их, а не `env()` напрямую.
 - **Node ниже 22.12** — Astro 7 падает на старте с невнятной ошибкой.
 - **`.deprecated/`** — только чтение: зеркало старого сайта и скриншоты «как было».
 - **Зависимости не добавляем без нужды**, jQuery и UI-библиотеки запрещены: весь интерактив
-  (меню, лайтбокс, форма) — свои функции в `lib/`, суммарно несколько килобайт.
+  (лайтбокс, форма, галерея) — свои функции в `lib/`, суммарно несколько килобайт.
 
 ## Документация
 

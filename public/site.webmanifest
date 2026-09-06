@@ -2,9 +2,10 @@
   "name": "METALLOMASTER — изделия из металла в Минске",
   "short_name": "METALLOMASTER",
   "lang": "ru",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
-  "display": "browser",
+  "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "icons": [
