@@ -1,112 +1,148 @@
-# metallomaster.by — правила проекта
+# metallomaster.by
 
-Реворк сайта производителя металлоизделий (Минск). Рабочее руководство — `README.md`
-(документы этапа реворка удалены в `810c020`, живут в истории git). Старый сайт целиком —
-`.deprecated/site/`, скриншоты «как было» — `.deprecated/screenshots/`.
+Static marketing site for a sheet-metal manufacturer in Minsk: chimneys, caps, air ducts,
+roof accessories. All user-facing copy is Russian; code and this file are English.
 
-## Стек и команды
+## Stack
 
-- Astro 7, TypeScript strict, npm, Node 22.12+ (`nvm use 22`).
-- `npm run dev` / `build` / `check` (типы) / `lint` (ESLint) / `format`.
-- Перед завершением любой задачи: `npm run build && npm run check && npm run lint` — всё должно быть зелёным.
-  Git-хуков нет (lefthook удалён по решению владельца) — прогон проверок перед коммитом обязателен вручную.
-- Фоновый dev-демон может «протухнуть»: content layer в памяти пустеет (в `.astro/dev.log` —
-  «The collection "catalog" does not exist or is empty»), симптомы — пустой каталог и 404 на
-  страницах из коллекции. Лечится перезапуском: `npx astro dev stop && npm run dev`.
-  Смотреть сайт «как в проде» надёжнее через `npm run build && npm run preview`.
+Astro 7, TypeScript strict, npm, Node 22.12+. No UI framework, no runtime dependencies
+besides `sharp` for image processing. Fully prerendered — no adapter, no SSR.
 
-## Архитектура — Atomic Design
+| Command           | What it does                                      |
+| ----------------- | ------------------------------------------------- |
+| `npm run dev`     | dev server on :4321                               |
+| `npm run stop`    | stop the background dev daemon                    |
+| `npm run build`   | static build into `dist/`                         |
+| `npm run preview` | serve `dist/` — closest thing to production       |
+| `npm run check`   | `astro check` (types and `.astro` templates)      |
+| `npm run lint`    | ESLint with `--fix`; architecture rules live here |
+| `npm run format`  | Prettier                                          |
 
-Карта папок (`src/`):
+Before finishing any task run `npm run build && npm run check && npm run lint` — all three
+must be green. There are no git hooks; running them is manual.
 
-- `components/atoms/` — неделимые элементы UI (button, container, logo, picture);
-- `components/molecules/` — простые связки атомов (catalog-card);
-- `components/organisms/` — самостоятельные блоки страницы (header, footer, hero, order-form, lightbox…);
-- `components/templates/` — atomic templates (base-layout.astro);
-- `pages/` — файловый роутинг Astro;
-- `lib/` — вся логика и типы чистым TS (types, content, seo, images, menu, lightbox, order-form);
-- `config/` — site.ts (адаптер astro:env), tokens.css, fonts.css, global.css.
+The background dev daemon goes stale: the content layer empties, catalog pages start
+returning 404, and `.astro/dev.log` says «The collection "catalog" does not exist or is
+empty». Fix with `npm run stop && npm run dev`.
 
-Компоненты — плоские файлы без папок-обёрток и index.ts; импорты напрямую через единый
-алиас: `import Button from '@/components/atoms/button.astro'`.
+## Structure
 
-Направление импортов — только вниз по иерархии: atoms ← molecules ← organisms ← templates ← pages
-(ESLint boundaries валит сборку при нарушении). Атомы не знают о молекулах, молекулы — об
-организмах; любой уровень может брать `lib/` и `config/`.
+```
+src/
+├── pages/            file-based routes + sitemap.xml.ts
+├── components/
+│   ├── atoms/        button, container, logo, picture
+│   ├── molecules/    catalog-card
+│   ├── organisms/    header, tab-bar, footer, hero, category-grid, works-gallery,
+│   │                 how-we-work, advantages, cta-band, order-form, lightbox
+│   └── templates/    base-layout.astro — <head>, header, footer, tab bar, JSON-LD
+├── lib/              all logic as plain TypeScript
+├── config/           site.ts (company data + env), tokens.css, fonts.css, global.css
+├── content/          the site's database: catalog markdown + photos
+└── content.config.ts zod schemas for the collections
 
-**Переносимость (критично):**
+public/               favicons, Manrope fonts, robots.txt, manifest, search-engine
+                      verification files, and .htaccess
+.deprecated/          mirror of the old site — read only
+```
 
-- Логика, типы, данные — в `lib/*.ts` без единого импорта из `astro:*`/`astro` (ESLint запрещает).
-- `.astro`-файлы — тонкие шаблоны: классы, data-атрибуты, вызовы функций из `lib/`.
-- Интерактив — функции `init*(root: HTMLElement)` в `lib/`, подключаются через `<script>`.
-- Исключения-адаптеры (только там разрешён astro:*): `pages/`, `components/templates/`,
-  `lib/content.ts`, `config/site.ts`, `components/atoms/picture.astro`, `lib/types.ts`
-  (type-only ImageMetadata).
+`lib/` modules: `types.ts` (domain types and URL building), `content.ts` (the only Content
+Collections adapter), `seo.ts` (meta and JSON-LD generators), `images.ts` (image presets),
+`lastmod.ts` (page dates from git history), `schedule.ts` (opening hours), `menu.ts`
+(navigation items), `lightbox.ts`, `order-form.ts`, `works-gallery.ts`, `speculation.ts`.
 
-## Стиль кода
+Components are flat files — no wrapper folders, no index files. Import through the single
+alias: `import Button from '@/components/atoms/button.astro'`.
 
-- Все цвета/размеры/отступы — только через токены `src/config/tokens.css`. Сырые
-  значения (`#fff`, `16px` отступа) в компонентах запрещены.
-- Темы: светлая — основная, тёмная — через `light-dark()`. Переключателя темы на сайте нет
-  (решение владельца): тема берётся с устройства через `prefers-color-scheme`, в localStorage
-  ничего не пишется. Никаких `[data-theme]`-блоков в компонентах: нужен другой цвет — новый токен.
-- Новый цветовой токен обязан попасть в оба места `tokens.css`: в `:root` через `light-dark()`
-  и плоским светлым значением в блок `@supports not (color: light-dark(…))`. Без второго
-  браузер без поддержки функции не вычислит токен, и свойство упадёт в initial — так первичная
-  кнопка уже оставалась белым текстом на белом фоне.
-- Классы: BEM внутри компонента (`.header__nav-link`).
-- Брейкпоинты: 360 / 768 / 1024 / 1440, mobile-first, тач-таргеты ≥ 44px.
-- Навигация: до 1024px — нижний таб-бар (`organisms/tab-bar.astro`), от 1024px — меню в
-  шапке; пункты общие, из `lib/menu.ts`. Бургер-меню больше нет.
-- Сайт — standalone-PWA (`display: standalone` + `viewport-fit=cover`). Всё, что упирается
-  в край экрана, обязано учитывать вырезы токенами `--safe-top/right/bottom/left`;
-  `env()` напрямую в компонентах не пишем.
-- Комментарии по-русски, только там, где код не может сказать сам.
+## Architecture rules
 
-## SEO (не нарушать)
+**Imports only go down the hierarchy:** `atoms ← molecules ← organisms ← templates ← pages`.
+Any level may use `lib/` and `config/`. ESLint enforces this.
 
-- URL — английские вложенные, с завершающим слешем: `/catalog/<category>/<product>/`
-  (`build.format: 'directory'`, `trailingSlash: 'always'`). Старые транслит-адреса живут
-  только в карте 301-редиректов `public/.htaccess` (раздел 1 и 1b) — других копий карты нет;
-  при добавлении/переименовании страниц каждый старый адрес обязан попадать в эту карту.
-  Сверять полноту нужно по `.deprecated/site/sitemap.xml` (65 адресов), а не по html-файлам
-  зеркала: зеркало неполное.
-- H1 ≠ title; title без хвоста (бренд добавляет `buildTitle` из `@/lib/seo`).
-- Description — до 160 символов: столько в схеме контента и столько режет `clampDescription`.
-  Тексты в `.astro`-страницах схема не проверяет — длину держать руками.
-- Крошки — только в разметке `breadcrumbsJsonLd`, на странице их не показываем
-  (решение владельца 19.08.2026): путь наверх дают шапка и футер.
-- Каждая страница: уникальные title/description, canonical, OG — всё через пропсы
-  `BaseLayout` (`@/components/templates/base-layout.astro`).
-- JSON-LD — только через генераторы `@/lib/seo` (organizationJsonLd подключён в layout).
-- У каждой картинки осмысленный `alt` по-русски: он же идёт в `caption` разметки
-  ImageObject и в `<image:title>` карты изображений — по нему фото находят в поиске.
+**Logic stays framework-free.** Files in `lib/*.ts` must not import anything from
+`astro`/`astro:*` — ESLint enforces this too. `.astro` files are thin templates: markup,
+classes, data attributes, calls into `lib/`. Interactivity is `init*(root: HTMLElement)`
+functions in `lib/`, wired up through a `<script>` in the component.
 
-## Изображения
+Adapter exceptions where framework imports are allowed: `pages/`, `components/templates/`,
+`lib/content.ts`, `lib/types.ts` (type-only `ImageMetadata`), `config/site.ts`,
+`components/atoms/picture.astro`.
 
-- Размеры и качество — пресеты в `@/lib/images` (`PHOTO_FULL`, `OG_IMAGE`,
-  `PHOTO_THUMB_WIDTHS`). Одинаковые параметры в разных местах дают один файл в сборке,
-  разные — плодят копии, поэтому свои числа в вызовах `getImage` не пишем.
-- Превью — `@/components/atoms/picture.astro` (AVIF + WebP, srcset без апскейла).
-- Полноразмер для лайтбокса и разметки — поле `full` у `CatalogImage`; его считает
-  `lib/content.ts`, компоненты только подставляют.
-- Карта сайта — `pages/sitemap.xml.ts`: адреса страниц и фотографии одним файлом,
-  без внешней интеграции.
-- Astro копирует в `dist` оригиналы всех импортированных фото, даже те, на которые
-  нет ссылок (страницы рендерятся уже после обработки ассетов, отключить нельзя).
-  Отсюда требование: исходники в `src/content` держим лёгкими — лишний вес
-  переезжает в сборку один в один.
+## Styling
 
-## Контент
+Every colour, size and spacing value comes from `src/config/tokens.css`. Raw `#fff` or
+`16px` in a component is forbidden.
 
-- Тексты переписываем: живой язык, без канцелярита и SEO-воды, ключевые запросы
-  сохраняем (старые title/description смотреть в зеркале: `.deprecated/site/*.html`).
-- Цены НЕ указывать (решение владельца). CTA — «Рассчитать стоимость».
-- Контакты/реквизиты — только из `siteConfig` (`@/config/site`), никаких хардкодов
-  телефона или email в разметке: значения меняются в одном месте — в самом `site.ts`.
+A new colour token must be declared in **both** places in `tokens.css`: in `:root` via
+`light-dark()`, and as a flat light value inside the `@supports not (color: light-dark(…))`
+block. Without the second one a browser lacking the function falls back to `initial`.
 
-## Запреты
+Light theme is primary, dark comes from `light-dark()`. There is no theme switcher by
+owner's decision — the theme follows `prefers-color-scheme`, nothing is written to
+localStorage. Never add `[data-theme]` blocks in components; add a token instead.
 
-- Блок OWNER INPUT в `TODO.md` не трогать — его ведёт владелец.
-- `.deprecated/` — только чтение (референс старого сайта).
-- Не добавлять зависимости без необходимости; jQuery и UI-библиотеки запрещены.
+BEM inside a component (`.header__nav-link`). Breakpoints 360 / 768 / 1024 / 1440,
+mobile-first, touch targets at least 44px. Navigation: bottom tab bar below 1024px,
+header menu from 1024px; items are shared from `lib/menu.ts`.
+
+The site is a standalone PWA (`display: standalone` + `viewport-fit=cover`). Anything
+touching a screen edge must account for notches through the `--safe-top/right/bottom/left`
+tokens; never write `env()` directly in a component.
+
+Comments in Russian, and only where the code cannot speak for itself.
+
+## SEO
+
+URLs are nested English paths with a trailing slash: `/catalog/<category>/<product>/`
+(`build.format: 'directory'`, `trailingSlash: 'always'`).
+
+**`public/.htaccess` is the only 301 map** — there is no other copy. Renaming or removing a
+page means adding its old address there, or it drops out of the search index. The old site
+had 90 live addresses; the mirror and the old `sitemap.xml` (65 addresses) are both
+incomplete, so never verify coverage against them.
+
+H1 ≠ title: `title` is the human H1, `seoTitle` is the `<title>` (max 60 chars; the brand
+suffix is appended by `buildTitle` only when it fits). Description is capped at 160
+characters in both the content schema and `clampDescription` — prose inside `.astro` pages
+is not schema-checked, so keep the length by hand.
+
+Every page gets unique title/description, canonical and Open Graph through `BaseLayout`
+props — never hand-write them into `<head>`. JSON-LD only through the `lib/seo.ts`
+generators. Breadcrumbs exist only in `breadcrumbsJsonLd` markup, never rendered on the
+page (owner's decision).
+
+Every image needs a meaningful Russian `alt`: the same text becomes the `ImageObject`
+caption and the `<image:title>` entry in the image sitemap.
+
+## Images
+
+Sizes and quality come from the presets in `lib/images.ts` (`PHOTO_FULL`, `OG_IMAGE`,
+`PHOTO_THUMB_WIDTHS`). Identical parameters produce one file in the build; custom numbers
+in `getImage` calls multiply copies. Thumbnails go through `atoms/picture.astro`
+(AVIF + WebP, srcset without upscaling). The full-size variant for the lightbox is the
+`full` field on `CatalogImage`, computed in `lib/content.ts`.
+
+Astro copies the original of every imported photo into `dist`, including ones nothing links
+to — pages render after assets are processed, and it cannot be disabled. So keep sources in
+`src/content` light: their weight lands in the build one-to-one.
+
+## Content
+
+Catalog pages are markdown in `src/content/catalog/`; the filename is the last URL segment.
+The `type` field decides the route: `category` → `/catalog/<slug>/`, `product` →
+`/catalog/<category>/<slug>/` (parent from the `category` field), `service` →
+`/services/<slug>/`. No routing files needed. The schema in `content.config.ts` fails the
+build when a required field is missing.
+
+Rewrite copy in a living voice — no bureaucratese, no SEO filler — while keeping the search
+terms. **Never publish prices** (owner's decision); the CTA is «Рассчитать стоимость».
+
+Contacts and legal details come from `siteConfig` (`@/config/site`) only — no hard-coded
+phone or email anywhere in markup.
+
+## Prohibitions
+
+- `.deprecated/` is read-only — it is the old site's reference mirror.
+- No new dependencies without a real need; jQuery and UI libraries are banned.
+- Do not touch the two search-engine verification files in `public/`
+  (`google*.html`, `yandex_*.html`) — deleting them breaks Search Console access.
