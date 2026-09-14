@@ -83,7 +83,8 @@ const jsonLdBlocks = [organization, ...jsonLd];
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    {/* display: standalone из манифеста понимает iOS 15.4+; для более старых — этот мета-тег */}
+    {/* Пара обязательна: apple-* ради iOS до 15.4, стандартный — чтобы Chrome не ругался */}
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="METALLOMASTER" />
     {/* Цвет строки браузера на Android — совпадает с --color-bg обеих тем */}

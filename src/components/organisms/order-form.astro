@@ -12,6 +12,14 @@ import Button from '@/components/atoms/button.astro';
   data-access-key={siteConfig.web3formsKey}
   novalidate
 >
+  <noscript>
+    <p class="order-form__noscript">
+      Форма работает через JavaScript — сейчас он отключён, и заявка не отправится. Позвоните{' '}
+      <a href={`tel:${siteConfig.phoneHref}`}>{siteConfig.phone}</a> или напишите на{' '}
+      <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> — ответим так же быстро.
+    </p>
+  </noscript>
+
   {/* Сводка: скринридер объявляет её целиком, иначе озвучилась бы только ошибка у поля в фокусе */}
   <div class="order-form__summary" data-validation-summary role="alert" tabindex="-1" hidden>
     <p class="order-form__summary-title" data-validation-summary-title></p>
@@ -230,6 +238,14 @@ import Button from '@/components/atoms/button.astro';
 
   .order-form__summary-list :global(a) {
     font-weight: 600;
+  }
+
+  .order-form__noscript {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--color-accent);
   }
 
   .order-form__alert {
