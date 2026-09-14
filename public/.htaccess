@@ -143,9 +143,34 @@ AddDefaultCharset utf-8
   RewriteRule ^page-152\.html$ https://metallomaster.by/catalog/galvanized-air-ducts/static-pressure-chamber/ [R=301,L]
   RewriteRule ^ventilation-dly-bani-i-sauni\.html$ https://metallomaster.by/catalog/bath-sauna-ventilation/ [R=301,L]
 
-  # Адреса, которых не было даже в старой карте сайта, намеренно отдают 404: массовый
-  # редирект «всё непонятное на главную» поисковики считают soft-404 и выбрасывают
-  # такие адреса из индекса.
+  # --- 1c. Страницы, найденные только на живом сервере -------------------------
+  # Ни в зеркале, ни в старом sitemap.xml их не было — нашлись в imsitemap.html
+  # и в листинге корня сайта. Все отдавали 200, поэтому им нужен 301.
+
+  # Цен на новом сайте нет (решение владельца) — ведём в раздел про то же изделие
+  RewriteRule ^cena-dimohoda-kruglogo-secheniya-(?:304|430)-(?:05|08|1)\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/single-wall-chimneys/ [R=301,L]
+  RewriteRule ^cena-dimohoda-ovaljnogo-secheniya-(?:304|430)-(?:05|08|1)\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/oval-chimney-pipe/ [R=301,L]
+  RewriteRule ^cena-sendvich-dimohoda-(?:304|430)-430-(?:05|08|1)-05\.html$ https://metallomaster.by/catalog/stainless-steel-chimneys/insulated-chimneys/ [R=301,L]
+  RewriteRule ^cena-kolpaka-na-trubu-dimohoda\.html$ https://metallomaster.by/catalog/chimney-caps/ [R=301,L]
+
+  # Водосточные системы
+  RewriteRule ^vodostochnie-sistemi\.html$ https://metallomaster.by/catalog/gutter-systems/ [R=301,L]
+  RewriteRule ^vodostoki-ocinkovannie\.html$ https://metallomaster.by/catalog/gutter-systems/ [R=301,L]
+  RewriteRule ^metallicheskaya-vodostochnaya-sistema\.html$ https://metallomaster.by/catalog/gutter-systems/ [R=301,L]
+
+  # Парапет: две страницы об одном и том же. Дефисы шаблоном — их точное число неважно
+  RewriteRule ^parapet\.html$ https://metallomaster.by/catalog/roof-accessories/parapet-cap/ [R=301,L]
+  RewriteRule ^new-+\.html$ https://metallomaster.by/catalog/roof-accessories/parapet-cap/ [R=301,L]
+
+  # Вентиляция бани и сауны: ещё два служебных имени той же страницы
+  RewriteRule ^page-147-1\.html$ https://metallomaster.by/catalog/bath-sauna-ventilation/ [R=301,L]
+  RewriteRule ^page-151\.html$ https://metallomaster.by/catalog/bath-sauna-ventilation/ [R=301,L]
+
+  # Карта старого сайта — ближайший аналог это витрина каталога
+  RewriteRule ^imsitemap\.html$ https://metallomaster.by/catalog/ [R=301,L]
+
+  # Правило: страница отдавала 200 — ей нужен 301; не существовала — пусть будет 404.
+  # Массовый редирект «всё непонятное на главную» поисковики считают soft-404.
 
   # --- 2. Схема и хост -----------------------------------------------------
   # http → https. Второе условие обязательно для хостингов, где TLS терминируется

@@ -11,3 +11,6 @@ dist/
 .playwright-mcp/
 .DS_Store
 *.log
+
+# архив для ручной заливки на хостинг
+/metallomaster.zip
