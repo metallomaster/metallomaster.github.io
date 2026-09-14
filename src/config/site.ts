@@ -45,7 +45,7 @@ export interface SiteConfig {
   readonly web3formsKey: string;
   /**
    * Режим работы машиночитаемо: отсюда и текст на страницах (formatOpeningHours),
-   * и openingHoursSpecification в разметке. График подтверждён владельцем 19.08.2026.
+   * и openingHoursSpecification в разметке. График подтверждён владельцем 14.09.2026.
    * Дни — именами schema.org, время — HH:MM. Форма совпадает с OpeningHours из lib/schedule.
    */
   readonly openingHours: {
@@ -89,6 +89,6 @@ export const siteConfig: SiteConfig = {
   openingHours: {
     days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     opens: '09:00',
-    closes: '18:00',
+    closes: '17:00',
   },
 };

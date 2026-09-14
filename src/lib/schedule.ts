@@ -66,7 +66,7 @@ function groupDays(days: readonly WeekDay[]): WeekDay[][] {
   return groups;
 }
 
-/** «Пн–Пт 9:00–18:00» — для шапки, футера и страницы контактов */
+/** «Пн–Пт 9:00–17:00» — для шапки, футера и страницы контактов */
 export function formatOpeningHours(hours: OpeningHours): string {
   const days = groupDays(weekDays(hours))
     .map((group) =>
