@@ -234,10 +234,9 @@ ErrorDocument 404 /404.html
   # JSON-LD в 'self' не нуждается: неисполняемый тип application/ld+json под script-src
   # не попадает.
   # connect-src пускает api.web3forms.com — туда уходит fetch с заявкой.
-  # Пока стоит режим отчётов: заголовок ничего не блокирует, только пишет нарушения
-  # в консоль браузера. Проверить после деплоя на главной, в каталоге (лайтбокс)
-  # и на /order/ (отправка формы); если консоль чиста — убрать суффикс -Report-Only.
-  Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'inline-speculation-rules'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
+  # Режим боевой. В -Report-Only держать нельзя: директиву upgrade-insecure-requests
+  # спецификация в режиме отчётов игнорирует, и браузер ругается на неё в консоли.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'inline-speculation-rules'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
 </IfModule>
 
 # --- 5. Кэширование --------------------------------------------------------
