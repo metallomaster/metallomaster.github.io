@@ -230,7 +230,10 @@ ErrorDocument 404 /404.html
   # Не меняй эти настройки, не поправив заголовок: при инлайне 'self' заблокирует
   # меню, лайтбокс и форму заявки.
   # 'inline-speculation-rules' обязателен: правило предзагрузки страниц из
-  # src/lib/speculation.ts инлайновое по определению.
+  # src/lib/speculation.ts инлайновое по определению. Но как только в script-src
+  # появляется хеш (у нас — для GTM), Chrome этот ключ игнорирует, поэтому у правила
+  # тоже свой хеш — второй sha256. Правишь speculation.ts — пересчитай его по dist:
+  #   хеш текста внутри <script type="speculationrules"> в любой странице.
   # JSON-LD в 'self' не нуждается: неисполняемый тип application/ld+json под script-src
   # не попадает.
   # connect-src пускает api.web3forms.com — туда уходит fetch с заявкой.
@@ -243,7 +246,7 @@ ErrorDocument 404 /404.html
   # из галереи GTM («Yandex Metrica») до выкатки в main.
   # Режим боевой. В -Report-Only держать нельзя: директиву upgrade-insecure-requests
   # спецификация в режиме отчётов игнорирует, и браузер ругается на неё в консоли.
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'inline-speculation-rules' 'sha256-PPy47vhv0sejRzydx3tdQQunIRQaT/BnmN6mW+M7KOo=' https://www.googletagmanager.com https://*.googletagmanager.com https://www.googleadservices.com https://www.google.com https://googleads.g.doubleclick.net https://mc.yandex.ru https://yastatic.net; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://www.google.by https://mc.yandex.ru https://mc.yandex.com https://mc.yandex.by; font-src 'self'; connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://pagead2.googlesyndication.com https://www.google.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://mc.yandex.ru https://mc.yandex.com https://mc.yandex.by; frame-src https://www.googletagmanager.com https://td.doubleclick.net blob: https://mc.yandex.ru https://mc.yandex.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'inline-speculation-rules' 'sha256-PPy47vhv0sejRzydx3tdQQunIRQaT/BnmN6mW+M7KOo=' 'sha256-HLC0pGOtfsYueXXmqeQvqY88Yz8NFNnjGH4VcV7eATk=' https://www.googletagmanager.com https://*.googletagmanager.com https://www.googleadservices.com https://www.google.com https://googleads.g.doubleclick.net https://mc.yandex.ru https://yastatic.net; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://www.google.by https://mc.yandex.ru https://mc.yandex.com https://mc.yandex.by; font-src 'self'; connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://pagead2.googlesyndication.com https://www.google.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://mc.yandex.ru https://mc.yandex.com https://mc.yandex.by; frame-src https://www.googletagmanager.com https://td.doubleclick.net blob: https://mc.yandex.ru https://mc.yandex.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
 </IfModule>
 
 # --- 5. Кэширование --------------------------------------------------------
