@@ -5,6 +5,7 @@ import Footer from '@/components/organisms/footer.astro';
 import Header from '@/components/organisms/header.astro';
 import TabBar from '@/components/organisms/tab-bar.astro';
 import { siteConfig } from '@/config/site';
+import { GTM_INLINE_SCRIPT, gtmScriptUrl } from '@/lib/analytics';
 import { getDefaultShareImage } from '@/lib/content';
 import { OG_IMAGE } from '@/lib/images';
 import {
@@ -63,6 +64,13 @@ const jsonLdBlocks = [organization, ...jsonLd];
     <meta charset="utf-8" />
     {/* viewport-fit=cover — иначе env(safe-area-inset-*) всегда 0 и вырезы экрана не учесть */}
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    {
+      /* Google Tag Manager — как можно выше в <head>, один раз на страницу.
+        Текст инлайна менять только вместе с хешем в CSP, см. src/lib/analytics.ts */
+      siteConfig.gtmId && (
+        <script is:inline data-src={gtmScriptUrl(siteConfig.gtmId)} set:html={GTM_INLINE_SCRIPT} />
+      )
+    }
     <title>{fullTitle}</title>
     <meta name="description" content={metaDescription} />
     {!noindex && <link rel="canonical" href={canonical} />}

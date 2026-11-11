@@ -4,6 +4,8 @@
  * Пустой access_key = демо-режим: письмо не шлём, но показываем сценарий успеха.
  */
 
+import { trackLead } from '@/lib/analytics';
+
 const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
 
 /* Белорусский номер в международном виде: +375 и девять цифр. */
@@ -244,6 +246,8 @@ async function submitOrder(form: HTMLFormElement): Promise<void> {
       (result as { success?: boolean }).success === true;
 
     if (!delivered) throw new Error('Web3Forms отклонил заявку');
+    /* Только настоящая отправка: демо-режим и отсев ботов конверсией не считаются */
+    trackLead();
     showSuccess(form, false);
   } catch {
     toggleSubmitError(form, true);

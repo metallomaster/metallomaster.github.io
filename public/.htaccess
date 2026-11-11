@@ -234,9 +234,16 @@ ErrorDocument 404 /404.html
   # JSON-LD в 'self' не нуждается: неисполняемый тип application/ld+json под script-src
   # не попадает.
   # connect-src пускает api.web3forms.com — туда уходит fetch с заявкой.
+  # Google Tag Manager, GA4 и Google Ads — домены из официальных рекомендаций Google
+  # по CSP. sha256 — хеш инлайнового кода GTM из src/lib/analytics.ts: правишь там
+  # строку — пересчитай хеш здесь. Теги «Пользовательский HTML» в GTM под этой
+  # политикой не работают (им нужен 'unsafe-inline') — используй шаблоны тегов.
+  # ВНИМАНИЕ: Яндекс.Метрика в контейнере подключена именно так — её домены здесь
+  # есть, но инлайновый код тега браузер заблокирует. Перевести Метрику на шаблон
+  # из галереи GTM («Yandex Metrica») до выкатки в main.
   # Режим боевой. В -Report-Only держать нельзя: директиву upgrade-insecure-requests
   # спецификация в режиме отчётов игнорирует, и браузер ругается на неё в консоли.
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'inline-speculation-rules'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'inline-speculation-rules' 'sha256-PPy47vhv0sejRzydx3tdQQunIRQaT/BnmN6mW+M7KOo=' https://www.googletagmanager.com https://*.googletagmanager.com https://www.googleadservices.com https://www.google.com https://googleads.g.doubleclick.net https://mc.yandex.ru https://yastatic.net; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://www.google.by https://mc.yandex.ru https://mc.yandex.com https://mc.yandex.by; font-src 'self'; connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://pagead2.googlesyndication.com https://www.google.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://mc.yandex.ru https://mc.yandex.com https://mc.yandex.by; frame-src https://www.googletagmanager.com https://td.doubleclick.net blob: https://mc.yandex.ru https://mc.yandex.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
 </IfModule>
 
 # --- 5. Кэширование --------------------------------------------------------

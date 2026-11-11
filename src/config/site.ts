@@ -3,7 +3,7 @@
  * Контакты заданы здесь же — из окружения приходит только ключ формы.
  * При смене фреймворка переписывается только этот файл.
  */
-import { WEB3FORMS_KEY } from 'astro:env/client';
+import { GTM_ID, WEB3FORMS_KEY } from 'astro:env/client';
 
 /* Из человекочитаемого номера в формат для tel:/JSON-LD: только плюс и цифры. */
 function telFormat(phone: string): string {
@@ -43,6 +43,8 @@ export interface SiteConfig {
   readonly email: string;
   /** Ключ Web3Forms; пустая строка — форма в режиме заглушки */
   readonly web3formsKey: string;
+  /** ID контейнера Google Tag Manager; пустая строка — тег на страницы не выводится */
+  readonly gtmId: string;
   /**
    * Режим работы машиночитаемо: отсюда и текст на страницах (formatOpeningHours),
    * и openingHoursSpecification в разметке. График подтверждён владельцем 14.09.2026.
@@ -86,6 +88,7 @@ export const siteConfig: SiteConfig = {
   phoneHref: telFormat(PHONE),
   email: EMAIL,
   web3formsKey: WEB3FORMS_KEY,
+  gtmId: GTM_ID,
   openingHours: {
     days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     opens: '09:00',

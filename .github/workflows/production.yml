@@ -5,6 +5,7 @@
 #
 # Разовая настройка описана в README, раздел «Автоматический деплой».
 # Нужны секреты: SSH_PRIVATE_KEY, SSH_HOST, SSH_PORT, SSH_USER, WEB3FORMS_KEY.
+# Нужны переменные: DEPLOY_ENABLED, GTM_ID.
 
 name: Боевой деплой на domain.by
 
@@ -43,9 +44,15 @@ jobs:
       - run: npm ci
 
       # Пустой ключ собрал бы форму в демо-режиме: письма не уходят.
+      # Пустой GTM_ID собрал бы сайт без Google Tag Manager — без аналитики и рекламы.
       - run: npm run build
         env:
           WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
+          GTM_ID: ${{ vars.GTM_ID }}
+
+      # Без контейнера GTM перестают считаться конверсии Google Ads — не выкатываем такое.
+      - name: Проверить, что тег Google Tag Manager попал в сборку
+        run: grep -q 'googletagmanager.com/gtm.js?id=GTM-' dist/index.html
 
       - run: npm run check
 

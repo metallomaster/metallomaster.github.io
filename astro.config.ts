@@ -19,6 +19,12 @@ export default defineConfig({
         access: 'public',
         default: '',
       }),
+      /* ID контейнера Google Tag Manager. Пустой — тег не выводится (локально, превью) */
+      GTM_ID: envField.string({
+        context: 'client',
+        access: 'public',
+        default: '',
+      }),
     },
   },
 });

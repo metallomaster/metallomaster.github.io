@@ -44,7 +44,14 @@ npm run build && npm run check && npm run lint
 /var/www/metallomaster/data/www/metallomaster.by
 ```
 
-**1. Собрать.** Убедитесь, что `.env` на месте, иначе выложите сайт с нерабочей формой:
+**1. Собрать.** Убедитесь, что `.env` на месте и в нём есть `WEB3FORMS_KEY` и `GTM_ID`:
+без первого форма не отправляет письма, без второго на сайте нет Google Tag Manager,
+а значит, аналитики и конверсий рекламы:
+
+```bash
+WEB3FORMS_KEY=…
+GTM_ID=GTM-K9QW5T4
+```
 
 ```bash
 npm run build
@@ -106,7 +113,9 @@ curl -I https://metallomaster.by/no-such-page/         # 404, не 200
 3. Добавить секреты в Settings → Secrets and variables → Actions → Secrets:
    `SSH_PRIVATE_KEY` (содержимое файла без `.pub`), `SSH_HOST`, `SSH_PORT`, `SSH_USER`,
    `WEB3FORMS_KEY`.
-4. Там же на вкладке Variables добавить `DEPLOY_ENABLED` = `true`.
+4. Там же на вкладке Variables добавить `DEPLOY_ENABLED` = `true` и `GTM_ID` = `GTM-K9QW5T4`.
+   ID контейнера не секрет — он всё равно виден в коде страницы. Без него деплой упадёт
+   на проверке тега, а не выкатит сайт без рекламы.
 5. Для превью: Settings → Pages → Source → GitHub Actions.
 
 Если нужен ручной контроль над выкатом — Settings → Environments → `production` →
